@@ -1,0 +1,43 @@
+extends ProgressBar
+
+@export var damagebar: ProgressBar
+@export var timer: Timer
+@export var health: HealthComponent
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	health.CurrenthealthChanged.connect(updateHealthBarCurrentHP)
+	health.MaxHpChanged.connect(updateMaxHealth)
+	timer.timeout.connect(_onTimerTimeout)
+	# Inital health bar
+	if health == null:
+		value = 100
+		max_value = 100
+		damagebar.value = 100
+		damagebar.max_value = 100
+	else:
+		value = health.CurrentHP
+		max_value = health.MaxHp
+		damagebar.value = health.CurrentHP
+		damagebar.max_value = health.MaxHp
+
+func updateHealthBarCurrentHP(newHP: int, oldHP: int) -> void:
+	damagebar.value = oldHP
+	value = newHP
+	if value <= 0:
+		pass # Something happens
+	if newHP < oldHP:
+		timer.start()
+	else:
+		damagebar.value = value
+
+func updateMaxHealth(newMax: int, oldMax: int) -> void:
+	max_value = newMax
+	damagebar.max_value = newMax
+
+func _onTimerTimeout() -> void:
+	damagebar.value = value
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+# func _process(delta: float) -> void:
+# 	pass

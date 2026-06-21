@@ -4,6 +4,6 @@
 
 [node name="Player" type="Node2D" unique_id=2021730916]
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1607136221]
+[node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
