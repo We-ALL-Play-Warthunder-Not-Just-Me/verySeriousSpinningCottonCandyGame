@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xar8uhwh766e"
+path="res://.godot/imported/Very Serious Cotton Candy Making.wav-fba1d0f068edc4bf5a035481044c375b.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Very Serious Cotton Candy Making.wav"
+dest_files=["res://.godot/imported/Very Serious Cotton Candy Making.wav-fba1d0f068edc4bf5a035481044c375b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
