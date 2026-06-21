@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="1_yp2o7"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="2_lsxrl"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="3_x3fgx"]
+[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="4_lsxrl"]
 
 [node name="TestEnemy1" type="Node2D" unique_id=161224678]
 
@@ -26,3 +27,8 @@ grow_horizontal = 2
 grow_vertical = 1
 size_flags_vertical = 3
 health = NodePath("../../HealthComponent")
+
+[node name="DecayTimer" type="Timer" parent="." unique_id=1843929873 node_paths=PackedStringArray("health")]
+autostart = true
+script = ExtResource("4_lsxrl")
+health = NodePath("../HealthComponent")
