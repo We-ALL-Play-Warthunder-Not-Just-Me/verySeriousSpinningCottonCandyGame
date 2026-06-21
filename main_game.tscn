@@ -5,4 +5,4 @@
 [node name="MainGame" type="Node" unique_id=2037128485]
 
 [node name="TestEnemy1" parent="." unique_id=161224678 instance=ExtResource("1_1oj5k")]
-position = Vector2(1110, 320)
+position = Vector2(638, 389)
