@@ -3,6 +3,8 @@ class_name HealthComponent
 
 @export var MaxHp: int = 100
 @export var CurrentHP: int = 100
+@export var HealthDecay: int = 1
+# We lose spin every few thingies
 
 
 signal CurrenthealthChanged(newHP, OldHP)
