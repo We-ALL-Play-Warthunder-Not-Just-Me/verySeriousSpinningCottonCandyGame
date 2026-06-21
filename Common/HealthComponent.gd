@@ -7,8 +7,8 @@ class_name HealthComponent
 # We lose spin every few thingies
 
 
-signal CurrenthealthChanged(newHP, OldHP)
-signal MaxHpChanged(newMax, oldMax)
+signal CurrenthealthChanged(newHP: int, OldHP: int)
+signal MaxHpChanged(newMax: int, oldMax: int)
 signal healthDEATH()
 
 func setCurrenthp(newHP: int) -> void:
