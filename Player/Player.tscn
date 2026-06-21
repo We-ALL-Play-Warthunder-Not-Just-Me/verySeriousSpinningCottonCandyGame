@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://c1kjh2bp3nhq6"]
 
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="1_3qydi"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
 
 [node name="Player" type="Node2D" unique_id=2021730916]
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
+
+[node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
+health = NodePath("../../HealthComponent")
