@@ -28,7 +28,7 @@ grow_vertical = 1
 size_flags_vertical = 3
 health = NodePath("../../HealthComponent")
 
-[node name="DecayTimer" type="Timer" parent="." unique_id=1843929873 node_paths=PackedStringArray("health")]
-autostart = true
+[node name="decayTimer" type="Timer" parent="." unique_id=1386426296 node_paths=PackedStringArray("health")]
 script = ExtResource("4_lsxrl")
 health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
