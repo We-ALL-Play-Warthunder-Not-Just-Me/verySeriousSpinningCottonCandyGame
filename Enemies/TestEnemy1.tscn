@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://brc06ptlg8lg2"]
+
+[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="1_yp2o7"]
+[ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="2_lsxrl"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="3_x3fgx"]
+
+[node name="TestEnemy1" type="Node2D" unique_id=161224678]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1032706953]
+script = ExtResource("1_yp2o7")
+metadata/_custom_type_script = "uid://uflgtvyrjjt"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1615394634]
+texture = ExtResource("2_lsxrl")
+
+[node name="HealthBar" parent="Sprite2D" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("3_x3fgx")]
+z_index = 2
+anchor_top = -0.03125
+anchor_right = 1.0
+anchor_bottom = 0.0078125
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 1
+size_flags_vertical = 3
+health = NodePath("../../HealthComponent")
