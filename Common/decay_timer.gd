@@ -6,6 +6,7 @@ class_name decayTimer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timeout.connect(_onTimerTimeout)
+	autostart = true
 
 func _onTimerTimeout() -> void:
 	health.takeDamage(health.HealthDecay)
