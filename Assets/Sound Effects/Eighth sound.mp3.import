@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btqgl1w607egj"
+path="res://.godot/imported/Eighth sound.mp3-7c79e2156dfc3e1e3d5959f2ac109cda.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/Eighth sound.mp3"
+dest_files=["res://.godot/imported/Eighth sound.mp3-7c79e2156dfc3e1e3d5959f2ac109cda.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
