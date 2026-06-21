@@ -8,7 +8,9 @@ extends ProgressBar
 func _ready() -> void:
 	health.CurrenthealthChanged.connect(updateHealthBarCurrentHP)
 	health.MaxHpChanged.connect(updateMaxHealth)
+	health.healthDEATH.connect(onDeath)
 	timer.timeout.connect(_onTimerTimeout)
+	
 	# Inital health bar
 	if health == null:
 		value = 100
@@ -25,11 +27,14 @@ func updateHealthBarCurrentHP(newHP: int, oldHP: int) -> void:
 	damagebar.value = oldHP
 	value = newHP
 	if value <= 0:
-		pass # Something happens
+		pass # Something happens but a health Death signal does exist
 	if newHP < oldHP:
 		timer.start()
 	else:
 		damagebar.value = value
+
+func onDeath() -> void:
+	queue_free()
 
 func updateMaxHealth(newMax: int, oldMax: int) -> void:
 	max_value = newMax
