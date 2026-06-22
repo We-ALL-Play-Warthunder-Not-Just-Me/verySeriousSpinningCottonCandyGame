@@ -25,6 +25,8 @@ extends Control
 @onready var buttonCottonCandySteal: Button = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal/Button"
 @onready var buttonStrongerEnemies: Button = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies/Button"
 
+@onready var cotton_candy_label: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy"
+
 var costLabelArray: Array[Label] = [SpinAttackcost, MaxSpincost, SpinDecaycost, CottonCandyStealcost, StrongerEnemiescost]
 var levelLabelArray : Array[Label] = [levelSpinAttack, levelMaxSpinPower, levelReduceSpinDecay, levelCottonCandySteal, levelStrongerEnemies]
 var basecostArray: Array[int] = [spinAttackBaseCost, maxSpinBaseCost, spinDecayBaseCost, cottonCandyStealBaseCost, strongerEnemiesBaseCost]
@@ -37,11 +39,17 @@ func _ready() -> void:
 	buttonSpinDecay.pressed.connect(buySpinDecay)
 	buttonCottonCandySteal.pressed.connect(buyCottonCandySteal)
 	buttonStrongerEnemies.pressed.connect(buyStrongerEnemies)
+	cottonCandy.cottonCandyChanged.connect(updateCottonCandyAmount)
+
+	updateCottonCandyAmount()
 	for index: int in range(5):
 		disableButtonsWhenMaxLevel(buttonArray[index], matchIndexToUpgrade(index), maxLevelArray[index])
 		var tempcost: int = basecostArray[index] * (1 + matchIndexToUpgrade(index))
 		updateCostLabels(costLabelArray[index], tempcost)
 		updateLevelLabels(levelLabelArray[index], matchIndexToUpgrade(index))
+
+func updateCottonCandyAmount() -> void:
+	cotton_candy_label.text = "Cotton Candy : " + str(cottonCandy.cottonCandyBank)
 
 var spinAttackBaseCost: int = 100
 var spinAttackMaxLevel: int = 3
@@ -119,16 +127,24 @@ func buyStrongerEnemies() -> void:
 	disableButtonsWhenMaxLevel(buttonStrongerEnemies, upgrades.StrongerEnemies, strongerEnemiesMaxLevel)
 
 func disableButton(button:Button) -> void:
+	if button == null:
+		return
 	button.disabled = true
 
 func disableButtonsWhenMaxLevel(button: Button, Level: int , maxLevel: int = upgrades.maxLVL) -> void:
+	if button == null:
+		return
 	if Level == maxLevel:
 		disableButton(button)
 
 func updateCostLabels(label: Label, cost: int) -> void:
+	if label == null:
+		return
 	label.text = str(cost)
 
 func updateLevelLabels(label: Label, level: int) -> void:
+	if label == null:
+		return
 	label.text = "LVL: " + str(level)
 
 func matchIndexToUpgrade(index:int) -> int:
