@@ -87,6 +87,7 @@ visible = false
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
 health = NodePath("../../HealthComponent")
 
-[node name="upgrade_manager" type="Node" parent="." unique_id=609327852]
+[node name="upgrade_manager" type="Node" parent="." unique_id=609327852 node_paths=PackedStringArray("health")]
 script = ExtResource("7_vlldt")
+health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
