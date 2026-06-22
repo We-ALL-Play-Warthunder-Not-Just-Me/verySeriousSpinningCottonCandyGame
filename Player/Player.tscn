@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://buuube8f227ie" path="res://Player/player_rigid.gd" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
+[ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
 friction = 0.0
@@ -61,6 +62,11 @@ texture = ExtResource("1_ddoul")
 [node name="PlayerAnimations" type="AnimationPlayer" parent="VerySeriousPlayer" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")
 autoplay = &"PlayerSpinHigh"
+
+[node name="VerySeriousArrows3" type="Sprite2D" parent="." unique_id=1467626387]
+visible = false
+z_index = 3
+texture = ExtResource("3_6ysni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1578528933]
 shape = SubResource("CircleShape2D_b8qva")
