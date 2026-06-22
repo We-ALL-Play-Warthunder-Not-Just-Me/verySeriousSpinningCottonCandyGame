@@ -55,6 +55,7 @@ func buySpinAttack() -> void:
 		print("Too Expensive")
 	cost = spinAttackBaseCost * (1 + upgrades.SpinAttack)
 	updateCostLabels(SpinAttackcost, cost)
+	updateLevelLabels(levelSpinAttack, upgrades.SpinAttack)
 	disableButtonsWhenMaxLevel(buttonSpinAttack, upgrades.SpinAttack, spinAttackMaxLevel)
 
 var maxSpinBaseCost: int = 100
@@ -69,6 +70,7 @@ func buyMaxSpin() -> void:
 		print("Too Expensive")
 	cost = spinAttackBaseCost * (1 + upgrades.MaxSpinPower)
 	updateCostLabels(MaxSpincost, cost)
+	updateLevelLabels(levelMaxSpinPower, upgrades.MaxSpinPower)
 	disableButtonsWhenMaxLevel(buttonMaxSpinPower, upgrades.MaxSpinPower, spinBaseMaxLevel)
 
 var spinDecayBaseCost: int = 100
@@ -83,6 +85,7 @@ func buySpinDecay() -> void:
 		print("Too Expensive")
 	cost = spinAttackBaseCost * (1 + upgrades.ReduceSpinDecayRate)
 	updateCostLabels(SpinDecaycost, cost)
+	updateLevelLabels(levelReduceSpinDecay, upgrades.ReduceSpinDecayRate)
 	disableButtonsWhenMaxLevel(buttonSpinDecay, upgrades.ReduceSpinDecayRate, spinDecayMaxLevel)
 
 var cottonCandyStealBaseCost: int = 100
@@ -97,6 +100,7 @@ func buyCottonCandySteal() -> void:
 		print("Too Expensive")
 	cost = spinAttackBaseCost * (1 + upgrades.CottonCandyStealPower)
 	updateCostLabels(CottonCandyStealcost, cost)
+	updateLevelLabels(levelCottonCandySteal, upgrades.CottonCandyStealPower)
 	disableButtonsWhenMaxLevel(buttonCottonCandySteal, upgrades.CottonCandyStealPower, cottonCandyStealMaxLevel)
 
 var strongerEnemiesBaseCost: int = 100
@@ -111,6 +115,7 @@ func buyStrongerEnemies() -> void:
 		print("Too Expensive")
 	cost = spinAttackBaseCost * (1 + upgrades.StrongerEnemies)
 	updateCostLabels(StrongerEnemiescost, cost)	
+	updateLevelLabels(levelStrongerEnemies, upgrades.StrongerEnemies)
 	disableButtonsWhenMaxLevel(buttonStrongerEnemies, upgrades.StrongerEnemies, strongerEnemiesMaxLevel)
 
 func disableButton(button:Button) -> void:
