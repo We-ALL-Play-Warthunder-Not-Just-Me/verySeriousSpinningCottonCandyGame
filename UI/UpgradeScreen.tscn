@@ -52,102 +52,137 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=819107606]
+[node name="Spin Attack" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=819107606]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=296458255]
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=296458255]
 layout_mode = 2
 texture = ExtResource("1_aam7x")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=187829180]
+[node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=187829180]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Spin Attack"
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1864835658]
+[node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=210459808]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=1864835658]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "UPGRADE"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=464122074]
+[node name="Max Spin Power" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=464122074]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=260989412]
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=260989412]
 layout_mode = 2
 texture = ExtResource("1_aam7x")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=300482865]
+[node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=300482865]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Max Spin Power"
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1525107064]
+[node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=1424641796]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=1525107064]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "UPGRADE"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=63886669]
+[node name="Reduce Spin Decay" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=63886669]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=605694345]
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=605694345]
 layout_mode = 2
 texture = ExtResource("1_aam7x")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=677693091]
+[node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=677693091]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Reduce Spin Decay Rate"
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=723846761]
+[node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=220095722]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=723846761]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "UPGRADE"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=795001618]
+[node name="Cotton Candy Steal" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=795001618]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2061657616]
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=2061657616]
 layout_mode = 2
 texture = ExtResource("1_aam7x")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1647862426]
+[node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=1647862426]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Cotton Candy Steal Power"
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1840726717]
+[node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=1964142979]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=1840726717]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "UPGRADE"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=1833883237]
+[node name="Stronger Enemies" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=1833883237]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=655261238]
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=655261238]
 layout_mode = 2
 texture = ExtResource("1_aam7x")
 expand_mode = 2
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=238134311]
+[node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=238134311]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Make Enemies Stronger"
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=928196726]
+[node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=1849835144]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "300"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=928196726]
 layout_mode = 2
 size_flags_horizontal = 2
 text = "UPGRADE"
