@@ -14,6 +14,8 @@ signal healthDEATH()
 func setCurrenthp(newHP: int) -> void:
 	var old: int = CurrentHP
 	CurrentHP = newHP
+	if CurrentHP <= 0:
+		healthDEATH.emit()
 	CurrenthealthChanged.emit(CurrentHP,old)
 
 func setMaxHP(newHP: int) -> void:
@@ -29,6 +31,15 @@ func takeDamage(damage: int) -> void:
 	else:
 		CurrenthealthChanged.emit(CurrentHP,old)
 
+func heal(healAmount: int) -> void:
+	var old : int = CurrentHP
+	if (CurrentHP + healAmount < MaxHp):
+		CurrentHP += healAmount
+		CurrenthealthChanged.emit(CurrentHP,old)
+	elif (CurrentHP + healAmount >= MaxHp):
+		CurrentHP = MaxHp
+		CurrenthealthChanged.emit(CurrentHP,old)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
