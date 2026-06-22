@@ -19,6 +19,8 @@ extends Control
 @onready var buttonCottonCandySteal: Button = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal/Button"
 @onready var buttonStrongerEnemies: Button = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies/Button"
 
+var labelArray: Array[Label] = [SpinAttackcost, MaxSpincost, SpinDecaycost, CottonCandyStealcost, StrongerEnemiescost]
+var basecostArray: Array[int] = [spinAttackBaseCost, maxSpinBaseCost, spinDecayBaseCost, cottonCandyStealBaseCost, strongerEnemiesBaseCost]
 var buttonArray: Array[Button] = [buttonSpinAttack, buttonMaxSpinPower, buttonSpinDecay, buttonCottonCandySteal, buttonStrongerEnemies]
 var maxLevelArray : Array[int] = [spinAttackMaxLevel, spinBaseMaxLevel, spinDecayMaxLevel, cottonCandyStealMaxLevel, strongerEnemiesMaxLevel]
 # Called when the node enters the scene tree for the first time.
@@ -28,8 +30,10 @@ func _ready() -> void:
 	buttonSpinDecay.pressed.connect(buySpinDecay)
 	buttonCottonCandySteal.pressed.connect(buyCottonCandySteal)
 	buttonStrongerEnemies.pressed.connect(buyStrongerEnemies)
-	for index: int in buttonArray.size():
+	for index: int in range(5):
 		disableButtonsWhenMaxLevel(buttonArray[index], matchIndexToUpgrade(index), maxLevelArray[index])
+		var tempcost: int = basecostArray[index] * (1 + matchIndexToUpgrade(index))
+		updateCostLabels(labelArray[index], tempcost)
 
 var spinAttackBaseCost: int = 100
 var spinAttackMaxLevel: int = 3
