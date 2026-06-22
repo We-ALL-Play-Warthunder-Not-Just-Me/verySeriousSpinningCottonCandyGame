@@ -90,7 +90,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
 radius = 9.0
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=222236015]
+[node name="Player" type="RigidBody2D" unique_id=222236015]
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
 continuous_cd = 2
@@ -113,7 +113,7 @@ shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-HealthDecay = 10
+HealthDecay = 1
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]

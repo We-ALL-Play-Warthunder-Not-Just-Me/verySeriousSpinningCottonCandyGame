@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_yx7mw"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="3_ykeeq"]
 [ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Enemy.tscn" id="4_6bm6p"]
+[ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://TestTimer.gd" id="4_dugkq"]
+[ext_resource type="AudioStream" uid="uid://xar8uhwh766e" path="res://Assets/Music/Very Serious Cotton Candy Making.wav" id="5_dugkq"]
+[ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ysni"]
 bounce = 0.5
@@ -71,3 +74,35 @@ position = Vector2(136, -64)
 
 [node name="Enemy3" parent="." unique_id=1361069703 instance=ExtResource("4_6bm6p")]
 position = Vector2(-136, -64)
+
+[node name="GameTime" type="Label" parent="." unique_id=456201287]
+offset_left = -24.0
+offset_top = -80.0
+offset_right = 24.0
+offset_bottom = -57.0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_dugkq")
+
+[node name="Timer" type="Timer" parent="GameTime" unique_id=405559357]
+wait_time = 60.0
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1580899563]
+stream = ExtResource("5_dugkq")
+volume_db = -0.5
+autoplay = true
+
+[node name="CottonCandyTracker" type="Label" parent="." unique_id=1152458661]
+offset_left = -152.0
+offset_top = -80.0
+offset_right = -64.0
+offset_bottom = -64.0
+theme_override_font_sizes/font_size = 10
+text = "Cotton Candy: 000"
+script = ExtResource("6_2pltu")
+
+[node name="CandyTimer" type="Timer" parent="CottonCandyTracker" unique_id=1219899050]
+autostart = true
+
+[connection signal="timeout" from="CottonCandyTracker/CandyTimer" to="CottonCandyTracker" method="_on_candy_timer_timeout"]
