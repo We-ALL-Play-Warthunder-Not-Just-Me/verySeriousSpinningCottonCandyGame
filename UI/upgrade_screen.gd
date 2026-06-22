@@ -110,8 +110,7 @@ func matchIndexToUpgrade(index:int) -> int:
 			return 0
 
 func buySpinAttack(init:bool = false) -> void:
-	var cost: int
-	cost = spinAttackBaseCost * (1 + upgrades.SpinAttack)
+	var cost: int = spinAttackBaseCost * (1 + upgrades.SpinAttack)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
 			upgrades.upgradeStat(upgrades.SpinAttack)
@@ -125,8 +124,7 @@ func buySpinAttack(init:bool = false) -> void:
 		buttonSpinAttack.disabled = true
 
 func buyMaxSpin(init:bool = false) -> void:
-	var cost: int
-	cost = maxSpinBaseCost * (1 + upgrades.MaxSpinPower)
+	var cost: int = maxSpinBaseCost * (1 + upgrades.MaxSpinPower)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
 			upgrades.upgradeStat(upgrades.MaxSpinPower)
@@ -141,8 +139,7 @@ func buyMaxSpin(init:bool = false) -> void:
 
 
 func buySpinDecay(init:bool = false) -> void:
-	var cost: int
-	cost = spinDecayBaseCost * (1 + upgrades.ReduceSpinDecayRate)
+	var cost: int = spinDecayBaseCost * (1 + upgrades.ReduceSpinDecayRate)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
 			upgrades.upgradeStat(upgrades.ReduceSpinDecayRate)
@@ -157,8 +154,7 @@ func buySpinDecay(init:bool = false) -> void:
 
 
 func buyCottonCandySteal(init:bool = false) -> void:
-	var cost: int
-	cost = cottonCandyStealBaseCost * (1 + upgrades.CottonCandyStealPower)
+	var cost: int = cottonCandyStealBaseCost * (1 + upgrades.CottonCandyStealPower)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
 			upgrades.upgradeStat(upgrades.CottonCandyStealPower)
@@ -173,8 +169,7 @@ func buyCottonCandySteal(init:bool = false) -> void:
 
 
 func buyStrongerEnemies(init:bool = false) -> void:
-	var cost: int
-	cost = strongerEnemiesBaseCost * (1 + upgrades.StrongerEnemies)
+	var cost: int = strongerEnemiesBaseCost * (1 + upgrades.StrongerEnemies)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
 			upgrades.upgradeStat(upgrades.StrongerEnemies)
