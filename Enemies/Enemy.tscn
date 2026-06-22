@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://byggay1shakk"]
 
+[ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_biruh"]
 [ext_resource type="Texture2D" uid="uid://p027gxontir7" path="res://Assets/Images/Very Serious Enemy.png" id="1_wv4gc"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="4_7mq4p"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="5_k2bks"]
@@ -7,7 +8,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
 friction = 0.0
-bounce = 1.0
+bounce = 0.4
 
 [sub_resource type="Animation" id="Animation_8g4oa"]
 resource_name = "PlayerSpinHigh"
@@ -87,9 +88,11 @@ _data = {
 radius = 9.0
 
 [node name="Enemy" type="RigidBody2D" unique_id=222236015]
+mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
 continuous_cd = 2
+script = ExtResource("1_biruh")
 
 [node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("6_oiydt")]
 offset_left = -12.0

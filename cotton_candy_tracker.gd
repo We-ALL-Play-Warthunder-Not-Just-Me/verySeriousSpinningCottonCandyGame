@@ -18,5 +18,5 @@ func _process(delta: float) -> void:
 func _on_candy_timer_timeout() -> void:
 	var add_candy = candy_value * player.candy_multiplier
 	final_candy += add_candy
-	print(final_candy)
+	#print(final_candy)
 	self.text = "Cotton Candy: " + str(final_candy)
