@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="1_slflh"]
 [ext_resource type="Resource" path="res://Player/Upgrades.tres" id="2_0ae7b"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="2_c0mga"]
+[ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="3_o0opg"]
 [ext_resource type="Texture2D" uid="uid://dv6lfvem7h33e" path="res://Assets/Images/Very Serious Arrows1.png" id="3_slflh"]
+[ext_resource type="Texture2D" uid="uid://p027gxontir7" path="res://Assets/Images/Very Serious Enemy.png" id="6_s5q16"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txwkd"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s4qug"]
 
 [node name="UpgradeScreen" type="Control" unique_id=2092567952]
 layout_mode = 3
@@ -20,6 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0pfdi")
 upgrades = ExtResource("2_0ae7b")
+cottonCandy = ExtResource("3_o0opg")
 
 [node name="backgroundthing" type="NinePatchRect" parent="." unique_id=306502402]
 layout_mode = 1
@@ -43,9 +44,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer" unique_id=76969721]
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_s4qug")
 
 [node name="MarginContainer" type="MarginContainer" parent="backgroundthing/PanelContainer" unique_id=1124928967]
+z_index = 3
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -55,6 +56,7 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer" unique_id=1000477940]
 layout_mode = 2
 theme_override_constants/separation = 20
+alignment = 1
 
 [node name="Spin Attack" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=819107606]
 layout_mode = 2
@@ -93,10 +95,14 @@ text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=1864835658]
+[node name="Button" type="TextureButton" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=662079402]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 2
-text = "UPGRADE"
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_slflh")
+texture_pressed = ExtResource("6_s5q16")
+stretch_mode = 0
 
 [node name="Max Spin Power" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=464122074]
 layout_mode = 2
@@ -135,10 +141,14 @@ text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=1525107064]
+[node name="Button" type="TextureButton" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=944699734]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 2
-text = "UPGRADE"
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_slflh")
+texture_pressed = ExtResource("6_s5q16")
+stretch_mode = 0
 
 [node name="Reduce Spin Decay" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=63886669]
 layout_mode = 2
@@ -177,10 +187,14 @@ text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=723846761]
+[node name="Button" type="TextureButton" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=1221060859]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 2
-text = "UPGRADE"
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_slflh")
+texture_pressed = ExtResource("6_s5q16")
+stretch_mode = 0
 
 [node name="Cotton Candy Steal" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=795001618]
 layout_mode = 2
@@ -219,10 +233,14 @@ text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=1840726717]
+[node name="Button" type="TextureButton" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=274133887]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 2
-text = "UPGRADE"
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_slflh")
+texture_pressed = ExtResource("6_s5q16")
+stretch_mode = 0
 
 [node name="Stronger Enemies" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=1833883237]
 layout_mode = 2
@@ -261,10 +279,14 @@ text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=928196726]
+[node name="Button" type="TextureButton" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=1030656082]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 2
-text = "UPGRADE"
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_slflh")
+texture_pressed = ExtResource("6_s5q16")
+stretch_mode = 0
 
 [node name="Cotton Candy" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=1001905395]
 custom_minimum_size = Vector2(200, 50)
@@ -275,6 +297,8 @@ vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="backgroundthing/PanelContainer/MarginContainer" unique_id=1066155303]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_constants/margin_bottom = 30
 
 [node name="Continue Button" type="TextureButton" parent="backgroundthing/PanelContainer/MarginContainer/MarginContainer" unique_id=21057661]
