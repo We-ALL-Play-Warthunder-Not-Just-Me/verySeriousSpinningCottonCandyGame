@@ -17,6 +17,9 @@ class_name playerUpgrades
 ## Generic level cap for all the upgrades
 @export var maxLVL: int = 3
 
+signal statChanged()
+
 func upgradeStat(stat: int) -> void:
 	if stat < maxLVL :
 		stat += 1
+		statChanged.emit()

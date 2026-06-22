@@ -11,11 +11,14 @@ func _ready() -> void:
 	if upgrades == null:
 		upgrades = playerUpgrades.new()
 		ResourceSaver.save(upgrades, "res://Player/Upgrades.tres")
+	upgrades.statChanged.connect(applyTheStats)
+	applyTheStats()
+	
+func applyTheStats() -> void:
 	applySpinAttackUpgrade()
 	applyMaxSpinPowerUpgrade()
 	applyReduceSpinDecayRateUpgrade()
 	applyCottonCandyStealPowerUpgrade()
-	
 
 func applySpinAttackUpgrade() -> void:
 	pass
