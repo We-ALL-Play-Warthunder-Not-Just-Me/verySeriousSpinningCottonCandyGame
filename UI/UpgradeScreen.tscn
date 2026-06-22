@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://coxjvxwt30y2m"]
 
+[ext_resource type="Script" uid="uid://bexbq4r4mt8f7" path="res://UI/upgrade_screen.gd" id="1_0pfdi"]
 [ext_resource type="Texture2D" uid="uid://7k6fbj52h483" path="res://Assets/Images/Very Serious Arrows2.png" id="1_aam7x"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="1_slflh"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="2_c0mga"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_0pfdi")
 
 [node name="backgroundthing" type="NinePatchRect" parent="." unique_id=306502402]
 layout_mode = 1
@@ -22,6 +24,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_slflh")
+region_rect = Rect2(8.130417, 10.547003, 23.211761, 21.045126)
 metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="backgroundthing" unique_id=1618093667]
