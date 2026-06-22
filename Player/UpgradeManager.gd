@@ -30,8 +30,15 @@ func applyMaxSpinPowerUpgrade() -> void:
 		maxHPtoApply += maxHPlvlValue
 	health.setMaxHP(100 + maxHPtoApply) # assuming base starting health is 100, for cases where this function gets called multiple times ie: the upgrade shop
 
+
+var reduceSpinDecaylvlValue: int = 1
 func applyReduceSpinDecayRateUpgrade() -> void:
-	pass
+	var spinDecaytoApply: int = 0
+	if upgrades.ReduceSpinDecayRate == 0:
+		return
+	for i: int in upgrades.ReduceSpinDecayRate:
+		spinDecaytoApply += reduceSpinDecaylvlValue
+	health.HealthDecay = 5 - spinDecaytoApply # assuming our base starting decay is 5
 
 func applyCottonCandyStealPowerUpgrade() -> void:
 	pass
