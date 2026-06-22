@@ -1,4 +1,6 @@
 extends Timer
+
+## A timer that connects to health component and makes them take damage based on their Health decay value
 class_name decayTimer
 
 @export var health: HealthComponent

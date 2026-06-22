@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
+[ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="7_vlldt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
 friction = 0.0
@@ -115,6 +116,7 @@ HealthDecay = 10
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
+wait_time = 2.0
 script = ExtResource("2_tok1r")
 health = NodePath("..")
 metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
@@ -122,4 +124,11 @@ metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
+anchor_left = 0.0125
+anchor_right = 0.5601562
 health = NodePath("../../HealthComponent")
+
+[node name="upgrade_manager" type="Node" parent="." unique_id=609327852 node_paths=PackedStringArray("health")]
+script = ExtResource("7_vlldt")
+health = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://b4re2wm2gcrj4"

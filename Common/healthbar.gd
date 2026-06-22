@@ -24,12 +24,21 @@ func _ready() -> void:
 		damagebar.max_value = health.MaxHp
 
 func updateHealthBarCurrentHP(newHP: int, oldHP: int) -> void:
-	damagebar.value = oldHP
-	value = newHP
-	if value <= 0:
-		pass # Something happens but a health Death signal does exist
-	if newHP < oldHP:
+	# damagebar.value = oldHP
+	# value = newHP
+	# if value <= 0:
+	# 	pass # Something happens but a health Death signal does exist
+	# if newHP < oldHP:
+	# 	timer.start()
+	# else:
+	# 	damagebar.value = value
+	if newHP <= oldHP:
+		value = newHP
 		timer.start()
+	elif newHP > oldHP: #When you regain health waow waow waow
+		damagebar.value = newHP
+		await get_tree().create_timer(timer.wait_time).timeout # Suspect timer
+		value = newHP
 	else:
 		damagebar.value = value
 
