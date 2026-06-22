@@ -10,3 +10,9 @@ class_name playerUpgrades
 @export var CottonCandyStealPower: int = 0
 @export var StrongerEnemies: int = 0
 
+@export var maxLVL: int = 3
+
+func upgradeStat(stat: int) -> void:
+    if stat < maxLVL :
+        stat += 1
+
