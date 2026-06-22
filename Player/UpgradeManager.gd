@@ -1,5 +1,6 @@
 extends Node
 
+## Right now this applies upgrades to the player, currently only max health (maxSpinPower)
 class_name upgrade_manager
 
 @export var upgrades: playerUpgrades = load("res://Player/Upgrades.tres")
