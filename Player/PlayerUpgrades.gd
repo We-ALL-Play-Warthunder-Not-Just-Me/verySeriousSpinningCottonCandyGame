@@ -14,7 +14,7 @@ class_name playerUpgrades
 @export var CottonCandyStealPower: int = 0
 ## Makes the enemies stronger, stronger enemies drop more cotton candy
 @export var StrongerEnemies: int = 0
-
+## Generic level cap for all the upgrades
 @export var maxLVL: int = 3
 
 func upgradeStat(stat: int) -> void:
