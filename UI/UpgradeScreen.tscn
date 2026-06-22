@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://coxjvxwt30y2m"]
+
+[ext_resource type="Texture2D" uid="uid://7k6fbj52h483" path="res://Assets/Images/Very Serious Arrows2.png" id="1_aam7x"]
+[ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="2_c0mga"]
+[ext_resource type="Texture2D" uid="uid://dv6lfvem7h33e" path="res://Assets/Images/Very Serious Arrows1.png" id="3_slflh"]
+
+[node name="UpgradeScreen" type="Control" unique_id=2092567952]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backgroundthing" type="NinePatchRect" parent="." unique_id=306502402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="backgroundthing" unique_id=1618093667]
+layout_mode = 0
+anchor_left = 0.0328125
+anchor_top = 0.054166667
+anchor_right = 0.7046875
+anchor_bottom = 0.74722224
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="backgroundthing/PanelContainer" unique_id=1124928967]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer" unique_id=1000477940]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=819107606]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=296458255]
+layout_mode = 2
+texture = ExtResource("1_aam7x")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=187829180]
+layout_mode = 2
+text = "AWAAWAWAWA"
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1864835658]
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=464122074]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=260989412]
+layout_mode = 2
+texture = ExtResource("1_aam7x")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=300482865]
+layout_mode = 2
+text = "AWAAWAWAWA"
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1525107064]
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=63886669]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=605694345]
+layout_mode = 2
+texture = ExtResource("1_aam7x")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=677693091]
+layout_mode = 2
+text = "AWAAWAWAWA"
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=723846761]
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=795001618]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2061657616]
+layout_mode = 2
+texture = ExtResource("1_aam7x")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1647862426]
+layout_mode = 2
+text = "AWAAWAWAWA"
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1840726717]
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer" unique_id=1833883237]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=655261238]
+layout_mode = 2
+texture = ExtResource("1_aam7x")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=238134311]
+layout_mode = 2
+text = "AWAAWAWAWA"
+
+[node name="Button" type="Button" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" unique_id=928196726]
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="Continue Button" type="TextureButton" parent="backgroundthing/PanelContainer/MarginContainer" unique_id=21057661]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("2_c0mga")
+texture_pressed = ExtResource("3_slflh")
+texture_hover = ExtResource("1_aam7x")
