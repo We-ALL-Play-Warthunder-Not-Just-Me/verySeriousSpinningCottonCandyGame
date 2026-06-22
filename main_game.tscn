@@ -1,8 +1,59 @@
 [gd_scene format=3 uid="uid://d1143h5fnthge"]
 
 [ext_resource type="PackedScene" uid="uid://brc06ptlg8lg2" path="res://Enemies/TestEnemy1.tscn" id="1_1oj5k"]
+[ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_yx7mw"]
+[ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="3_ykeeq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsdbm"]
+size = Vector2(128, 128.00002)
 
 [node name="MainGame" type="Node" unique_id=2037128485]
 
 [node name="TestEnemy1" parent="." unique_id=161224678 instance=ExtResource("1_1oj5k")]
+visible = false
 position = Vector2(638, 389)
+
+[node name="Player" parent="." unique_id=2021730916 instance=ExtResource("2_yx7mw")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1344449492]
+zoom = Vector2(4, 4)
+
+[node name="Wall" type="Sprite2D" parent="." unique_id=1859348462]
+position = Vector2(-160.00002, 2.861023e-06)
+scale = Vector2(0.12499985, 1.4999999)
+texture = ExtResource("3_ykeeq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall" unique_id=1939332676]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D" unique_id=1560264936]
+shape = SubResource("RectangleShape2D_tsdbm")
+
+[node name="Wall2" type="Sprite2D" parent="." unique_id=1273033268]
+position = Vector2(159.99998, 2.861023e-06)
+scale = Vector2(0.12499985, 1.4999999)
+texture = ExtResource("3_ykeeq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall2" unique_id=2041136269]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2/StaticBody2D" unique_id=291977108]
+shape = SubResource("RectangleShape2D_tsdbm")
+
+[node name="Wall3" type="Sprite2D" parent="." unique_id=1724642182]
+position = Vector2(4.7683716e-07, 88)
+scale = Vector2(2.375, 0.124999925)
+texture = ExtResource("3_ykeeq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall3" unique_id=1118499169]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall3/StaticBody2D" unique_id=1788862477]
+shape = SubResource("RectangleShape2D_tsdbm")
+
+[node name="Wall4" type="Sprite2D" parent="." unique_id=1631744023]
+position = Vector2(4.7683716e-07, -88)
+scale = Vector2(2.375, 0.124999925)
+texture = ExtResource("3_ykeeq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall4" unique_id=709376621]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4/StaticBody2D" unique_id=863769656]
+shape = SubResource("RectangleShape2D_tsdbm")

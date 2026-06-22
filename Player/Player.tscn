@@ -1,10 +1,69 @@
 [gd_scene format=3 uid="uid://c1kjh2bp3nhq6"]
 
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="1_3qydi"]
+[ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="1_ddoul"]
+[ext_resource type="Script" uid="uid://buuube8f227ie" path="res://Player/player_rigid.gd" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
 
-[node name="Player" type="Node2D" unique_id=2021730916]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="Animation" id="Animation_8g4oa"]
+resource_name = "PlayerSpinHigh"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_6ysni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlldt"]
+_data = {
+&"PlayerSpinHigh": SubResource("Animation_8g4oa"),
+&"RESET": SubResource("Animation_6ysni")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
+radius = 9.0
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=222236015]
+physics_material_override = SubResource("PhysicsMaterial_xu11e")
+script = ExtResource("2_8g4oa")
+
+[node name="VerySeriousPlayer" type="Sprite2D" parent="." unique_id=1977203792]
+texture = ExtResource("1_ddoul")
+
+[node name="PlayerAnimations" type="AnimationPlayer" parent="VerySeriousPlayer" unique_id=1327218308]
+libraries/ = SubResource("AnimationLibrary_vlldt")
+autoplay = &"PlayerSpinHigh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1578528933]
+shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
@@ -16,6 +75,7 @@ health = NodePath("..")
 metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
+visible = false
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
 health = NodePath("../../HealthComponent")
