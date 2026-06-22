@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerCottonCandyTotal" format=3 uid="uid://dfojukemdokol"]
+
+[ext_resource type="Script" uid="uid://c6j5bg5bsgsud" path="res://Player/PlayerCottonCandy.gd" id="1_5j6xk"]
+
+[resource]
+script = ExtResource("1_5j6xk")
+metadata/_custom_type_script = "uid://c6j5bg5bsgsud"
