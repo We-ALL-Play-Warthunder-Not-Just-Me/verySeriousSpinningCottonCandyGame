@@ -77,14 +77,16 @@ script = ExtResource("1_3qydi")
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
+wait_time = 2.0
 script = ExtResource("2_tok1r")
 health = NodePath("..")
 metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
-visible = false
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
+anchor_left = 0.0125
+anchor_right = 0.5601562
 health = NodePath("../../HealthComponent")
 
 [node name="upgrade_manager" type="Node" parent="." unique_id=609327852 node_paths=PackedStringArray("health")]

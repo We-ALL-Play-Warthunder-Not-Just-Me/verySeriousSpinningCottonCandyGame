@@ -11,7 +11,12 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nj3js"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlldt"]
+bg_color = Color(0.2051174, 0.20511746, 0.20511732, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4qug"]
 bg_color = Color(0.9340804, 0.9340805, 0.93408036, 1)
@@ -44,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxEmpty_nj3js")
+theme_override_styles/background = SubResource("StyleBoxFlat_vlldt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_s4qug")
 step = 1.0
 value = 40.0
