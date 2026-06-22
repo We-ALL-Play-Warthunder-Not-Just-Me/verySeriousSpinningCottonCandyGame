@@ -9,7 +9,7 @@ class_name upgrade_manager
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if upgrades == null:
-		upgrades.new()
+		upgrades = playerUpgrades.new()
 		ResourceSaver.save(upgrades, "res://Player/Upgrades.tres")
 	applySpinAttackUpgrade()
 	applyMaxSpinPowerUpgrade()
@@ -38,7 +38,7 @@ func applyReduceSpinDecayRateUpgrade() -> void:
 		return
 	for i: int in upgrades.ReduceSpinDecayRate:
 		spinDecaytoApply += reduceSpinDecaylvlValue
-	health.HealthDecay = 5 - spinDecaytoApply # assuming our base starting decay is 5
+	health.HealthDecay = 10 - spinDecaytoApply # assuming our base starting decay is 10
 
 func applyCottonCandyStealPowerUpgrade() -> void:
 	pass

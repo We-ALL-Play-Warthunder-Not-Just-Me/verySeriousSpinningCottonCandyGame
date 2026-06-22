@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
 [ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="7_vlldt"]
-[ext_resource type="Resource" uid="uid://w8c0oaub30jk" path="res://Player/Upgrades.tres" id="8_s1rgi"]
+[ext_resource type="Script" uid="uid://cinvxcnc1wpyu" path="res://Player/PlayerUpgrades.gd" id="8_s1rgi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
 friction = 0.0
@@ -90,6 +90,10 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
 radius = 9.0
 
+[sub_resource type="Resource" id="Resource_j23h2"]
+script = ExtResource("8_s1rgi")
+metadata/_custom_type_script = "uid://cinvxcnc1wpyu"
+
 [node name="Player" type="RigidBody2D" unique_id=222236015]
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
@@ -113,7 +117,7 @@ shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-HealthDecay = 1
+HealthDecay = 10
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
@@ -131,6 +135,6 @@ health = NodePath("../../HealthComponent")
 
 [node name="upgrade_manager" type="Node" parent="." unique_id=609327852 node_paths=PackedStringArray("health")]
 script = ExtResource("7_vlldt")
-upgrades = ExtResource("8_s1rgi")
+upgrades = SubResource("Resource_j23h2")
 health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"

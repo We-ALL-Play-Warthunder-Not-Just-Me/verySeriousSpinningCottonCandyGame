@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="playerUpgrades" format=3 uid="uid://w8c0oaub30jk"]
+[gd_resource type="Resource" script_class="playerUpgrades" format=3]
 
-[ext_resource type="Script" uid="uid://cinvxcnc1wpyu" path="res://Player/PlayerUpgrades.gd" id="1_o1w6m"]
+[ext_resource type="Script" path="res://Player/PlayerUpgrades.gd" id="1_o1w6m"]
 
 [resource]
 script = ExtResource("1_o1w6m")
-metadata/_custom_type_script = "uid://cinvxcnc1wpyu"
