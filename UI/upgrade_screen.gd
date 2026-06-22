@@ -27,6 +27,8 @@ extends Control
 
 @onready var cotton_candy_label: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy"
 
+@onready var continue_button: TextureButton = $"backgroundthing/PanelContainer/MarginContainer/MarginContainer/Continue Button"
+
 @export_category("Upgrade Values")
 @export_group("Spin Attack")
 @export var spinAttackBaseCost: int = 100
@@ -57,11 +59,16 @@ func _ready() -> void:
 	buttonCottonCandySteal.pressed.connect(buyUpgrade.bind(3))
 	buttonStrongerEnemies.pressed.connect(buyUpgrade.bind(4))
 
+	continue_button.pressed.connect(continueGame)
+
 	cottonCandy.cottonCandyChanged.connect(updateCottonCandyAmount)
 	cotton_candy_label.text = "Cotton Candy : " + str(cottonCandy.cottonCandyBank)
 	evilInitialize()
-	
-func  evilInitialize() -> void:
+
+func continueGame() -> void:
+	pass
+
+func evilInitialize() -> void:
 	buySpinAttack(true)
 	buyMaxSpin(true)
 	buySpinDecay(true)
