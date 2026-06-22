@@ -9,6 +9,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txwkd"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s4qug"]
+
 [node name="UpgradeScreen" type="Control" unique_id=2092567952]
 layout_mode = 3
 anchors_preset = 15
@@ -41,7 +43,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="backgroundthing/PanelContainer" unique_id=76969721]
 layout_mode = 2
-texture = ExtResource("1_slflh")
+texture = SubResource("PlaceholderTexture2D_s4qug")
 
 [node name="MarginContainer" type="MarginContainer" parent="backgroundthing/PanelContainer" unique_id=1124928967]
 layout_mode = 2
@@ -65,13 +67,28 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=187829180]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, 50)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 0
 text = "Spin Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=812321590]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "LVL: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack" unique_id=210459808]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -92,13 +109,28 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=300482865]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, 50)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 0
 text = "Max Spin Power"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=1231963509]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "LVL: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power" unique_id=1424641796]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -119,13 +151,28 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=677693091]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Reduce Spin Decay Rate"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=1801685744]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "LVL: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay" unique_id=220095722]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 0
 text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -146,13 +193,28 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=1647862426]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Cotton Candy Steal Power"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=491743265]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "LVL: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal" unique_id=1964142979]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 0
 text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -173,13 +235,28 @@ expand_mode = 2
 stretch_mode = 3
 
 [node name="UpgradeName" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=238134311]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 2
 text = "Make Enemies Stronger"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=978494286]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "LVL: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Cost" type="Label" parent="backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies" unique_id=1849835144]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(50, 50)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 0
 text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
