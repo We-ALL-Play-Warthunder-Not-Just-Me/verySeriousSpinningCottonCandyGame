@@ -105,20 +105,20 @@ texture = ExtResource("1_ddoul")
 libraries/ = SubResource("AnimationLibrary_vlldt")
 autoplay = &"PlayerSpinHigh"
 
+[node name="BaseCollisionBox" type="CollisionShape2D" parent="." unique_id=1578528933]
+shape = SubResource("CircleShape2D_b8qva")
+
 [node name="VerySeriousArrows3" type="Sprite2D" parent="." unique_id=1467626387]
 visible = false
 z_index = 3
 texture = ExtResource("3_6ysni")
 script = ExtResource("4_j23h2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1578528933]
-shape = SubResource("CircleShape2D_b8qva")
-
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-MaxHp = 10
+MaxHp = 30
 CurrentHP = 10
-HealthDecay = 1
+HealthDecay = 0
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
@@ -139,3 +139,11 @@ script = ExtResource("7_vlldt")
 upgrades = ExtResource("8_s1rgi")
 health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1289753861]
+collision_layer = 2
+
+[node name="PlayerHitBox" type="CollisionPolygon2D" parent="DamageArea" unique_id=1397515548]
+polygon = PackedVector2Array(12, 0, 9, -8, 4, -10, 4, 10, 9, 8)
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]
