@@ -3,6 +3,7 @@ extends RigidBody2D
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 @onready var spinners = get_node("..")
 @onready var health = $HealthComponent
+@onready var dash_graphic = $VerySeriousDash
 var min_wait_time = 0.5
 var max_wait_time = 2.0
 var final_wait_time
@@ -27,14 +28,18 @@ func _process(delta: float) -> void:
 		if final_wait_time < 0:
 			can_dash = false
 			dash_countdown = dash_time
+			dash_graphic.visible = true
 			pick_target()
 	else:
 		final_wait_time = randf_range(min_wait_time, max_wait_time)
 		dash_countdown -= delta
 		if dash_countdown < 0:
 			can_dash = true
+		elif dash_countdown < dash_time/3:
+			dash_graphic.visible = false
 
 	previous_frame = self.linear_velocity
+	dash_graphic.rotation = previous_frame.angle()
 
 func launch_self(target: RigidBody2D):
 	var direction_to_target = self.position.direction_to(target.position)

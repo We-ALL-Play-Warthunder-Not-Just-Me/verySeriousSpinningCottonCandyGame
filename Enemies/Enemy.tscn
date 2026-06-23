@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_biruh"]
 [ext_resource type="Texture2D" uid="uid://p027gxontir7" path="res://Assets/Images/Very Serious Enemy.png" id="1_wv4gc"]
+[ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_n1bor"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="4_7mq4p"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="5_k2bks"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="6_oiydt"]
@@ -94,6 +95,11 @@ lock_rotation = true
 continuous_cd = 2
 max_contacts_reported = 1
 script = ExtResource("1_biruh")
+
+[node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=841334225]
+visible = false
+texture = ExtResource("2_n1bor")
+offset = Vector2(-2, 0)
 
 [node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("6_oiydt")]
 offset_left = -12.0

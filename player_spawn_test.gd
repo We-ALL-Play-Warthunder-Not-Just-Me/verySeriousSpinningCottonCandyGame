@@ -14,3 +14,7 @@ func spawn_player():
 	player = new_player.instantiate()
 	spinners.add_child.call_deferred(player)
 	player.global_position = self.global_position
+	
+func _process(delta: float) -> void:
+	if Input.is_key_pressed(KEY_R):
+		get_tree().reload_current_scene()

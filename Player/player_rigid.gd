@@ -10,6 +10,7 @@ var max_damage = 15
 @onready var health = $HealthComponent
 @onready var animations = $VerySeriousPlayer/PlayerAnimations
 @onready var hit_box = $DamageArea/PlayerHitBox
+@onready var dash_graphic = $VerySeriousDash
 var can_dash = true
 var aiming = false
 var dash_countdown
@@ -40,6 +41,7 @@ func _process(delta: float) -> void:
 				can_dash = false
 				aiming = false
 				dash_countdown = dash_time
+				dash_graphic.visible = true
 				self.set_linear_velocity(Vector2(0,0))
 				Engine.set_time_scale(1.0)
 				draw_arrow.visible = false
@@ -51,8 +53,10 @@ func _process(delta: float) -> void:
 	else:
 		dash_countdown -= delta
 		#print(int(ceili(dash_countdown)))
-		if dash_countdown <= 0:
+		if dash_countdown < 0:
 			can_dash = true
+		elif dash_countdown < dash_time/3:
+			dash_graphic.visible = false
 	
 	if health.CurrentHP > (health.MaxHp/2):
 		animations.play("PlayerSpinHigh")
@@ -73,6 +77,7 @@ func _process(delta: float) -> void:
 	var to_center = self.position.direction_to(center_stage.position)
 	self.apply_force(to_center * center_stage.gravity)
 	previous_frame = self.linear_velocity
+	dash_graphic.rotation = previous_frame.angle()
 
 func steal_spin(enemy: RigidBody2D):
 	var player_force = abs(previous_frame.length())
