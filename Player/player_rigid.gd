@@ -17,8 +17,12 @@ var max_damage = 30
 var can_dash = true
 var aiming = false
 var dash_countdown
-@export var center_stage = Node2D
+@onready var center_stage = get_node("/root/MainGame/CenterStage")
 var previous_frame: Vector2
+@onready var spawner = get_node("/root/MainGame/PlayerSpawn")
+
+func _ready() -> void:
+	health.healthDEATH.connect(spawner.kill_player)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

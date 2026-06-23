@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1143h5fnthge"]
 
 [ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://center_stage.gd" id="1_2pltu"]
-[ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_yx7mw"]
+[ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://player_spawn_test.gd" id="1_l5ukw"]
 [ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Enemy.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://TestTimer.gd" id="4_dugkq"]
 [ext_resource type="AudioStream" uid="uid://xar8uhwh766e" path="res://Assets/Music/Very Serious Cotton Candy Making.wav" id="5_dugkq"]
@@ -13,13 +13,16 @@ size = Vector2(128.00002, 128)
 
 [node name="MainGame" type="Node" unique_id=2037128485]
 
+[node name="PlayerSpawn" type="Node2D" parent="." unique_id=1170452474]
+position = Vector2(-160, 72)
+script = ExtResource("1_l5ukw")
+
+[node name="Timer" type="Timer" parent="PlayerSpawn" unique_id=197971034]
+one_shot = true
+autostart = true
+
 [node name="CenterStage" type="Node2D" parent="." unique_id=2022388985]
 script = ExtResource("1_2pltu")
-
-[node name="Player" parent="." unique_id=2021730916 node_paths=PackedStringArray("center_stage") instance=ExtResource("2_yx7mw")]
-position = Vector2(72, -8)
-continuous_cd = 1
-center_stage = NodePath("../CenterStage")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1344449492]
 zoom = Vector2(3, 3)
@@ -104,4 +107,5 @@ texture = ExtResource("7_f52ns")
 scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_tsdbm")
 
+[connection signal="timeout" from="PlayerSpawn/Timer" to="PlayerSpawn" method="spawn_player"]
 [connection signal="timeout" from="CottonCandyTracker/CandyTimer" to="CottonCandyTracker" method="_on_candy_timer_timeout"]

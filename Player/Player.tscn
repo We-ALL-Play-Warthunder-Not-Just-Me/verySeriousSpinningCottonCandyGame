@@ -122,7 +122,7 @@ script = ExtResource("4_j23h2")
 script = ExtResource("1_3qydi")
 MaxHp = 50
 CurrentHP = 10
-HealthDecay = 0
+HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
