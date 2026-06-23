@@ -121,7 +121,7 @@ script = ExtResource("4_j23h2")
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
 MaxHp = 50
-CurrentHP = 10
+CurrentHP = 25
 HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
@@ -134,8 +134,11 @@ metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
-anchor_left = 0.0125
-anchor_right = 0.5601562
+anchor_top = 0.9
+anchor_right = 0.3
+offset_right = 1.0
+offset_bottom = 1.0
+grow_vertical = 1
 health = NodePath("../../HealthComponent")
 
 [node name="upgrade_manager" type="Node" parent="." unique_id=609327852 node_paths=PackedStringArray("health")]

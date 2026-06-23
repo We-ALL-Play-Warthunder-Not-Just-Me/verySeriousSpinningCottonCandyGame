@@ -1,28 +1,26 @@
 extends RigidBody2D
 
 var mouse_position
+var max_amplifier = 2.0
 var amplifier = 0.0
 var max_power = 60
-var dash_time = 5
-var candy_multiplier
-var max_damage = 30
+var dash_time = 3
+var max_damage = 15
 @onready var draw_arrow = $VerySeriousArrows3
 @onready var health = $HealthComponent
 @onready var animations = $VerySeriousPlayer/PlayerAnimations
 @onready var hit_box = $DamageArea/PlayerHitBox
-@onready var half_health = health.MaxHp/2
-@onready var fourth_health = health.MaxHp/4
-@onready var half_power = max_power/2
-@onready var fourth_power = max_power/4
 var can_dash = true
 var aiming = false
 var dash_countdown
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 var previous_frame: Vector2
 @onready var spawner = get_node("/root/MainGame/PlayerSpawn")
+@onready var candy_tracker = get_node("/root/MainGame/CottonCandyTracker")
 
 func _ready() -> void:
 	health.healthDEATH.connect(spawner.kill_player)
+	health.healthDEATH.connect(candy_tracker.player_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -56,21 +54,21 @@ func _process(delta: float) -> void:
 		if dash_countdown <= 0:
 			can_dash = true
 	
-	if health.CurrentHP > half_health:
+	if health.CurrentHP > (health.MaxHp/2):
 		animations.play("PlayerSpinHigh")
-		candy_multiplier = 3
-		amplifier = 3.0
-	elif health.CurrentHP > fourth_health:
+		candy_tracker.candy_multiplier = 3
+		amplifier = max_amplifier
+	elif health.CurrentHP > (health.MaxHp/4):
 		animations.play("PlayerSpinMed")
-		candy_multiplier = 2
-		amplifier = 2.0
+		candy_tracker.candy_multiplier = 2
+		amplifier = (max_amplifier/2)
 	elif health.CurrentHP > 0:
 		animations.play("PlayerSpinLow")
-		candy_multiplier = 1
-		amplifier = 1.0
+		candy_tracker.candy_multiplier = 1
+		amplifier = (max_amplifier/4)
 	else:
 		animations.stop()
-		candy_multiplier = 0
+		candy_tracker.candy_multiplier = 0
 
 	var to_center = self.position.direction_to(center_stage.position)
 	self.apply_force(to_center * center_stage.gravity)
@@ -86,7 +84,7 @@ func steal_spin(enemy: RigidBody2D):
 		var force_percent = force_difference / force_total
 		var enemy_damage = ceili(max_damage * force_percent)
 		enemy.health.takeDamage(enemy_damage)
-		self.health.heal(enemy_damage/2)
+		self.health.heal(ceili(enemy_damage/2))
 		#print("Player Force: ", player_force)
 		#print("Enemy Force: ", enemy_force)
 		#print("Total Force: ", force_total)
@@ -101,7 +99,4 @@ func _on_damage_area_entered(body: Node2D) -> void:
 	print("boop")
 	if body.name != "Player" and body is RigidBody2D:
 		steal_spin(body)
-		#var hold = self.linear_velocity.normalized() * (test.shape.radius * 2)
-		#test_arrow_two.target_position = previous_frame
-		#Engine.set_time_scale(0.0)
 	

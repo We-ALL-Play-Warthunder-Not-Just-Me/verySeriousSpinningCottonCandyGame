@@ -13,8 +13,19 @@ size = Vector2(128.00002, 128)
 
 [node name="MainGame" type="Node" unique_id=2037128485]
 
+[node name="Spinners" type="Node" parent="." unique_id=1643844216]
+
+[node name="Enemy" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
+position = Vector2(128, -128)
+
+[node name="Enemy2" parent="Spinners" unique_id=876122978 instance=ExtResource("4_6bm6p")]
+position = Vector2(128, 128)
+
+[node name="Enemy3" parent="Spinners" unique_id=1965795647 instance=ExtResource("4_6bm6p")]
+position = Vector2(-128, -128)
+
 [node name="PlayerSpawn" type="Node2D" parent="." unique_id=1170452474]
-position = Vector2(-160, 72)
+position = Vector2(-128, 128)
 script = ExtResource("1_l5ukw")
 
 [node name="Timer" type="Timer" parent="PlayerSpawn" unique_id=197971034]
@@ -25,13 +36,13 @@ autostart = true
 script = ExtResource("1_2pltu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1344449492]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="GameTime" type="Label" parent="." unique_id=456201287]
 offset_left = -24.0
-offset_top = -80.0
+offset_top = -152.0
 offset_right = 24.0
-offset_bottom = -57.0
+offset_bottom = -129.0
 text = "45"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -39,6 +50,7 @@ script = ExtResource("4_dugkq")
 
 [node name="Timer" type="Timer" parent="GameTime" unique_id=405559357]
 wait_time = 45.0
+one_shot = true
 autostart = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1580899563]
@@ -47,9 +59,9 @@ volume_db = -0.5
 
 [node name="CottonCandyTracker" type="Label" parent="." unique_id=1152458661]
 offset_left = -152.0
-offset_top = -80.0
+offset_top = 136.0
 offset_right = -64.0
-offset_bottom = -64.0
+offset_bottom = 152.0
 theme_override_font_sizes/font_size = 10
 text = "Cotton Candy: 000"
 script = ExtResource("6_2pltu")
@@ -57,13 +69,9 @@ script = ExtResource("6_2pltu")
 [node name="CandyTimer" type="Timer" parent="CottonCandyTracker" unique_id=1219899050]
 autostart = true
 
-[node name="Enemy" parent="." unique_id=222236015 node_paths=PackedStringArray("temp_world") instance=ExtResource("4_6bm6p")]
-position = Vector2(112, -48)
-temp_world = NodePath("../CenterStage")
-
 [node name="Wall" type="Sprite2D" parent="." unique_id=1647511951]
-position = Vector2(-1.9550323e-05, -120)
-scale = Vector2(3.2499998, 0.125)
+position = Vector2(1.9073486e-06, -160)
+scale = Vector2(2.375, 0.125)
 texture = ExtResource("7_f52ns")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall" unique_id=1132835991]
@@ -74,8 +82,8 @@ scale = Vector2(0.9999998, 0.99999976)
 shape = SubResource("RectangleShape2D_tsdbm")
 
 [node name="Wall2" type="Sprite2D" parent="." unique_id=279883379]
-position = Vector2(-1.9550323e-05, 119.99999)
-scale = Vector2(3.2499998, 0.125)
+position = Vector2(3.8146973e-06, 160)
+scale = Vector2(2.375, 0.125)
 texture = ExtResource("7_f52ns")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall2" unique_id=1736148737]
@@ -86,8 +94,8 @@ scale = Vector2(0.9999998, 0.99999976)
 shape = SubResource("RectangleShape2D_tsdbm")
 
 [node name="Wall3" type="Sprite2D" parent="." unique_id=1341408351]
-position = Vector2(216, -7.6293945e-06)
-scale = Vector2(0.1249998, 2)
+position = Vector2(160, 5.722046e-06)
+scale = Vector2(0.1249998, 2.625)
 texture = ExtResource("7_f52ns")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall3" unique_id=481045631]
@@ -97,8 +105,8 @@ scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_tsdbm")
 
 [node name="Wall4" type="Sprite2D" parent="." unique_id=1649578867]
-position = Vector2(-216, 0)
-scale = Vector2(0.1249998, 2)
+position = Vector2(-160, 5.722046e-06)
+scale = Vector2(0.1249998, 2.625)
 texture = ExtResource("7_f52ns")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall4" unique_id=1500575370]

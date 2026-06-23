@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 	var draw_arrow_limit = player.position - mouse_position
 	self.position = draw_arrow_limit.limit_length(player.max_power)
 	self.rotation = self.position.angle()
-	if draw_arrow_limit.length() > player.half_power:
+	if draw_arrow_limit.length() > (player.max_power/2):
 		self.texture = green_arrow
-	elif draw_arrow_limit.length() > player.fourth_power:
+	elif draw_arrow_limit.length() > (player.max_power/4):
 		self.texture = yellow_arrow
 	elif draw_arrow_limit.length() > 0:
 		self.texture = red_arrow
