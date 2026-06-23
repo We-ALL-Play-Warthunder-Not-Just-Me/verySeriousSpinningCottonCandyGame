@@ -25,54 +25,60 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if can_dash == true:
-		if Input.is_action_just_pressed("MouseLeftClick"):
-			Engine.set_time_scale(0.1)
-			aiming = true
-		if aiming == true:
-			if Input.is_action_pressed("MouseLeftClick"):
-				draw_arrow.visible = true
-				mouse_position = get_global_mouse_position()
-				#print("Hold!")
-				#print("Mouse Position: ", mouse_position)
-				
-			if Input.is_action_just_released("MouseLeftClick"):
-				#print("Send!")
-				can_dash = false
-				aiming = false
-				dash_countdown = dash_time
-				dash_graphic.visible = true
-				self.set_linear_velocity(Vector2(0,0))
-				Engine.set_time_scale(1.0)
-				draw_arrow.visible = false
-				var force = (self.position - mouse_position)
-				var lim_force = force.limit_length(max_power)
-				self.apply_force(lim_force * amplifier)
-				#print(force)
-				#print(lim_force)
+	if center_stage.round_playing == true:
+		if can_dash == true:
+			if Input.is_action_just_pressed("MouseLeftClick"):
+				Engine.set_time_scale(0.1)
+				aiming = true
+			if aiming == true:
+				if Input.is_action_pressed("MouseLeftClick"):
+					draw_arrow.visible = true
+					mouse_position = get_global_mouse_position()
+					#print("Hold!")
+					#print("Mouse Position: ", mouse_position)
+					
+				if Input.is_action_just_released("MouseLeftClick"):
+					#print("Send!")
+					can_dash = false
+					aiming = false
+					dash_countdown = dash_time
+					dash_graphic.visible = true
+					self.set_linear_velocity(Vector2(0,0))
+					Engine.set_time_scale(1.0)
+					draw_arrow.visible = false
+					var force = (self.position - mouse_position)
+					var lim_force = force.limit_length(max_power)
+					self.apply_force(lim_force * amplifier)
+					#print(force)
+					#print(lim_force)
+		else:
+			dash_countdown -= delta
+			#print(int(ceili(dash_countdown)))
+			if dash_countdown < 0:
+				can_dash = true
+			elif dash_countdown < dash_time/3:
+				dash_graphic.visible = false
+
+		if health.CurrentHP > (health.MaxHp/2):
+			animations.play("PlayerSpinHigh")
+			candy_tracker.candy_multiplier = 3
+			amplifier = max_amplifier
+		elif health.CurrentHP > (health.MaxHp/4):
+			animations.play("PlayerSpinMed")
+			candy_tracker.candy_multiplier = 2
+			amplifier = (max_amplifier/2)
+		elif health.CurrentHP > 0:
+			animations.play("PlayerSpinLow")
+			candy_tracker.candy_multiplier = 1
+			amplifier = (max_amplifier/4)
+		else:
+			animations.stop()
+			candy_tracker.candy_multiplier = 0
+			
 	else:
-		dash_countdown -= delta
-		#print(int(ceili(dash_countdown)))
-		if dash_countdown < 0:
-			can_dash = true
-		elif dash_countdown < dash_time/3:
-			dash_graphic.visible = false
-	
-	if health.CurrentHP > (health.MaxHp/2):
-		animations.play("PlayerSpinHigh")
-		candy_tracker.candy_multiplier = 3
-		amplifier = max_amplifier
-	elif health.CurrentHP > (health.MaxHp/4):
-		animations.play("PlayerSpinMed")
-		candy_tracker.candy_multiplier = 2
-		amplifier = (max_amplifier/2)
-	elif health.CurrentHP > 0:
-		animations.play("PlayerSpinLow")
-		candy_tracker.candy_multiplier = 1
-		amplifier = (max_amplifier/4)
-	else:
-		animations.stop()
+		self.linear_velocity.lerp(Vector2(0,0),30)
 		candy_tracker.candy_multiplier = 0
+		health.HealthDecay = 0
 
 	var to_center = self.position.direction_to(center_stage.position)
 	self.apply_force(to_center * center_stage.gravity)

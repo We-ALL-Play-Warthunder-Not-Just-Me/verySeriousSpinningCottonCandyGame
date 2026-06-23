@@ -22,21 +22,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var to_center = self.position.direction_to(center_stage.position)
 	self.apply_force(to_center * center_stage.gravity)
-
-	if can_dash == true:
-		final_wait_time -= delta
-		if final_wait_time < 0:
-			can_dash = false
-			dash_countdown = dash_time
-			dash_graphic.visible = true
-			pick_target()
+	
+	if center_stage.round_playing == true:
+		if can_dash == true:
+			final_wait_time -= delta
+			if final_wait_time < 0:
+				can_dash = false
+				dash_countdown = dash_time
+				dash_graphic.visible = true
+				pick_target()
+		else:
+			final_wait_time = randf_range(min_wait_time, max_wait_time)
+			dash_countdown -= delta
+			if dash_countdown < 0:
+				can_dash = true
+			elif dash_countdown < dash_time/3:
+				dash_graphic.visible = false
 	else:
-		final_wait_time = randf_range(min_wait_time, max_wait_time)
-		dash_countdown -= delta
-		if dash_countdown < 0:
-			can_dash = true
-		elif dash_countdown < dash_time/3:
-			dash_graphic.visible = false
+		self.linear_velocity.lerp(Vector2(0,0),30)
+		health.HealthDecay = 0
 
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()
