@@ -91,11 +91,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
+radius = 11.0
+
 [node name="Player" type="RigidBody2D" unique_id=222236015]
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
 continuous_cd = 2
+max_contacts_reported = 1
 script = ExtResource("2_8g4oa")
 
 [node name="VerySeriousPlayer" type="Sprite2D" parent="." unique_id=1977203792]
@@ -116,7 +120,7 @@ script = ExtResource("4_j23h2")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-MaxHp = 30
+MaxHp = 50
 CurrentHP = 10
 HealthDecay = 0
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
@@ -143,7 +147,8 @@ metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
 [node name="DamageArea" type="Area2D" parent="." unique_id=1289753861]
 collision_layer = 2
 
-[node name="PlayerHitBox" type="CollisionPolygon2D" parent="DamageArea" unique_id=1397515548]
-polygon = PackedVector2Array(12, 0, 9, -8, 4, -10, 4, 10, 9, 8)
+[node name="PlayerHitBox" type="CollisionShape2D" parent="DamageArea" unique_id=387144028]
+shape = SubResource("CircleShape2D_j23h2")
+debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]

@@ -1,10 +1,11 @@
 extends RigidBody2D
 
 var mouse_position
-var amplifier = 1.5
+var amplifier = 0.0
 var max_power = 60
 var dash_time = 5
 var candy_multiplier
+var max_damage = 30
 @onready var draw_arrow = $VerySeriousArrows3
 @onready var health = $HealthComponent
 @onready var animations = $VerySeriousPlayer/PlayerAnimations
@@ -17,6 +18,7 @@ var can_dash = true
 var aiming = false
 var dash_countdown
 @export var center_stage = Node2D
+var previous_frame: Vector2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,9 +30,6 @@ func _process(delta: float) -> void:
 			if Input.is_action_pressed("MouseLeftClick"):
 				draw_arrow.visible = true
 				mouse_position = get_global_mouse_position()
-				var hit_box_limit = self.position - mouse_position
-				hit_box.position = hit_box_limit.limit_length(1)
-				hit_box.rotation = hit_box.position.angle()
 				#print("Hold!")
 				#print("Mouse Position: ", mouse_position)
 				
@@ -56,24 +55,49 @@ func _process(delta: float) -> void:
 	if health.CurrentHP > half_health:
 		animations.play("PlayerSpinHigh")
 		candy_multiplier = 3
+		amplifier = 3.0
 	elif health.CurrentHP > fourth_health:
 		animations.play("PlayerSpinMed")
 		candy_multiplier = 2
+		amplifier = 2.0
 	elif health.CurrentHP > 0:
 		animations.play("PlayerSpinLow")
 		candy_multiplier = 1
+		amplifier = 1.0
 	else:
 		animations.stop()
 		candy_multiplier = 0
 
 	var to_center = self.position.direction_to(center_stage.position)
-	var distance_to_center = self.position.distance_squared_to(center_stage.position)
 	self.apply_force(to_center * center_stage.gravity)
+	previous_frame = self.linear_velocity
 
 func steal_spin(enemy: RigidBody2D):
-	print(enemy.bah)
-	pass
+	var player_force = abs(previous_frame.length())
+	var enemy_force = abs(enemy.previous_frame.length())
+	if player_force > enemy_force:
+		print("We got 'em!")
+		var force_total = (player_force + enemy_force)
+		var force_difference =  (player_force - enemy_force)
+		var force_percent = force_difference / force_total
+		var enemy_damage = ceili(max_damage * force_percent)
+		enemy.health.takeDamage(enemy_damage)
+		self.health.heal(enemy_damage/2)
+		#print("Player Force: ", player_force)
+		#print("Enemy Force: ", enemy_force)
+		#print("Total Force: ", force_total)
+		#print("The Difference: ", force_difference)
+		#print("Force Percentage: ", force_percent)
+		#print("Enemy Current HP: ", enemy.health.CurrentHP)
+		#print("Enemy HP to lose: ", enemy_damage)
+	elif player_force < enemy_force:
+		print("We're not strong enough...")
 
-func _on_damage_area_entered(body: RigidBody2D) -> void:
-	if body.name != "Player":
+func _on_damage_area_entered(body: Node2D) -> void:
+	print("boop")
+	if body.name != "Player" and body is RigidBody2D:
 		steal_spin(body)
+		#var hold = self.linear_velocity.normalized() * (test.shape.radius * 2)
+		#test_arrow_two.target_position = previous_frame
+		#Engine.set_time_scale(0.0)
+	

@@ -92,6 +92,7 @@ mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
 continuous_cd = 2
+max_contacts_reported = 1
 script = ExtResource("1_biruh")
 
 [node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("6_oiydt")]
@@ -99,6 +100,7 @@ offset_left = -12.0
 offset_top = -12.0
 offset_right = 12.0
 offset_bottom = -11.0
+scale = Vector2(3, 3)
 health = NodePath("../HealthComponent")
 
 [node name="VerySeriousEnemy" type="Sprite2D" parent="." unique_id=1977203792]

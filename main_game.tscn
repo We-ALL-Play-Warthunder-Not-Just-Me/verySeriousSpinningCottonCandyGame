@@ -17,7 +17,7 @@ size = Vector2(128.00002, 128)
 script = ExtResource("1_2pltu")
 
 [node name="Player" parent="." unique_id=2021730916 node_paths=PackedStringArray("center_stage") instance=ExtResource("2_yx7mw")]
-position = Vector2(-136, 64)
+position = Vector2(72, -8)
 continuous_cd = 1
 center_stage = NodePath("../CenterStage")
 
@@ -55,15 +55,7 @@ script = ExtResource("6_2pltu")
 autostart = true
 
 [node name="Enemy" parent="." unique_id=222236015 node_paths=PackedStringArray("temp_world") instance=ExtResource("4_6bm6p")]
-position = Vector2(136, 72)
-temp_world = NodePath("../CenterStage")
-
-[node name="Enemy2" parent="." unique_id=2031190163 node_paths=PackedStringArray("temp_world") instance=ExtResource("4_6bm6p")]
-position = Vector2(136, -72)
-temp_world = NodePath("../CenterStage")
-
-[node name="Enemy3" parent="." unique_id=79558982 node_paths=PackedStringArray("temp_world") instance=ExtResource("4_6bm6p")]
-position = Vector2(-112, -96)
+position = Vector2(112, -48)
 temp_world = NodePath("../CenterStage")
 
 [node name="Wall" type="Sprite2D" parent="." unique_id=1647511951]
