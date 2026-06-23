@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://bul7ckyyx4m3q"]
+
+[ext_resource type="Script" uid="uid://eow8y8uh0fg8" path="res://UI/settingsUI.gd" id="1_k5v3e"]
+[ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="1_pmqk1"]
+
+[node name="SettingsScreen" type="Control" unique_id=2147448037]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k5v3e")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2118274208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pmqk1")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=550690194]
+layout_mode = 0
+offset_right = 1281.0
+offset_bottom = 379.0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=1248680839]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1756395890]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Master" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1982626722]
+custom_minimum_size = Vector2(60, 30)
+custom_maximum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master"
+
+[node name="master" type="HSlider" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1696973441]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=1783509241]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Music" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=369819031]
+custom_minimum_size = Vector2(60, 30)
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Music"
+
+[node name="music" type="HSlider" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=556449282]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=45580278]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SFX" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=305864269]
+custom_minimum_size = Vector2(60, 30)
+custom_maximum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SFX"
+
+[node name="sfx" type="HSlider" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=273862391]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="BackButton" type="Button" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=818900437]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="value_changed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer/master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="TextureRect/MarginContainer/VBoxContainer/HBoxContainer3/sfx" to="." method="_on_sfx_value_changed"]
