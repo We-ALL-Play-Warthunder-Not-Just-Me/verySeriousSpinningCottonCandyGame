@@ -71,6 +71,7 @@ vertical_alignment = 1
 stream = ExtResource("5_dugkq")
 volume_db = -0.5
 autoplay = true
+bus = &"Music"
 
 [node name="CottonCandyTracker" type="Label" parent="." unique_id=1152458661]
 offset_left = -152.0
