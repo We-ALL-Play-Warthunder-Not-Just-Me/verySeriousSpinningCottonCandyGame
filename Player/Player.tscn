@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="1_3qydi"]
 [ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="1_ddoul"]
+[ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_0j2ni"]
 [ext_resource type="Script" uid="uid://buuube8f227ie" path="res://Player/player_rigid.gd" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
@@ -95,12 +96,21 @@ radius = 9.0
 script = ExtResource("8_s1rgi")
 metadata/_custom_type_script = "uid://cinvxcnc1wpyu"
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
+radius = 11.0
+
 [node name="Player" type="RigidBody2D" unique_id=222236015]
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
 continuous_cd = 2
+max_contacts_reported = 1
 script = ExtResource("2_8g4oa")
+
+[node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=574010667]
+visible = false
+texture = ExtResource("2_0j2ni")
+offset = Vector2(-2, 0)
 
 [node name="VerySeriousPlayer" type="Sprite2D" parent="." unique_id=1977203792]
 texture = ExtResource("1_ddoul")
@@ -109,20 +119,19 @@ texture = ExtResource("1_ddoul")
 libraries/ = SubResource("AnimationLibrary_vlldt")
 autoplay = &"PlayerSpinHigh"
 
+[node name="BaseCollisionBox" type="CollisionShape2D" parent="." unique_id=1578528933]
+shape = SubResource("CircleShape2D_b8qva")
+
 [node name="VerySeriousArrows3" type="Sprite2D" parent="." unique_id=1467626387]
 visible = false
 z_index = 3
 texture = ExtResource("3_6ysni")
 script = ExtResource("4_j23h2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1578528933]
-shape = SubResource("CircleShape2D_b8qva")
-
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-MaxHp = 10
-CurrentHP = 10
-HealthDecay = 1
+CurrentHP = 70
+HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
@@ -134,8 +143,11 @@ metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
-anchor_left = 0.0125
-anchor_right = 0.5601562
+anchor_top = 0.9
+anchor_right = 0.3
+offset_right = 1.0
+offset_bottom = 1.0
+grow_vertical = 1
 health = NodePath("../../HealthComponent")
 
 [node name="upgrade_manager" type="Node" parent="." unique_id=609327852 node_paths=PackedStringArray("health")]
@@ -143,3 +155,13 @@ script = ExtResource("7_vlldt")
 upgrades = SubResource("Resource_j23h2")
 health = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1289753861]
+collision_layer = 2
+
+[node name="PlayerHitBox" type="CollisionShape2D" parent="DamageArea" unique_id=387144028]
+shape = SubResource("CircleShape2D_j23h2")
+debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
+
+[connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_biruh"]
 [ext_resource type="Texture2D" uid="uid://p027gxontir7" path="res://Assets/Images/Very Serious Enemy.png" id="1_wv4gc"]
+[ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_n1bor"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="4_7mq4p"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="5_k2bks"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="6_oiydt"]
@@ -87,16 +88,25 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1bor"]
+radius = 11.0
+
 [node name="Enemy" type="RigidBody2D" unique_id=222236015]
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
 continuous_cd = 2
+max_contacts_reported = 1
 script = ExtResource("1_biruh")
+
+[node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=841334225]
+visible = false
+texture = ExtResource("2_n1bor")
+offset = Vector2(-2, 0)
 
 [node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("6_oiydt")]
 offset_left = -12.0
-offset_top = -12.0
+offset_top = -16.0
 offset_right = 12.0
 offset_bottom = -11.0
 health = NodePath("../HealthComponent")
@@ -104,7 +114,7 @@ health = NodePath("../HealthComponent")
 [node name="VerySeriousEnemy" type="Sprite2D" parent="." unique_id=1977203792]
 texture = ExtResource("1_wv4gc")
 
-[node name="PlayerAnimations" type="AnimationPlayer" parent="VerySeriousEnemy" unique_id=1327218308]
+[node name="EnemyAnimations" type="AnimationPlayer" parent="VerySeriousEnemy" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")
 autoplay = &"PlayerSpinHigh"
 
@@ -113,9 +123,21 @@ shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("4_7mq4p")
+CurrentHP = 70
+HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
 script = ExtResource("5_k2bks")
 health = NodePath("..")
 metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=85172910]
+collision_layer = 2
+
+[node name="PlayerHitBox" type="CollisionShape2D" parent="DamageArea" unique_id=748997955]
+shape = SubResource("CircleShape2D_n1bor")
+debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
+
+[connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]

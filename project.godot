@@ -25,8 +25,8 @@ Settings="*uid://bwrhxi3eee1ss"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=960
+window/size/viewport_height=960
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
@@ -46,7 +46,7 @@ MouseLeftClick={
 
 3d/physics_engine="Jolt Physics"
 2d/default_gravity=0.0
-2d/default_linear_damp=0.05000000000000004
+2d/default_linear_damp=0.5
 
 [rendering]
 

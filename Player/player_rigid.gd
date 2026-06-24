@@ -1,63 +1,111 @@
 extends RigidBody2D
 
 var mouse_position
-var amplifier = 1.5
+var max_amplifier = 3
+var amplifier = 0.0
 var max_power = 60
+var dash_time = 3
+var max_damage = 15
 var candy_multiplier
 @onready var draw_arrow = $VerySeriousArrows3
 @onready var health = $HealthComponent
 @onready var animations = $VerySeriousPlayer/PlayerAnimations
-@onready var half_health = health.MaxHp/2
-@onready var fourth_health = health.MaxHp/4
-@onready var half_power = max_power/2
-@onready var fourth_power = max_power/4
+@onready var hit_box = $DamageArea/PlayerHitBox
+@onready var dash_graphic = $VerySeriousDash
 var can_dash = true
-@export var temp_time = Node2D
 var aiming = false
-@export var temp_world = Node2D
+var dash_countdown
+@onready var center_stage = get_node("/root/MainGame/CenterStage")
+var previous_frame: Vector2
+@onready var spawner = get_node("/root/MainGame/Spawner")
+@onready var candy_tracker = get_node("/root/MainGame/CottonCandyTracker")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if can_dash == true:
-		if Input.is_action_just_pressed("MouseLeftClick"):
-			Engine.set_time_scale(0.1)
-			aiming = true
-		if aiming == true:
-			if Input.is_action_pressed("MouseLeftClick"):
-				draw_arrow.visible = true
-				mouse_position = get_global_mouse_position()
-				#print("Hold!")
-				#print("Mouse Position: ", mouse_position)
-				
-			if Input.is_action_just_released("MouseLeftClick"):
-				#print("Send!")
-				can_dash = false
-				aiming = false
-				temp_time.start(temp_time.wait_time)
-				self.set_linear_velocity(Vector2(0,0))
-				Engine.set_time_scale(1.0)
-				draw_arrow.visible = false
-				var force = (self.position - mouse_position)
-				var lim_force = force.limit_length(max_power)
-				self.apply_force(lim_force * amplifier)
-				#print(force)
-				#print(lim_force)
-	
-	if health.CurrentHP > half_health:
-		animations.play("PlayerSpinHigh")
-		candy_multiplier = 3
-	elif health.CurrentHP > fourth_health:
-		animations.play("PlayerSpinMed")
-		candy_multiplier = 2
-	elif health.CurrentHP > 0:
-		animations.play("PlayerSpinLow")
-		candy_multiplier = 1
+	if center_stage.round_playing == true:
+		if can_dash == true:
+			if Input.is_action_just_pressed("MouseLeftClick"):
+				Engine.set_time_scale(0.1)
+				aiming = true
+			if aiming == true:
+				if Input.is_action_pressed("MouseLeftClick"):
+					draw_arrow.visible = true
+					mouse_position = get_global_mouse_position()
+					#print("Hold!")
+					#print("Mouse Position: ", mouse_position)
+					
+				if Input.is_action_just_released("MouseLeftClick"):
+					#print("Send!")
+					can_dash = false
+					aiming = false
+					dash_countdown = dash_time
+					dash_graphic.visible = true
+					self.set_linear_velocity(Vector2(0,0))
+					Engine.set_time_scale(1.0)
+					draw_arrow.visible = false
+					var force = (self.position - mouse_position)
+					var lim_force = force.limit_length(max_power)
+					self.apply_force(lim_force * amplifier)
+					#print(force)
+					#print(lim_force)
+		else:
+			dash_countdown -= delta
+			#print(int(ceili(dash_countdown)))
+			if dash_countdown < 0:
+				can_dash = true
+			elif dash_countdown < dash_time/3:
+				dash_graphic.visible = false
+
+		if health.CurrentHP > (health.MaxHp/2):
+			animations.play("PlayerSpinHigh")
+			candy_multiplier = 3
+			amplifier = max_amplifier
+		elif health.CurrentHP > (health.MaxHp/4):
+			animations.play("PlayerSpinMed")
+			candy_multiplier = 2
+			amplifier = (max_amplifier/2)
+		elif health.CurrentHP > 0:
+			animations.play("PlayerSpinLow")
+			candy_multiplier = 1
+			amplifier = (max_amplifier/4)
+		else:
+			animations.stop()
+			
 	else:
-		animations.stop()
-		candy_multiplier = 0
+		self.linear_velocity.lerp(Vector2(0,0),30)
+		candy_tracker.candy_multiplier = 0
+		health.HealthDecay = 0
 
-	var to_center = self.position.direction_to(temp_world.position)
-	self.apply_force(to_center * temp_world.gravity)
+	var to_center = self.position.direction_to(center_stage.position)
+	self.apply_force(to_center * center_stage.gravity)
+	previous_frame = self.linear_velocity
+	dash_graphic.rotation = previous_frame.angle()
 
-func _on_dash_timer_timeout() -> void:
-	can_dash = true
+func steal_spin(enemy: RigidBody2D):
+	var player_force = abs(previous_frame.length())
+	var enemy_force = abs(enemy.previous_frame.length())
+	if player_force > enemy_force:
+		print("We got 'em!")
+		var force_total = (player_force + enemy_force)
+		var force_difference =  (player_force - enemy_force)
+		var force_percent = force_difference / force_total
+		var enemy_damage = ceili(max_damage * force_percent)
+		enemy.health.takeDamage(enemy_damage)
+		self.health.heal(ceili(enemy_damage/2))
+		#print("Player Force: ", player_force)
+		#print("Enemy Force: ", enemy_force)
+		#print("Total Force: ", force_total)
+		#print("The Difference: ", force_difference)
+		#print("Force Percentage: ", force_percent)
+		#print("Enemy Current HP: ", enemy.health.CurrentHP)
+		#print("Enemy HP to lose: ", enemy_damage)
+	elif player_force < enemy_force:
+		print("We're not strong enough...")
+
+func _on_damage_area_entered(body: Node2D) -> void:
+	print("boop")
+	if body.name != self.name and body is RigidBody2D:
+		steal_spin(body)
+
+func spin_depleted():
+	spawner.kill_spinner(self)
