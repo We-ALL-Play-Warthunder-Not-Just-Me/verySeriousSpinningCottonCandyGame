@@ -127,7 +127,7 @@ script = ExtResource("4_j23h2")
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
 MaxHp = 50
-CurrentHP = 6
+CurrentHP = 25
 HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
@@ -160,4 +160,5 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_j23h2")
 debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
 
+[connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]

@@ -103,16 +103,15 @@ offset = Vector2(-2, 0)
 
 [node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("6_oiydt")]
 offset_left = -12.0
-offset_top = -12.0
+offset_top = -16.0
 offset_right = 12.0
 offset_bottom = -11.0
-scale = Vector2(3, 3)
 health = NodePath("../HealthComponent")
 
 [node name="VerySeriousEnemy" type="Sprite2D" parent="." unique_id=1977203792]
 texture = ExtResource("1_wv4gc")
 
-[node name="PlayerAnimations" type="AnimationPlayer" parent="VerySeriousEnemy" unique_id=1327218308]
+[node name="EnemyAnimations" type="AnimationPlayer" parent="VerySeriousEnemy" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")
 autoplay = &"PlayerSpinHigh"
 
@@ -121,7 +120,8 @@ shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("4_7mq4p")
-CurrentHP = 80
+MaxHp = 50
+CurrentHP = 25
 HealthDecay = 0
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
@@ -129,3 +129,5 @@ metadata/_custom_type_script = "uid://uflgtvyrjjt"
 script = ExtResource("5_k2bks")
 health = NodePath("..")
 metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
+
+[connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]

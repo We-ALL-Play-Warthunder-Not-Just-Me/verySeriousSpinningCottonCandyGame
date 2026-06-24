@@ -17,12 +17,8 @@ var aiming = false
 var dash_countdown
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 var previous_frame: Vector2
-@onready var spawner = get_node("/root/MainGame/PlayerSpawn")
+@onready var spawner = get_node("/root/MainGame/Spawner")
 @onready var candy_tracker = get_node("/root/MainGame/CottonCandyTracker")
-
-func _ready() -> void:
-	health.healthDEATH.connect(spawner.kill_player)
-	health.healthDEATH.connect(candy_tracker.player_died)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -74,7 +70,6 @@ func _process(delta: float) -> void:
 			amplifier = (max_amplifier/4)
 		else:
 			animations.stop()
-			candy_tracker.candy_multiplier = 0
 			
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
@@ -111,4 +106,6 @@ func _on_damage_area_entered(body: Node2D) -> void:
 	print("boop")
 	if body.name != "Player" and body is RigidBody2D:
 		steal_spin(body)
-	
+
+func spin_depleted():
+	spawner.kill_spinner(self)

@@ -19,21 +19,19 @@ size = Vector2(128.00002, 128)
 [node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, -128)
 
-[node name="Blue Tornado" parent="Spinners" unique_id=876122978 instance=ExtResource("4_6bm6p")]
+[node name="Blue Tornado" parent="Spinners" unique_id=2016280512 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, 128)
 
-[node name="Nib" parent="Spinners" unique_id=1965795647 instance=ExtResource("4_6bm6p")]
+[node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
 position = Vector2(-128, -128)
 
-[node name="Player" parent="Spinners" unique_id=817850568 instance=ExtResource("2_l5ukw")]
+[node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
 position = Vector2(-128, 128)
 
-[node name="PlayerSpawn" type="Node2D" parent="." unique_id=1170452474 node_paths=PackedStringArray("player")]
-position = Vector2(-128, 128)
+[node name="Spawner" type="Node2D" parent="." unique_id=1170452474]
 script = ExtResource("1_l5ukw")
-player = NodePath("../Spinners/Player")
 
-[node name="Timer" type="Timer" parent="PlayerSpawn" unique_id=197971034]
+[node name="Timer" type="Timer" parent="Spawner" unique_id=197971034]
 wait_time = 5.0
 one_shot = true
 
@@ -54,21 +52,12 @@ vertical_alignment = 1
 script = ExtResource("4_dugkq")
 
 [node name="Timer" type="Timer" parent="GameTime" unique_id=405559357]
-wait_time = 5.0
+wait_time = 45.0
 one_shot = true
 autostart = true
 
-[node name="Finished" type="Label" parent="GameTime" unique_id=1848765472]
+[node name="EndText" type="RichTextLabel" parent="GameTime" unique_id=10936920]
 visible = false
-layout_mode = 0
-offset_left = -28.0
-offset_top = 108.0
-offset_right = 76.0
-offset_bottom = 196.0
-theme_override_font_sizes/font_size = 64
-text = "FIN"
-
-[node name="TestText" type="RichTextLabel" parent="GameTime" unique_id=10936920]
 layout_mode = 0
 offset_left = -128.0
 offset_right = 176.0
@@ -141,6 +130,6 @@ texture = ExtResource("7_f52ns")
 scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_tsdbm")
 
-[connection signal="timeout" from="PlayerSpawn/Timer" to="PlayerSpawn" method="spawn_player"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="spawn_player"]
 [connection signal="timeout" from="GameTime/Timer" to="GameTime" method="round_end"]
 [connection signal="timeout" from="CottonCandyTracker/CandyTimer" to="CottonCandyTracker" method="_on_candy_timer_timeout"]
