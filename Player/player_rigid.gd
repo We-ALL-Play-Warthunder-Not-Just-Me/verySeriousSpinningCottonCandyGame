@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var mouse_position
-var max_amplifier = 2.0
+var max_amplifier = 3
 var amplifier = 0.0
 var max_power = 60
 var dash_time = 3
@@ -104,7 +104,7 @@ func steal_spin(enemy: RigidBody2D):
 
 func _on_damage_area_entered(body: Node2D) -> void:
 	print("boop")
-	if body.name != "Player" and body is RigidBody2D:
+	if body.name != self.name and body is RigidBody2D:
 		steal_spin(body)
 
 func spin_depleted():

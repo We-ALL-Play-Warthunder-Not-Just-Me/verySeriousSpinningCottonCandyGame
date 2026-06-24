@@ -126,8 +126,7 @@ script = ExtResource("4_j23h2")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-MaxHp = 50
-CurrentHP = 25
+CurrentHP = 70
 HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 

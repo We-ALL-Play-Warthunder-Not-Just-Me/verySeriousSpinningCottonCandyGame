@@ -88,6 +88,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
 radius = 9.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1bor"]
+radius = 11.0
+
 [node name="Enemy" type="RigidBody2D" unique_id=222236015]
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
@@ -120,9 +123,8 @@ shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("4_7mq4p")
-MaxHp = 50
-CurrentHP = 25
-HealthDecay = 0
+CurrentHP = 70
+HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
@@ -130,4 +132,12 @@ script = ExtResource("5_k2bks")
 health = NodePath("..")
 metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 
+[node name="DamageArea" type="Area2D" parent="." unique_id=85172910]
+collision_layer = 2
+
+[node name="PlayerHitBox" type="CollisionShape2D" parent="DamageArea" unique_id=748997955]
+shape = SubResource("CircleShape2D_n1bor")
+debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
+
 [connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]
