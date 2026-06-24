@@ -1,32 +1,34 @@
 extends RigidBody2D
 
 var mouse_position
-var max_amplifier = 3
+var max_amplifier = 3.0
 var amplifier = 0.0
 var max_power = 60
 var dash_time = 3
 var max_damage = 15
 var candy_multiplier
+var mouse_on_player = false
 @onready var draw_arrow = $VerySeriousArrows3
 @onready var health = $HealthComponent
 @onready var animations = $VerySeriousPlayer/PlayerAnimations
 @onready var hit_box = $DamageArea/PlayerHitBox
 @onready var dash_graphic = $VerySeriousDash
+@onready var the_dark = $TheDark
 var can_dash = true
 var aiming = false
 var dash_countdown
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 var previous_frame: Vector2
 @onready var spawner = get_node("/root/MainGame/Spawner")
-@onready var candy_tracker = get_node("/root/MainGame/CottonCandyTracker")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if center_stage.round_playing == true:
 		if can_dash == true:
-			if Input.is_action_just_pressed("MouseLeftClick"):
+			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == true:
 				Engine.set_time_scale(0.1)
 				aiming = true
+				the_dark.visible = true
 			if aiming == true:
 				if Input.is_action_pressed("MouseLeftClick"):
 					draw_arrow.visible = true
@@ -36,6 +38,7 @@ func _process(delta: float) -> void:
 					
 				if Input.is_action_just_released("MouseLeftClick"):
 					#print("Send!")
+					the_dark.visible = false
 					can_dash = false
 					aiming = false
 					dash_countdown = dash_time
@@ -63,17 +66,22 @@ func _process(delta: float) -> void:
 		elif health.CurrentHP > (health.MaxHp/4):
 			animations.play("PlayerSpinMed")
 			candy_multiplier = 2
-			amplifier = (max_amplifier/2)
+			if (max_amplifier/1.5) < 1:
+				amplifier = 1
+			else:
+				amplifier = (max_amplifier/1.5)
 		elif health.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
 			candy_multiplier = 1
-			amplifier = (max_amplifier/4)
+			if (max_amplifier/2) < 1:
+				amplifier = 1
+			else:
+				amplifier = (max_amplifier/2)
 		else:
 			animations.stop()
-			
+		print(amplifier)
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
-		candy_tracker.candy_multiplier = 0
 		health.HealthDecay = 0
 
 	var to_center = self.position.direction_to(center_stage.position)
@@ -102,10 +110,17 @@ func steal_spin(enemy: RigidBody2D):
 	elif player_force < enemy_force:
 		print("We're not strong enough...")
 
+func switch_mouse_states():
+	if mouse_on_player == false:
+		mouse_on_player = true
+	elif mouse_on_player == true:
+		mouse_on_player = false
+
 func _on_damage_area_entered(body: Node2D) -> void:
-	print("boop")
 	if body.name != self.name and body is RigidBody2D:
 		steal_spin(body)
 
 func spin_depleted():
+	Engine.set_time_scale(1.0)
+	the_dark.visible = false
 	spawner.kill_spinner(self)

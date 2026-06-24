@@ -1,9 +1,10 @@
 extends Label
 
 @onready var countdown = $Timer
-@onready var round_over_text = $EndText
+@onready var round_over_text = get_node("/root/MainGame/CanvasLayer/EndText")
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
-@onready var candy_tracker = get_node("/root/MainGame/CottonCandyTracker")
+@onready var candy_tracker = get_node("/root/MainGame/CanvasLayer/CottonCandyTracker")
+@onready var camera = get_node("/root/MainGame/FancyCamera")
 @export var candy_bank: PlayerCottonCandyTotal = load("res://Player/CottonCandyBank.tres")
 var final_text
 var round_over = false
@@ -43,6 +44,8 @@ func calculate_scores():
 	candy_bank.addCottonCandy(player_winnings)
 
 func round_end():
+	Engine.set_time_scale(1.0)
+	camera.switch_camera_points(center_stage)
 	round_over = true
 	center_stage.round_playing = false
 	candy_tracker.get_child(0).set_one_shot(true)

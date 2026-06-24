@@ -11,8 +11,8 @@ var max_wait_time = 2.0
 var final_wait_time
 var previous_frame: Vector2
 var max_power = 50
-var min_power = 10
-var max_amplifier = 3
+var min_power = 25
+var max_amplifier = 3.0
 var amplifier
 var dash_time = 3
 var dash_countdown
@@ -46,16 +46,22 @@ func _process(delta: float) -> void:
 		
 		if health.CurrentHP > (health.MaxHp/2):
 			animations.play("PlayerSpinHigh")
-			candy_multiplier = 3
+			candy_multiplier = 6
 			amplifier = max_amplifier
 		elif health.CurrentHP > (health.MaxHp/4):
 			animations.play("PlayerSpinMed")
-			candy_multiplier = 2
-			amplifier = (max_amplifier/2)
+			candy_multiplier = 4
+			if (max_amplifier/1.5) < 1:
+				amplifier = 1
+			else:
+				amplifier = (max_amplifier/1.5)
 		elif health.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
-			candy_multiplier = 1
-			amplifier = (max_amplifier/4)
+			candy_multiplier = 2
+			if (max_amplifier/2) < 1:
+				amplifier = 1
+			else:
+				amplifier = (max_amplifier/2)
 		else:
 			animations.stop()
 	else:
@@ -111,7 +117,6 @@ func steal_spin(enemy: RigidBody2D):
 		print("We're not strong enough...")
 
 func _on_damage_area_entered(body: Node2D) -> void:
-	print("boop")
 	if body.name != self.name and body is RigidBody2D:
 		steal_spin(body)
 

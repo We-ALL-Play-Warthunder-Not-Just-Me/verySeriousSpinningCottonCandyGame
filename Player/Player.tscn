@@ -99,6 +99,8 @@ metadata/_custom_type_script = "uid://cinvxcnc1wpyu"
 [sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
 radius = 11.0
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0j2ni"]
+
 [node name="Player" type="RigidBody2D" unique_id=222236015]
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
@@ -130,8 +132,8 @@ script = ExtResource("4_j23h2")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-CurrentHP = 70
-HealthDecay = 2
+MaxHp = 50
+CurrentHP = 30
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
@@ -163,5 +165,15 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_j23h2")
 debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
 
+[node name="TheDark" type="Sprite2D" parent="." unique_id=937438025]
+visible = false
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0.21568628)
+z_index = -1
+position = Vector2(1.5258789e-05, -4.5474735e-13)
+scale = Vector2(400, 400)
+texture = SubResource("PlaceholderTexture2D_0j2ni")
+
 [connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]
+[connection signal="mouse_entered" from="DamageArea" to="." method="switch_mouse_states"]
+[connection signal="mouse_exited" from="DamageArea" to="." method="switch_mouse_states"]
