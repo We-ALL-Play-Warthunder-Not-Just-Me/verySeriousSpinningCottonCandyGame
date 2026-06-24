@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://center_stage.gd" id="1_2pltu"]
 [ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://player_spawn_test.gd" id="1_l5ukw"]
+[ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_l5ukw"]
 [ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Enemy.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://TestTimer.gd" id="4_dugkq"]
 [ext_resource type="AudioStream" uid="uid://xar8uhwh766e" path="res://Assets/Music/Very Serious Cotton Candy Making.wav" id="5_dugkq"]
@@ -15,22 +16,26 @@ size = Vector2(128.00002, 128)
 
 [node name="Spinners" type="Node" parent="." unique_id=1643844216]
 
-[node name="Enemy" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
+[node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, -128)
 
-[node name="Enemy2" parent="Spinners" unique_id=876122978 instance=ExtResource("4_6bm6p")]
+[node name="Blue Tornado" parent="Spinners" unique_id=876122978 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, 128)
 
-[node name="Enemy3" parent="Spinners" unique_id=1965795647 instance=ExtResource("4_6bm6p")]
+[node name="Nib" parent="Spinners" unique_id=1965795647 instance=ExtResource("4_6bm6p")]
 position = Vector2(-128, -128)
 
-[node name="PlayerSpawn" type="Node2D" parent="." unique_id=1170452474]
+[node name="Player" parent="Spinners" unique_id=817850568 instance=ExtResource("2_l5ukw")]
+position = Vector2(-128, 128)
+
+[node name="PlayerSpawn" type="Node2D" parent="." unique_id=1170452474 node_paths=PackedStringArray("player")]
 position = Vector2(-128, 128)
 script = ExtResource("1_l5ukw")
+player = NodePath("../Spinners/Player")
 
 [node name="Timer" type="Timer" parent="PlayerSpawn" unique_id=197971034]
+wait_time = 5.0
 one_shot = true
-autostart = true
 
 [node name="CenterStage" type="Node2D" parent="." unique_id=2022388985]
 script = ExtResource("1_2pltu")
@@ -49,7 +54,7 @@ vertical_alignment = 1
 script = ExtResource("4_dugkq")
 
 [node name="Timer" type="Timer" parent="GameTime" unique_id=405559357]
-wait_time = 45.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -62,6 +67,16 @@ offset_right = 76.0
 offset_bottom = 196.0
 theme_override_font_sizes/font_size = 64
 text = "FIN"
+
+[node name="TestText" type="RichTextLabel" parent="GameTime" unique_id=10936920]
+layout_mode = 0
+offset_left = -128.0
+offset_right = 176.0
+offset_bottom = 304.0
+theme_override_font_sizes/bold_font_size = 64
+tab_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1580899563]
 stream = ExtResource("5_dugkq")

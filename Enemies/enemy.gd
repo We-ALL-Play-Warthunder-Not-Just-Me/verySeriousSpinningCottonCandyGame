@@ -14,6 +14,7 @@ var max_amplifier = 1.5
 var dash_time = 3
 var dash_countdown
 var can_dash = true
+var candy_multiplier = randi_range(1, 3)
 
 func _ready() -> void:
 	final_wait_time = randf_range(min_wait_time, max_wait_time)
@@ -50,8 +51,6 @@ func launch_self(target: RigidBody2D):
 	var final_power = randi_range(min_power, max_power)
 	var force = (direction_to_target * final_power).limit_length(max_power)
 	self.apply_force(force * max_amplifier)
-	print(self.position.direction_to(target.position))
-	pass
 
 func pick_target():
 	var active_spinners = spinners.get_child_count()
@@ -60,5 +59,5 @@ func pick_target():
 	if chosen_target.name == self.name:
 		pick_target()
 	else:
-		print(self.name," has chosen Target: ", chosen_target.name)
+		#print(self.name," has chosen Target: ", chosen_target.name)
 		launch_self(chosen_target)

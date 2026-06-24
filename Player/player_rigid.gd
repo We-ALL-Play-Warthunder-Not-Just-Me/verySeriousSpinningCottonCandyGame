@@ -6,6 +6,7 @@ var amplifier = 0.0
 var max_power = 60
 var dash_time = 3
 var max_damage = 15
+var candy_multiplier
 @onready var draw_arrow = $VerySeriousArrows3
 @onready var health = $HealthComponent
 @onready var animations = $VerySeriousPlayer/PlayerAnimations
@@ -61,15 +62,15 @@ func _process(delta: float) -> void:
 
 		if health.CurrentHP > (health.MaxHp/2):
 			animations.play("PlayerSpinHigh")
-			candy_tracker.candy_multiplier = 3
+			candy_multiplier = 3
 			amplifier = max_amplifier
 		elif health.CurrentHP > (health.MaxHp/4):
 			animations.play("PlayerSpinMed")
-			candy_tracker.candy_multiplier = 2
+			candy_multiplier = 2
 			amplifier = (max_amplifier/2)
 		elif health.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
-			candy_tracker.candy_multiplier = 1
+			candy_multiplier = 1
 			amplifier = (max_amplifier/4)
 		else:
 			animations.stop()
