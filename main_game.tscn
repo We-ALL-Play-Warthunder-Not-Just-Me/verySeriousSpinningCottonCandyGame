@@ -48,6 +48,7 @@ autostart = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1580899563]
 stream = ExtResource("5_dugkq")
 volume_db = -0.5
+bus = &"Music"
 
 [node name="CottonCandyTracker" type="Label" parent="." unique_id=1152458661]
 offset_left = -152.0
