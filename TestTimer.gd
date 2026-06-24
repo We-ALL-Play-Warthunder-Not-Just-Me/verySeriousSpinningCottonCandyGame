@@ -1,6 +1,7 @@
 extends Label
 
 @onready var countdown = $Timer
+@onready var the_dark = get_node("/root/MainGame/TheDark")
 @onready var round_over_text = get_node("/root/MainGame/CanvasLayer/EndText")
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 @onready var candy_tracker = get_node("/root/MainGame/CanvasLayer/CottonCandyTracker")
@@ -46,6 +47,7 @@ func calculate_scores():
 func round_end():
 	Engine.set_time_scale(1.0)
 	camera.switch_camera_points(center_stage)
+	the_dark.visible = false
 	round_over = true
 	center_stage.round_playing = false
 	candy_tracker.get_child(0).set_one_shot(true)

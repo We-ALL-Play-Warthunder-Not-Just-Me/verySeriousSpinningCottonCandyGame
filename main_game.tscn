@@ -14,6 +14,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsdbm"]
 size = Vector2(128.00002, 128)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mf81u"]
+
 [node name="MainGame" type="Node" unique_id=2037128485]
 
 [node name="Wall" type="Sprite2D" parent="." unique_id=1647511951]
@@ -65,6 +67,14 @@ texture = ExtResource("7_f52ns")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall4/StaticBody2D" unique_id=194563356]
 scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_tsdbm")
+
+[node name="TheDark" type="Sprite2D" parent="." unique_id=1887689143]
+visible = false
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 0.21568628)
+z_index = -1
+position = Vector2(1.5258789e-05, -4.5474735e-13)
+scale = Vector2(2000, 2000)
+texture = SubResource("PlaceholderTexture2D_mf81u")
 
 [node name="Spinners" type="Node" parent="." unique_id=1643844216]
 
