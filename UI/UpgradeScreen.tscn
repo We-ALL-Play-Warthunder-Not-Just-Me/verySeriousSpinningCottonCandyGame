@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://bexbq4r4mt8f7" path="res://UI/upgrade_screen.gd" id="1_0pfdi"]
 [ext_resource type="Texture2D" uid="uid://7k6fbj52h483" path="res://Assets/Images/Very Serious Arrows2.png" id="1_aam7x"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="1_slflh"]
-[ext_resource type="Resource" path="res://Player/Upgrades.tres" id="2_0ae7b"]
+[ext_resource type="Resource" uid="uid://4yv500v1gvq6" path="res://Player/Upgrades.tres" id="2_0ae7b"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="2_c0mga"]
 [ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="3_o0opg"]
 [ext_resource type="Texture2D" uid="uid://dv6lfvem7h33e" path="res://Assets/Images/Very Serious Arrows1.png" id="3_slflh"]
 [ext_resource type="Texture2D" uid="uid://p027gxontir7" path="res://Assets/Images/Very Serious Enemy.png" id="6_s5q16"]
+[ext_resource type="AudioStream" uid="uid://bo2avhvg753iw" path="res://Assets/Music/Very Serious Menu Music.wav" id="9_jbx8c"]
+[ext_resource type="Script" uid="uid://0xa2p6p1b7d3" path="res://UI/continue_button.gd" id="9_m2w3t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txwkd"]
 
@@ -308,3 +310,12 @@ size_flags_vertical = 8
 texture_normal = ExtResource("2_c0mga")
 texture_pressed = ExtResource("3_slflh")
 texture_hover = ExtResource("1_aam7x")
+script = ExtResource("9_m2w3t")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1874811188]
+stream = ExtResource("9_jbx8c")
+volume_db = -0.5
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="backgroundthing/PanelContainer/MarginContainer/MarginContainer/Continue Button" to="backgroundthing/PanelContainer/MarginContainer/MarginContainer/Continue Button" method="_on_pressed"]

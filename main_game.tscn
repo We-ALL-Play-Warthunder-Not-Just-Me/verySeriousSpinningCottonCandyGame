@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://TestTimer.gd" id="4_dugkq"]
 [ext_resource type="AudioStream" uid="uid://xar8uhwh766e" path="res://Assets/Music/Very Serious Cotton Candy Making.wav" id="5_dugkq"]
 [ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
+[ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="6_4srsv"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="7_f52ns"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsdbm"]
@@ -18,12 +19,15 @@ size = Vector2(128.00002, 128)
 
 [node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, -128)
+max_contacts_reported = 0
 
 [node name="Blue Tornado" parent="Spinners" unique_id=2016280512 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, 128)
+max_contacts_reported = 0
 
 [node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
 position = Vector2(-128, -128)
+max_contacts_reported = 0
 
 [node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
 position = Vector2(-128, 128)
@@ -46,13 +50,14 @@ offset_left = -24.0
 offset_top = -152.0
 offset_right = 24.0
 offset_bottom = -129.0
-text = "45"
+text = "30"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_dugkq")
+candy_bank = ExtResource("6_4srsv")
 
 [node name="Timer" type="Timer" parent="GameTime" unique_id=405559357]
-wait_time = 45.0
+wait_time = 30.0
 one_shot = true
 autostart = true
 
