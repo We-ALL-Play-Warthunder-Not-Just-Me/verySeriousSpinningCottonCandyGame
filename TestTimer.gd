@@ -20,24 +20,43 @@ func _process(_delta: float) -> void:
 			get_tree().change_scene_to_file(level_fqn)
 
 func calculate_scores():
-	final_text = "[b]FIN[/b]"
+	final_text = "[outline_size={32}][b][color=ffe737][outline_color=4f1507]FIN[/outline_color][/color][/b][/outline_size]"
 	var scores_array = []
 	for player in candy_tracker.spinners_dictionary:
 		scores_array.append([candy_tracker.spinners_dictionary[player], player])
 	scores_array.sort()
 	scores_array.reverse()
-	var player_placement = 0
+	var placement = 0
 	var win_multiplier = 0
+	var multiplier_display = ""
 	for scores in scores_array:
-		player_placement+= 1
-		var score_candy = "\n" + scores[1] + " Candy: " + str(scores[0])
+		placement += 1
+		var spinner_placed: String
+		if placement == 1:
+			spinner_placed = "[color=fec9ed][outline_color=cf3c71]1st - "
+		elif placement == 2:
+			spinner_placed = "[color=cc69e4][outline_color=00177d]2nd - "
+		elif placement == 3:
+			spinner_placed = "[color=6264dc][outline_color=211640]3rd - "
+		elif placement == 4:
+			spinner_placed = "[color=e03c28][outline_color=4f1507]4th - "
+			
+		var score_candy = "\n" + spinner_placed + scores[1] + ": " + str(scores[0]) + "[/outline_color][/color]"
 		final_text += score_candy
 		if scores[1] == "Player":
-			if player_placement == 1: win_multiplier = 2.0
-			elif player_placement == 2: win_multiplier = 1.5
-			elif player_placement == 3: win_multiplier = 1.0
-			elif player_placement == 4: win_multiplier = 0.5
-	final_text += "\nPlayer gets a multiplier of: " + str(win_multiplier)
+			if placement == 1:
+				win_multiplier = 2.0 
+				multiplier_display = "[color=fec9ed][outline_color=cf3c71][font_size={56}]\n\nPlayer gets a multiplier of: " + str(win_multiplier)
+			elif placement == 2:
+				win_multiplier = 1.5
+				multiplier_display = "[color=cc69e4][outline_color=00177d][font_size={56}]\n\nPlayer gets a multiplier of: " + str(win_multiplier)
+			elif placement == 3:
+				win_multiplier = 1.0
+				multiplier_display = "[color=6264dc][outline_color=211640][font_size={56}]\n\nPlayer gets a multiplier of: " + str(win_multiplier) 
+			elif placement == 4:
+				win_multiplier = 0.5
+				multiplier_display = "[color=e03c28][outline_color=4f1507][font_size={56}]\n\nYour Candy Multiplier: " + str(win_multiplier)
+	final_text += multiplier_display
 	round_over_text.append_text(final_text)
 	round_over_text.visible = true
 	var player_winnings = floori(candy_tracker.spinners_dictionary["Player"] * win_multiplier)
@@ -46,6 +65,9 @@ func calculate_scores():
 
 func round_end():
 	Engine.set_time_scale(1.0)
+	candy_tracker.visible = false
+	self.visible = false
+	center_stage.gravity = 0.0
 	camera.switch_camera_points(center_stage)
 	the_dark.visible = false
 	round_over = true

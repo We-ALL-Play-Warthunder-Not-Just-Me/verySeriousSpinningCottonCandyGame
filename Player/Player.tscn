@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://c1kjh2bp3nhq6"]
 
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="1_3qydi"]
-[ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="1_ddoul"]
 [ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_0j2ni"]
 [ext_resource type="Script" uid="uid://buuube8f227ie" path="res://Player/player_rigid.gd" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
+[ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_v0k0e"]
 [ext_resource type="Script" uid="uid://clqxigseoeluk" path="res://Player/arrow_display.gd" id="4_j23h2"]
 [ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="7_vlldt"]
 [ext_resource type="Script" uid="uid://cinvxcnc1wpyu" path="res://Player/PlayerUpgrades.gd" id="8_s1rgi"]
@@ -14,7 +14,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
 friction = 0.0
-bounce = 0.4
+bounce = 0.8
 
 [sub_resource type="Animation" id="Animation_8g4oa"]
 resource_name = "PlayerSpinHigh"
@@ -91,7 +91,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
-radius = 9.0
+radius = 12.0
 
 [sub_resource type="Resource" id="Resource_j23h2"]
 script = ExtResource("8_s1rgi")
@@ -101,7 +101,7 @@ metadata/_custom_type_script = "uid://cinvxcnc1wpyu"
 radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
-radius = 11.0
+radius = 15.0
 
 [node name="Player" type="RigidBody2D" unique_id=222236015]
 mass = 0.005
@@ -117,7 +117,9 @@ texture = ExtResource("2_0j2ni")
 offset = Vector2(-2, 0)
 
 [node name="VerySeriousPlayer" type="Sprite2D" parent="." unique_id=1977203792]
-texture = ExtResource("1_ddoul")
+texture = ExtResource("3_v0k0e")
+hframes = 2
+vframes = 2
 
 [node name="PlayerAnimations" type="AnimationPlayer" parent="VerySeriousPlayer" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")

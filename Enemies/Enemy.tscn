@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://byggay1shakk"]
 
 [ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_biruh"]
-[ext_resource type="Texture2D" uid="uid://p027gxontir7" path="res://Assets/Images/Very Serious Enemy.png" id="1_wv4gc"]
 [ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_n1bor"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="4_7mq4p"]
+[ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="4_n1bor"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="5_k2bks"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="6_oiydt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
 friction = 0.0
-bounce = 0.4
+bounce = 0.8
 
 [sub_resource type="Animation" id="Animation_8g4oa"]
 resource_name = "PlayerSpinHigh"
@@ -86,10 +86,10 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
-radius = 9.0
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1bor"]
-radius = 11.0
+radius = 15.0
 
 [node name="Enemy" type="RigidBody2D" unique_id=222236015]
 mass = 0.005
@@ -106,13 +106,16 @@ offset = Vector2(-2, 0)
 
 [node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("6_oiydt")]
 offset_left = -12.0
-offset_top = -16.0
+offset_top = -21.0
 offset_right = 12.0
-offset_bottom = -11.0
+offset_bottom = -16.0
 health = NodePath("../HealthComponent")
 
 [node name="VerySeriousEnemy" type="Sprite2D" parent="." unique_id=1977203792]
-texture = ExtResource("1_wv4gc")
+texture = ExtResource("4_n1bor")
+hframes = 2
+vframes = 2
+frame = 1
 
 [node name="EnemyAnimations" type="AnimationPlayer" parent="VerySeriousEnemy" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")

@@ -16,6 +16,7 @@ var mouse_on_player = false
 @onready var dash_graphic = $VerySeriousDash
 @onready var the_dark = get_node("/root/MainGame/TheDark")
 @onready var dash_bar = $CanvasLayer/DashBar
+@onready var health_bar = $CanvasLayer/HealthBar
 var can_dash = true
 var aiming = false
 var dash_countdown
@@ -81,6 +82,10 @@ func _process(delta: float) -> void:
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
 		health.HealthDecay = 0
+		dash_graphic.visible = false
+		draw_arrow.visible = false
+		health_bar.visible = false
+		dash_bar.visible = false
 
 	var to_center = self.position.direction_to(center_stage.position)
 	self.apply_force(to_center * center_stage.gravity)

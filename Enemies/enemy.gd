@@ -67,6 +67,7 @@ func _process(delta: float) -> void:
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
 		health.HealthDecay = 0
+		dash_graphic.visible = false
 
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()

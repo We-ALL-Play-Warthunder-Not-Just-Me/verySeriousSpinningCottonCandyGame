@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d1143h5fnthge"]
 
+[ext_resource type="Texture2D" uid="uid://cfuhvkvwid7v5" path="res://Assets/Images/Very Serious Arena.png" id="1_02kkc"]
 [ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://center_stage.gd" id="1_2pltu"]
 [ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://player_spawn_test.gd" id="1_l5ukw"]
 [ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_l5ukw"]
@@ -10,13 +11,43 @@
 [ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
 [ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="6_4srsv"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="7_f52ns"]
+[ext_resource type="FontFile" uid="uid://cttbx20lipnhr" path="res://Fonts/IsWasted.ttf" id="9_krmtw"]
+[ext_resource type="FontFile" uid="uid://biei7ob14e0ew" path="res://Fonts/Gibberesque.ttf" id="11_aomqu"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_krmtw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsdbm"]
 size = Vector2(128.00002, 128)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b8qva"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsdbm"]
+radius = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_an1vu"]
+size = Vector2(16, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgkyn"]
+size = Vector2(16, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpaub"]
+size = Vector2(128, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krmtw"]
+size = Vector2(128.00003, 16)
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mf81u"]
 
 [node name="MainGame" type="Node" unique_id=2037128485]
+
+[node name="BackgroundColor" type="Sprite2D" parent="." unique_id=1995283256]
+modulate = Color(0.08235294, 0.08235294, 0.08235294, 1)
+z_index = -1
+position = Vector2(1.5258789e-05, -4.5474735e-13)
+scale = Vector2(2000, 2000)
+texture = SubResource("CanvasTexture_krmtw")
 
 [node name="Wall" type="Sprite2D" parent="." unique_id=1647511951]
 z_index = -1
@@ -68,6 +99,59 @@ texture = ExtResource("7_f52ns")
 scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_tsdbm")
 
+[node name="VerySeriousArena" type="Sprite2D" parent="." unique_id=1504086012]
+z_index = -1
+position = Vector2(-1.5258789e-05, 0)
+scale = Vector2(0.9999998, 1)
+texture = ExtResource("1_02kkc")
+
+[node name="BouncePad" type="StaticBody2D" parent="." unique_id=1780365885]
+position = Vector2(-1.5258789e-05, 0)
+scale = Vector2(0.9999998, 1)
+physics_material_override = SubResource("PhysicsMaterial_b8qva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad" unique_id=1024222228]
+shape = SubResource("CircleShape2D_tsdbm")
+debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
+
+[node name="BouncePad2" type="StaticBody2D" parent="." unique_id=1489324685]
+position = Vector2(-224.00002, 0)
+scale = Vector2(0.9999998, 1)
+physics_material_override = SubResource("PhysicsMaterial_b8qva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad2" unique_id=1849764393]
+position = Vector2(1.5258789e-05, 0)
+shape = SubResource("RectangleShape2D_an1vu")
+debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
+
+[node name="BouncePad3" type="StaticBody2D" parent="." unique_id=1036731952]
+position = Vector2(224.00002, 0)
+scale = Vector2(0.9999998, 1)
+physics_material_override = SubResource("PhysicsMaterial_b8qva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad3" unique_id=1010336694]
+position = Vector2(-3.0517578e-05, 0)
+shape = SubResource("RectangleShape2D_jgkyn")
+debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
+
+[node name="BouncePad4" type="StaticBody2D" parent="." unique_id=1361175782]
+position = Vector2(0, -224)
+scale = Vector2(0.9999998, 1)
+physics_material_override = SubResource("PhysicsMaterial_b8qva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad4" unique_id=1402460114]
+shape = SubResource("RectangleShape2D_qpaub")
+debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
+
+[node name="BouncePad5" type="StaticBody2D" parent="." unique_id=557505003]
+position = Vector2(0, 224)
+scale = Vector2(0.9999998, 1)
+physics_material_override = SubResource("PhysicsMaterial_b8qva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad5" unique_id=1749053620]
+shape = SubResource("RectangleShape2D_krmtw")
+debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
+
 [node name="TheDark" type="Sprite2D" parent="." unique_id=1887689143]
 visible = false
 modulate = Color(0.012617188, 0.012617188, 0.012617188, 0.21568628)
@@ -102,6 +186,7 @@ one_shot = true
 
 [node name="CenterStage" type="Node2D" parent="." unique_id=2022388985]
 script = ExtResource("1_2pltu")
+gravity = 1.5
 
 [node name="FancyCamera" type="Camera2D" parent="." unique_id=1344449492]
 zoom = Vector2(2, 2)
@@ -125,6 +210,10 @@ offset_left = -24.0
 offset_right = 24.0
 offset_bottom = 42.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.906, 0.216, 1)
+theme_override_colors/font_outline_color = Color(0.8784314, 0.23529412, 0.15686275, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("9_krmtw")
 theme_override_font_sizes/font_size = 64
 text = "30"
 horizontal_alignment = 1
@@ -150,16 +239,27 @@ offset_right = 360.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.63529414)
+theme_override_constants/shadow_outline_size = 8
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("11_aomqu")
+theme_override_fonts/bold_font = ExtResource("9_krmtw")
 theme_override_font_sizes/normal_font_size = 48
-theme_override_font_sizes/bold_font_size = 128
+theme_override_font_sizes/bold_font_size = 192
 tab_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CottonCandyTracker" type="Label" parent="CanvasLayer" unique_id=1152458661]
-offset_right = 88.0
-offset_bottom = 16.0
-theme_override_font_sizes/font_size = 32
+offset_right = 375.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.99607843, 0.7882353, 0.92941177, 1)
+theme_override_colors/font_outline_color = Color(0.5294118, 0.08627451, 0.27450982, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("11_aomqu")
+theme_override_font_sizes/font_size = 48
 text = "Cotton Candy: 000"
 script = ExtResource("6_2pltu")
 
