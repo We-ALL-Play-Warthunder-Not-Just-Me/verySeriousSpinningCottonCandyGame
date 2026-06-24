@@ -1,8 +1,8 @@
 extends Node
 class_name HealthComponent
 
-@export_range(0, 100, 1, "or_greater", "prefer_slider") var MaxHp: int = 100
-@export_range(0, 100, 1, "or_greater", "prefer_slider") var CurrentHP: int = 100
+@export_range(0, 200, 1, "or_greater", "prefer_slider") var MaxHp: int = 100
+@export_range(0, 200, 1, "or_greater", "prefer_slider") var CurrentHP: int = 100
 @export_range(0, 100, 1, "or_greater", "prefer_slider") var HealthDecay: int = 5
 # We lose spin every few thingies
 
