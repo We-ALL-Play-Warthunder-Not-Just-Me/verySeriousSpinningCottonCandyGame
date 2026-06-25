@@ -7,6 +7,7 @@ extends RigidBody2D
 @onready var health = $HealthComponent
 @onready var dash_graphic = $VerySeriousDash
 @onready var animations = $VerySeriousEnemy/EnemyAnimations
+@onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
 var min_wait_time = 0.5
 var max_wait_time = 2.0
 var final_wait_time
@@ -125,7 +126,9 @@ func steal_spin(enemy: RigidBody2D):
 
 func _on_damage_area_entered(body: Node2D) -> void:
 	if body.name != self.name and body is RigidBody2D:
+		sfx.random_hurt_sound()
 		steal_spin(body)
 
 func spin_depleted():
+	sfx.random_death_sound()
 	spawner.kill_spinner(self)

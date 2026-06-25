@@ -24,6 +24,7 @@ var dash_countdown
 var previous_frame: Vector2
 @onready var spawner = get_node("/root/MainGame/Spawner")
 var hold_decay
+@onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
 
 func _ready() -> void:
 	hold_decay = health.HealthDecay
@@ -128,9 +129,11 @@ func switch_mouse_states():
 
 func _on_damage_area_entered(body: Node2D) -> void:
 	if body.name != self.name and body is RigidBody2D:
+		sfx.random_hurt_sound()
 		steal_spin(body)
 
 func spin_depleted():
 	Engine.set_time_scale(1.0)
 	the_dark.visible = false
+	sfx.random_death_sound()
 	spawner.kill_spinner(self)
