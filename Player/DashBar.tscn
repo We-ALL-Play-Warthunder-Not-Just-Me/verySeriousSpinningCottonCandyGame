@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d3tdis6vd653i"]
+
+[ext_resource type="Script" uid="uid://dmpi6m05pr4cv" path="res://Player/dash_bar.gd" id="1_bjmdq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0j2ni"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v0k0e"]
+bg_color = Color(0.70980394, 0.93333334, 0.10980392, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0j2ni"]
+bg_color = Color(0.2051174, 0.20511746, 0.20511732, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5wa8t"]
+bg_color = Color(0.93333334, 0.93333334, 0.93333334, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="DashBar" type="ProgressBar" unique_id=159688414 node_paths=PackedStringArray("damagebar", "timer")]
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_0j2ni")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v0k0e")
+max_value = 50.0
+step = 1.0
+value = 15.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("1_bjmdq")
+damagebar = NodePath("Damage")
+timer = NodePath("Timer")
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="ProgressBar" parent="." unique_id=1983276324]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_0j2ni")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5wa8t")
+max_value = 50.0
+step = 1.0
+value = 25.0
+fill_mode = 3
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="." unique_id=1379911400]
+wait_time = 0.2
+
+[node name="RechargeIntervals" type="Timer" parent="." unique_id=1754806076]
+one_shot = true
+
+[connection signal="timeout" from="RechargeIntervals" to="." method="recharge_timer_tick"]

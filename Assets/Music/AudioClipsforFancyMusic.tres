@@ -1,0 +1,31 @@
+[gd_resource type="AudioStreamInteractive" format=3 uid="uid://bf4u5senloteh"]
+
+[ext_resource type="AudioStream" uid="uid://bcjjkfj7hcu85" path="res://Assets/Music/Very Serious CC Intro.wav" id="1_pha7n"]
+[ext_resource type="AudioStream" uid="uid://dev5incqx85h3" path="res://Assets/Music/Very Serious CC Loop.wav" id="2_1towb"]
+[ext_resource type="AudioStream" uid="uid://b1req0kg1k5nx" path="res://Assets/Music/Very Serious CC Outro.wav" id="3_8s5lm"]
+
+[resource]
+clip_count = 4
+clip_0/name = &"Very Serious Cc Intro"
+clip_0/stream = ExtResource("1_pha7n")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Very Serious Cc Loop"
+clip_1/stream = ExtResource("2_1towb")
+clip_1/auto_advance = 1
+clip_1/next_clip = 2
+clip_2/name = &"Very Serious Cc Loop"
+clip_2/stream = ExtResource("2_1towb")
+clip_2/auto_advance = 1
+clip_2/next_clip = 1
+clip_3/name = &"Very Serious Cc Outro"
+clip_3/stream = ExtResource("3_8s5lm")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(1, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+}
+}

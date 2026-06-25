@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b1req0kg1k5nx"
+path="res://.godot/imported/Very Serious CC Outro.wav-c4a99277268c0ad0293447fc88a88468.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Very Serious CC Outro.wav"
+dest_files=["res://.godot/imported/Very Serious CC Outro.wav-c4a99277268c0ad0293447fc88a88468.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

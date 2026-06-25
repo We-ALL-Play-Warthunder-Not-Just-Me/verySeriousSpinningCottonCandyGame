@@ -3,25 +3,29 @@ extends RigidBody2D
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 @onready var spawner = get_node("/root/MainGame/Spawner")
 @onready var spinners = get_node("..")
+@onready var health_bar = $HealthBar
 @onready var health = $HealthComponent
 @onready var dash_graphic = $VerySeriousDash
 @onready var animations = $VerySeriousEnemy/EnemyAnimations
+@onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
 var min_wait_time = 0.5
 var max_wait_time = 2.0
 var final_wait_time
 var previous_frame: Vector2
 var max_power = 50
-var min_power = 10
-var max_amplifier = 3
+var min_power = 25
+var max_amplifier = 3.0
 var amplifier
 var dash_time = 3
 var dash_countdown
 var can_dash = true
 var candy_multiplier
 var max_damage = 15
+var hold_decay
 
 func _ready() -> void:
 	final_wait_time = randf_range(min_wait_time, max_wait_time)
+	hold_decay = health.HealthDecay
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,6 +33,8 @@ func _process(delta: float) -> void:
 	self.apply_force(to_center * center_stage.gravity)
 	
 	if center_stage.round_playing == true:
+		health.HealthDecay = hold_decay
+		health_bar.visible = true
 		if can_dash == true:
 			final_wait_time -= delta
 			if final_wait_time < 0:
@@ -46,21 +52,29 @@ func _process(delta: float) -> void:
 		
 		if health.CurrentHP > (health.MaxHp/2):
 			animations.play("PlayerSpinHigh")
-			candy_multiplier = 3
+			candy_multiplier = 6
 			amplifier = max_amplifier
 		elif health.CurrentHP > (health.MaxHp/4):
 			animations.play("PlayerSpinMed")
-			candy_multiplier = 2
-			amplifier = (max_amplifier/2)
+			candy_multiplier = 4
+			if (max_amplifier/1.5) < 1:
+				amplifier = 1
+			else:
+				amplifier = (max_amplifier/1.5)
 		elif health.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
-			candy_multiplier = 1
-			amplifier = (max_amplifier/4)
+			candy_multiplier = 2
+			if (max_amplifier/2) < 1:
+				amplifier = 1
+			else:
+				amplifier = (max_amplifier/2)
 		else:
 			animations.stop()
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
 		health.HealthDecay = 0
+		dash_graphic.visible = false
+		health_bar.visible = false
 
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()
@@ -111,9 +125,10 @@ func steal_spin(enemy: RigidBody2D):
 		print("We're not strong enough...")
 
 func _on_damage_area_entered(body: Node2D) -> void:
-	print("boop")
 	if body.name != self.name and body is RigidBody2D:
+		sfx.random_hurt_sound()
 		steal_spin(body)
 
 func spin_depleted():
+	sfx.random_death_sound()
 	spawner.kill_spinner(self)
