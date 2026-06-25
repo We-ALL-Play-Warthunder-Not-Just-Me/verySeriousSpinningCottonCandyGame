@@ -108,6 +108,7 @@ mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
 continuous_cd = 2
+contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("2_8g4oa")
 

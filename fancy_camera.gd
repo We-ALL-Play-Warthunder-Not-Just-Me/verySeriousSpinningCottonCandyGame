@@ -1,21 +1,23 @@
 extends Camera2D
 
-@onready var center_stage = get_node("/root/MainGame/CenterStage")
+@export var center_stage: Node2D
 @onready var spinners = get_node("/root/MainGame/Spinners")
-var follow_this = Node
+@onready var follow_this = center_stage
+@onready var smooth_zoom = self.get_zoom().x
+@onready var target_zoom = CENTER_ZOOM
 var follow_player = false
 const PLAYER_ZOOM = 2.8
 const CENTER_ZOOM = 2.0
 const ZOOM_SPEED = 1.5
-var smooth_zoom
-var target_zoom
 
-func _ready() -> void:
+
+
+func start_camera():
 	var player = spinners.get_child(3)
 	follow_this = player
-	follow_player = true
 	smooth_zoom = self.get_zoom().x
 	target_zoom = PLAYER_ZOOM
+	follow_player = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,6 +38,7 @@ func _process(delta: float) -> void:
 func switch_camera_points(node: Node):
 	follow_this = node
 	smooth_zoom = self.get_zoom().x
+	print(center_stage.round_playing)
 	if node.name == "Player":
 		follow_player = true
 		target_zoom = PLAYER_ZOOM
@@ -46,7 +49,7 @@ func switch_camera_points(node: Node):
 
 func _on_spinners_child_entered_tree(node: Node) -> void:
 	print(node)
-	if node.name == "Player":
+	if node.name == "Player" and center_stage.round_playing:
 		switch_camera_points(node)
 
 func _on_spinners_child_exiting_tree(node: Node) -> void:

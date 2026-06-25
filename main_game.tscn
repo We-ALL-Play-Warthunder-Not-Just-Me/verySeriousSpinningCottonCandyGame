@@ -2,16 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://cfuhvkvwid7v5" path="res://Assets/Images/Very Serious Arena.png" id="1_02kkc"]
 [ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://center_stage.gd" id="1_2pltu"]
-[ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://player_spawn_test.gd" id="1_l5ukw"]
+[ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://spinner_spawner.gd" id="1_l5ukw"]
 [ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_l5ukw"]
+[ext_resource type="Texture2D" uid="uid://hkyytamvn15b" path="res://Assets/Images/Very Serious Round Bumper.png" id="3_jgkyn"]
 [ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Enemy.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://TestTimer.gd" id="4_dugkq"]
-[ext_resource type="AudioStream" uid="uid://xar8uhwh766e" path="res://Assets/Music/Very Serious Cotton Candy Making.wav" id="5_dugkq"]
+[ext_resource type="Texture2D" uid="uid://b5qmy2h6f8als" path="res://Assets/Images/Very Serious Square Bumper.png" id="4_qpaub"]
 [ext_resource type="Script" uid="uid://m6efbwsg5kqb" path="res://fancy_camera.gd" id="5_mf81u"]
 [ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
 [ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="6_4srsv"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="7_f52ns"]
 [ext_resource type="FontFile" uid="uid://cttbx20lipnhr" path="res://Fonts/IsWasted.ttf" id="9_krmtw"]
+[ext_resource type="AudioStream" uid="uid://bf4u5senloteh" path="res://Assets/Music/AudioClipsforFancyMusic.tres" id="10_an1vu"]
+[ext_resource type="Script" uid="uid://dvc6eqm8pg5fv" path="res://fancy_music.gd" id="11_an1vu"]
 [ext_resource type="FontFile" uid="uid://biei7ob14e0ew" path="res://Fonts/Gibberesque.ttf" id="11_aomqu"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_krmtw"]
@@ -27,10 +30,10 @@ bounce = 1.0
 radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_an1vu"]
-size = Vector2(16, 128)
+size = Vector2(128.00008, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgkyn"]
-size = Vector2(16, 128)
+size = Vector2(128.00006, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpaub"]
 size = Vector2(128, 16)
@@ -39,6 +42,10 @@ size = Vector2(128, 16)
 size = Vector2(128.00003, 16)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mf81u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_umrn2"]
+bg_color = Color(0, 0, 0, 0.39215687)
+corner_detail = 1
 
 [node name="MainGame" type="Node" unique_id=2037128485]
 
@@ -110,34 +117,76 @@ position = Vector2(-1.5258789e-05, 0)
 scale = Vector2(0.9999998, 1)
 physics_material_override = SubResource("PhysicsMaterial_b8qva")
 
+[node name="Sprite2D" type="Sprite2D" parent="BouncePad" unique_id=1242025646]
+texture = ExtResource("3_jgkyn")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad" unique_id=1024222228]
 shape = SubResource("CircleShape2D_tsdbm")
 debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
 
 [node name="BouncePad2" type="StaticBody2D" parent="." unique_id=1489324685]
 position = Vector2(-224.00002, 0)
+rotation = 1.5707964
 scale = Vector2(0.9999998, 1)
 physics_material_override = SubResource("PhysicsMaterial_b8qva")
 
+[node name="SquareTexture" type="NinePatchRect" parent="BouncePad2" unique_id=304970697]
+offset_left = -63.999985
+offset_top = -8.0
+offset_right = 64.000046
+offset_bottom = 8.0
+texture = ExtResource("4_qpaub")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad2" unique_id=1849764393]
-position = Vector2(1.5258789e-05, 0)
+position = Vector2(0.0001373291, 0)
 shape = SubResource("RectangleShape2D_an1vu")
 debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
 
 [node name="BouncePad3" type="StaticBody2D" parent="." unique_id=1036731952]
 position = Vector2(224.00002, 0)
+rotation = -1.5707964
 scale = Vector2(0.9999998, 1)
 physics_material_override = SubResource("PhysicsMaterial_b8qva")
 
+[node name="SquareTexture" type="NinePatchRect" parent="BouncePad3" unique_id=882373828]
+offset_left = -64.000015
+offset_top = -8.0
+offset_right = 64.000015
+offset_bottom = 8.0
+texture = ExtResource("4_qpaub")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad3" unique_id=1010336694]
-position = Vector2(-3.0517578e-05, 0)
+position = Vector2(-0.00012207031, 0)
 shape = SubResource("RectangleShape2D_jgkyn")
 debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
 
 [node name="BouncePad4" type="StaticBody2D" parent="." unique_id=1361175782]
 position = Vector2(0, -224)
+rotation = 3.1415927
 scale = Vector2(0.9999998, 1)
 physics_material_override = SubResource("PhysicsMaterial_b8qva")
+
+[node name="SquareTexture" type="NinePatchRect" parent="BouncePad4" unique_id=2032149881]
+offset_left = -64.000015
+offset_top = -8.0
+offset_right = 64.000015
+offset_bottom = 8.0
+texture = ExtResource("4_qpaub")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad4" unique_id=1402460114]
 shape = SubResource("RectangleShape2D_qpaub")
@@ -147,6 +196,18 @@ debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
 position = Vector2(0, 224)
 scale = Vector2(0.9999998, 1)
 physics_material_override = SubResource("PhysicsMaterial_b8qva")
+
+[node name="SquareTexture" type="NinePatchRect" parent="BouncePad5" unique_id=967087149]
+offset_left = -64.000015
+offset_top = -8.0
+offset_right = 64.000015
+offset_bottom = 8.0
+texture = ExtResource("4_qpaub")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad5" unique_id=1749053620]
 shape = SubResource("RectangleShape2D_krmtw")
@@ -170,9 +231,15 @@ max_contacts_reported = 0
 position = Vector2(128, 128)
 max_contacts_reported = 0
 
+[node name="VerySeriousEnemy" parent="Spinners/Blue Tornado" index="1" unique_id=1977203792]
+frame = 3
+
 [node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
 position = Vector2(-128, -128)
 max_contacts_reported = 0
+
+[node name="VerySeriousEnemy" parent="Spinners/Nib" index="1" unique_id=1977203792]
+frame = 2
 
 [node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
 position = Vector2(-128, 128)
@@ -180,29 +247,41 @@ position = Vector2(-128, 128)
 [node name="Spawner" type="Node2D" parent="." unique_id=1170452474]
 script = ExtResource("1_l5ukw")
 
-[node name="Timer" type="Timer" parent="Spawner" unique_id=197971034]
-wait_time = 5.0
-one_shot = true
-
-[node name="CenterStage" type="Node2D" parent="." unique_id=2022388985]
+[node name="CenterStage" type="Node2D" parent="." unique_id=2022388985 node_paths=PackedStringArray("candy_timer", "candy_timer_label", "game_timer", "game_timer_label", "middle_text", "camera")]
 script = ExtResource("1_2pltu")
 gravity = 1.5
+candy_timer = NodePath("../CanvasLayer/CottonCandyTracker/CandyTimer")
+candy_timer_label = NodePath("../CanvasLayer/CottonCandyTracker")
+game_timer = NodePath("../CanvasLayer/GameTime/Timer")
+game_timer_label = NodePath("../CanvasLayer/GameTime")
+middle_text = NodePath("../CanvasLayer/EndText")
+camera = NodePath("../FancyCamera")
 
-[node name="FancyCamera" type="Camera2D" parent="." unique_id=1344449492]
+[node name="CountdownToPlay" type="Timer" parent="CenterStage" unique_id=643757901]
+wait_time = 1.5
+autostart = true
+
+[node name="FancyCamera" type="Camera2D" parent="." unique_id=1344449492 node_paths=PackedStringArray("center_stage")]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 script = ExtResource("5_mf81u")
+center_stage = NodePath("../CenterStage")
 
-[node name="Music" type="AudioStreamPlayer2D" parent="FancyCamera" unique_id=1580899563]
-stream = ExtResource("5_dugkq")
+[node name="Music" type="AudioStreamPlayer2D" parent="FancyCamera" unique_id=1580899563 node_paths=PackedStringArray("center_stage", "game_time")]
+stream = ExtResource("10_an1vu")
 volume_db = -0.5
 autoplay = true
 bus = &"Music"
+script = ExtResource("11_an1vu")
+center_stage = NodePath("../../CenterStage")
+game_time = NodePath("../../CanvasLayer/GameTime/Timer")
+stream_res = ExtResource("10_an1vu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=109230111]
 
 [node name="GameTime" type="Label" parent="CanvasLayer" unique_id=456201287]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -211,10 +290,14 @@ offset_right = 24.0
 offset_bottom = 42.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.906, 0.216, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5882353)
 theme_override_colors/font_outline_color = Color(0.8784314, 0.23529412, 0.15686275, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 16
+theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("9_krmtw")
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 80
 text = "30"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -222,9 +305,17 @@ script = ExtResource("4_dugkq")
 candy_bank = ExtResource("6_4srsv")
 
 [node name="Timer" type="Timer" parent="CanvasLayer/GameTime" unique_id=405559357]
-wait_time = 30.0
+wait_time = 45.0
 one_shot = true
-autostart = true
+
+[node name="BlackBox" type="Panel" parent="CanvasLayer" unique_id=180726467]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_umrn2")
 
 [node name="EndText" type="RichTextLabel" parent="CanvasLayer" unique_id=10936920]
 visible = false
@@ -239,7 +330,7 @@ offset_right = 360.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.63529414)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5882353)
 theme_override_constants/shadow_outline_size = 8
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
@@ -253,21 +344,29 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CottonCandyTracker" type="Label" parent="CanvasLayer" unique_id=1152458661]
+visible = false
 offset_right = 375.0
 offset_bottom = 45.0
 theme_override_colors/font_color = Color(0.99607843, 0.7882353, 0.92941177, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.47058824)
 theme_override_colors/font_outline_color = Color(0.5294118, 0.08627451, 0.27450982, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("11_aomqu")
 theme_override_font_sizes/font_size = 48
 text = "Cotton Candy: 000"
 script = ExtResource("6_2pltu")
 
 [node name="CandyTimer" type="Timer" parent="CanvasLayer/CottonCandyTracker" unique_id=1219899050]
-autostart = true
 
 [connection signal="child_entered_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_exiting_tree"]
-[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="spawn_player"]
+[connection signal="timeout" from="CenterStage/CountdownToPlay" to="CenterStage" method="timer_ticks"]
+[connection signal="finished" from="FancyCamera/Music" to="FancyCamera/Music" method="_switch_songs"]
 [connection signal="timeout" from="CanvasLayer/GameTime/Timer" to="CanvasLayer/GameTime" method="round_end"]
 [connection signal="timeout" from="CanvasLayer/CottonCandyTracker/CandyTimer" to="CanvasLayer/CottonCandyTracker" method="_on_candy_timer_timeout"]
+
+[editable path="Spinners/Blue Tornado"]
+[editable path="Spinners/Nib"]

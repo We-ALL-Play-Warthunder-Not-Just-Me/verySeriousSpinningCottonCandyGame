@@ -23,10 +23,17 @@ var dash_countdown
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 var previous_frame: Vector2
 @onready var spawner = get_node("/root/MainGame/Spawner")
+var hold_decay
+
+func _ready() -> void:
+	hold_decay = health.HealthDecay
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if center_stage.round_playing == true:
+		health.HealthDecay = hold_decay
+		health_bar.visible = true
+		dash_bar.visible = true
 		if dash_bar.value > dash_damage:
 			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == true:
 				Engine.set_time_scale(0.2)
