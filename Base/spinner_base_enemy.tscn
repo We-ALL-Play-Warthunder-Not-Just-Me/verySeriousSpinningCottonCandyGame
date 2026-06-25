@@ -1,13 +1,11 @@
-[gd_scene format=3 uid="uid://b1183ipcitdve"]
+[gd_scene format=3 uid="uid://blv27pif0d1m1"]
 
-[ext_resource type="Script" uid="uid://fpv8gg2psj67" path="res://Base/SpinnerBase.gd" id="1_pa5h3"]
-[ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="2_ppfmy"]
-[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_e3qi2"]
-[ext_resource type="Script" uid="uid://cqxfnn7eqdyp1" path="res://decay_timer.gd" id="6_pa5h3"]
-[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="7_g41ga"]
-[ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="8_fy2kp"]
-[ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="8_kydgc"]
-[ext_resource type="Resource" uid="uid://4yv500v1gvq6" path="res://Player/Upgrades.tres" id="9_5u230"]
+[ext_resource type="Script" uid="uid://dtjvkchnicnqs" path="res://Base/spinner_base_enemy.gd" id="1_1xtud"]
+[ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="2_pwvgu"]
+[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="3_dcx0s"]
+[ext_resource type="Script" uid="uid://cqxfnn7eqdyp1" path="res://decay_timer.gd" id="4_t1su5"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="5_dpefi"]
+[ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="6_1xtud"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l5ukw"]
 friction = 0.0
@@ -91,14 +89,27 @@ _data = {
 radius = 9.0
 
 [node name="SpinnerBase" type="RigidBody2D" unique_id=625009121 groups=["Spinners"]]
+mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_l5ukw")
 contact_monitor = true
 max_contacts_reported = 3
-script = ExtResource("1_pa5h3")
+script = ExtResource("1_1xtud")
 metadata/_custom_type_script = "uid://fpv8gg2psj67"
 
+[node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=1476259548]
+visible = false
+texture = ExtResource("6_1xtud")
+offset = Vector2(-2, 0)
+
+[node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("5_dpefi")]
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 12.0
+offset_bottom = -11.0
+health = NodePath("../HealthComponent")
+
 [node name="VerySeriousBase" type="Sprite2D" parent="." unique_id=1444086218]
-texture = ExtResource("2_ppfmy")
+texture = ExtResource("2_pwvgu")
 
 [node name="BaseAnimations" type="AnimationPlayer" parent="VerySeriousBase" unique_id=2015750653]
 libraries/ = SubResource("AnimationLibrary_2gy4g")
@@ -108,32 +119,15 @@ autoplay = &"PlayerSpinHigh"
 shape = SubResource("CircleShape2D_0o1qk")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1074329277]
-script = ExtResource("5_e3qi2")
+script = ExtResource("3_dcx0s")
 MaxHp = 10
 CurrentHP = 10
 HealthDecay = 1
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
-[node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=874789130 node_paths=PackedStringArray("base")]
-script = ExtResource("6_pa5h3")
+[node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=392935520 node_paths=PackedStringArray("base")]
+script = ExtResource("4_t1su5")
 base = NodePath("../..")
 metadata/_custom_type_script = "uid://cqxfnn7eqdyp1"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=533540074]
-
-[node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("7_g41ga")]
-anchor_left = 0.0125
-anchor_right = 0.5601562
-health = NodePath("../../HealthComponent")
-
-[node name="upgrade_manager" type="Node" parent="." unique_id=704935483]
-script = ExtResource("8_fy2kp")
-upgrades = ExtResource("9_5u230")
-metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
-
-[node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=1055284461]
-visible = false
-texture = ExtResource("8_kydgc")
-offset = Vector2(-2, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

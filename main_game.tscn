@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://center_stage.gd" id="1_2pltu"]
 [ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://player_spawn_test.gd" id="1_l5ukw"]
-[ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_l5ukw"]
-[ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Enemy.tscn" id="4_6bm6p"]
+[ext_resource type="PackedScene" uid="uid://blv27pif0d1m1" path="res://Base/spinner_base_enemy.tscn" id="2_4srsv"]
+[ext_resource type="PackedScene" uid="uid://bb6seixm65aku" path="res://Base/spinner_base_player.tscn" id="2_l5ukw"]
 [ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://TestTimer.gd" id="4_dugkq"]
 [ext_resource type="AudioStream" uid="uid://xar8uhwh766e" path="res://Assets/Music/Very Serious Cotton Candy Making.wav" id="5_dugkq"]
 [ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
@@ -16,17 +16,21 @@ size = Vector2(128.00002, 128)
 
 [node name="Spinners" type="Node" parent="." unique_id=1643844216]
 
-[node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
-position = Vector2(128, -128)
+[node name="Player" parent="Spinners" unique_id=330208589 node_paths=PackedStringArray("gravity_center") instance=ExtResource("2_l5ukw")]
+position = Vector2(-129, 132)
+gravity_center = NodePath("../../CenterStage")
 
-[node name="Blue Tornado" parent="Spinners" unique_id=2016280512 instance=ExtResource("4_6bm6p")]
-position = Vector2(128, 128)
+[node name="Jimby" parent="Spinners" unique_id=625009121 node_paths=PackedStringArray("gravity_center") instance=ExtResource("2_4srsv")]
+position = Vector2(130, 131)
+gravity_center = NodePath("../../CenterStage")
 
-[node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
-position = Vector2(-128, -128)
+[node name="Blue Tornado" parent="Spinners" unique_id=802002816 node_paths=PackedStringArray("gravity_center") instance=ExtResource("2_4srsv")]
+position = Vector2(123, -129)
+gravity_center = NodePath("../../CenterStage")
 
-[node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
-position = Vector2(-128, 128)
+[node name="Nib" parent="Spinners" unique_id=1926651722 node_paths=PackedStringArray("gravity_center") instance=ExtResource("2_4srsv")]
+position = Vector2(-126, -129)
+gravity_center = NodePath("../../CenterStage")
 
 [node name="Spawner" type="Node2D" parent="." unique_id=1170452474]
 script = ExtResource("1_l5ukw")

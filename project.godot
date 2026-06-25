@@ -34,6 +34,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="VerySeriousSpinning"
 
+[global_group]
+
+Spinners=""
+
 [input]
 
 MouseLeftClick={
