@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://d36es45sofmv5" path="res://Assets/Sound Effects/Fk U.wav" id="18_lght5"]
 [ext_resource type="AudioStream" uid="uid://cgn6qfvsymrm0" path="res://Assets/Sound Effects/Hey.wav" id="19_lfj8l"]
 [ext_resource type="AudioStream" uid="uid://da51iwttpol0n" path="res://Assets/Sound Effects/why.wav" id="20_ac0cv"]
+[ext_resource type="Texture2D" uid="uid://c7bmj4q3mbq2u" path="res://Assets/Images/Very Serious Cotton Candy.png" id="26_lfj8l"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_krmtw"]
 
@@ -371,8 +372,10 @@ vertical_alignment = 1
 
 [node name="CottonCandyTracker" type="Label" parent="CanvasLayer" unique_id=1152458661]
 visible = false
-offset_right = 375.0
-offset_bottom = 45.0
+offset_left = 50.0
+offset_top = 14.0
+offset_right = 394.0
+offset_bottom = 56.0
 theme_override_colors/font_color = Color(0.99607843, 0.7882353, 0.92941177, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.47058824)
 theme_override_colors/font_outline_color = Color(0.5294118, 0.08627451, 0.27450982, 1)
@@ -381,11 +384,19 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("11_aomqu")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 44
 text = "Cotton Candy: 000"
 script = ExtResource("6_2pltu")
 
 [node name="CandyTimer" type="Timer" parent="CanvasLayer/CottonCandyTracker" unique_id=1219899050]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CottonCandyTracker" unique_id=833315355]
+layout_mode = 0
+offset_left = -50.0
+offset_top = -14.0
+offset_right = -4.0
+offset_bottom = 42.0
+texture = ExtResource("26_lfj8l")
 
 [connection signal="child_entered_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_exiting_tree"]
