@@ -37,9 +37,7 @@ func _process(delta: float) -> void:
 		candy_tracker.candy_multiplier = 0
 		health.HealthDecay = 0
 
-	var to_center = self.position.direction_to(center_stage.position)
-	self.apply_force(to_center * center_stage.gravity)
-	previous_frame = self.linear_velocity
+	
 	
 
 func Dash_Logic(delta:float):

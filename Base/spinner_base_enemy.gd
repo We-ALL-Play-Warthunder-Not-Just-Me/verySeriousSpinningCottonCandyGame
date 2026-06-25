@@ -55,7 +55,8 @@ func Dash_Logic(delta:float):
 		if dash_ready == true:
 			if wait_time > final_wait_time:
 				pick_target(spinners.get_children())
-				final_wait_time = (dash_duration_max/2)+randf_range(min_wait_time, dash_ready_timer_max)
+				final_wait_time = dash_duration_max+randf_range(min_wait_time, dash_ready_timer_max)
+				wait_time = 0
 	pass
 
 #func launch_self(target_position: Vector2):

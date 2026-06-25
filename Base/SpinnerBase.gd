@@ -17,7 +17,8 @@ var power: float = 60
 #In case we want an object to have multiple gravity sources
 @export var gravity_second: Node2D
 #Adjusts how strong the gravitational pull is on this spinner
-@export var gravity_multiplier: float = 1.0
+@export var gravity_multiplier: float = 0.0005
+
 var push_direction: Vector2
 var dash_ready: bool = true
 var iframes: bool = false
@@ -53,6 +54,7 @@ var current_state: State = State.STARTING
 func _process(delta: float) -> void:
 	State_Machine()
 	if center_stage.round_playing == true:
+		#Apply_Gravity()
 		Apply_Timers(delta)
 		Dash_Logic(delta)
 		
@@ -174,11 +176,11 @@ func Apply_Gravity() -> void:
 	# if there is no gravity center we don't do anything
 	if(gravity_center != null):
 		var to_center: Vector2 = self.position.direction_to(gravity_center.position)
-		self.apply_force(to_center * gravity_center.gravity * self.position.distance_squared_to(gravity_center.position)* amplifier)
+		self.apply_force(to_center * gravity_center.gravity * self.position.distance_squared_to(gravity_center.position)* gravity_multiplier * amplifier)
 		#if we have two gravity sources then we apply the second one too
 		if(gravity_second != null):
 			var to_second: Vector2 = self.position.direction_to(gravity_second.position)
-			self.apply_force(to_second * gravity_second.gravity * self.position.distance_squared_to(gravity_second.position) * amplifier)
+			self.apply_force(to_second * gravity_second.gravity * self.position.distance_squared_to(gravity_second.position)* gravity_multiplier * amplifier)
 
 func Take_Damage(damage:float):
 	health.takeDamage(damage*armor)

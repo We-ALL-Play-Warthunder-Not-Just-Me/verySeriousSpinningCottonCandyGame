@@ -41,6 +41,7 @@ one_shot = true
 
 [node name="CenterStage" type="Node2D" parent="." unique_id=2022388985]
 script = ExtResource("1_2pltu")
+gravity = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1344449492]
 zoom = Vector2(2, 2)
