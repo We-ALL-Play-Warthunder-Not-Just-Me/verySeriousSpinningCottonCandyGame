@@ -95,7 +95,7 @@ radius = 15.0
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
-continuous_cd = 2
+continuous_cd = 1
 max_contacts_reported = 1
 script = ExtResource("1_biruh")
 
@@ -126,8 +126,6 @@ shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("4_7mq4p")
-CurrentHP = 70
-HealthDecay = 2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]

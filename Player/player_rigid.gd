@@ -1,12 +1,16 @@
 extends RigidBody2D
 
-var mouse_position
-var max_amplifier = 3.0
-var amplifier = 0.0
+#The Upgradable stuff
+@export var max_damage = 15
+@export var dash_damage = 30
+@export var max_amplifier = 3.0
+@export var max_candy_multiplier = 3
+
+#Everything else
 var max_power = 60
+var mouse_position
+var amplifier = 0.0
 var dash_time = 3
-var dash_damage = 25
-var max_damage = 15
 var candy_multiplier
 var mouse_on_player = false
 @onready var draw_arrow = $VerySeriousArrows3
@@ -17,7 +21,6 @@ var mouse_on_player = false
 @onready var the_dark = get_node("/root/MainGame/TheDark")
 @onready var dash_bar = $CanvasLayer/DashBar
 @onready var health_bar = $CanvasLayer/HealthBar
-var can_dash = true
 var aiming = false
 var dash_countdown
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
