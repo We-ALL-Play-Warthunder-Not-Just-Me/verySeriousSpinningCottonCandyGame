@@ -45,6 +45,7 @@ func applyMaxSpinForceUpgrade() -> void:
 		return
 	for i: int in upgrades.MaxSpinForce:
 		MaxSpinForcetoApply += MaxSpinForceLvlValue
+	health.setCurrentHP(startMaxSpinForce + MaxSpinForcetoApply)
 	health.setMaxHP(startMaxSpinForce + MaxSpinForcetoApply) # assuming base starting health is 100, for cases where this function gets called multiple times ie: the upgrade shop
 
 func applySpinDecayUpgrade() -> void:
