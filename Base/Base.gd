@@ -3,14 +3,13 @@ extends RigidBody2D
 class_name BaseSpinner
 
 
-
 #@onready var attack = load("res://steal_spin_attack.gd").new()
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 @onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
 @onready var animations = $VerySerious/Animations
 @onready var stats:HealthComponent = $HealthComponent
 @onready var dash_graphic = $VerySeriousDash
-
+@onready var collision_circle = $DamageArea
 
 var health_bar: ProgressBar #Assigned in player and enemy subclass
 var max_power = 60
@@ -41,6 +40,7 @@ func _process(delta: float) -> void:
 	if center_stage.round_playing == true:
 		apply_gravity()
 		spinforce_manager()
+		State_Manager(delta)
 
 func apply_gravity():
 	if(current_state == STATE.GLIDING):
@@ -55,14 +55,14 @@ func spinforce_manager():
 			amplifier = stats.PowerAmplifier
 		elif stats.CurrentHP > (stats.MaxHP/4):
 			animations.play("PlayerSpinMed")
-			candy_multiplier = (stats.CandyMultiplier/1.5)
+			candy_multiplier = ceili(stats.CandyMultiplier/1.5)
 			if (stats.PowerAmplifier/1.5) < 1:
 				amplifier = 1
 			else:
 				amplifier = (stats.PowerAmplifier/1.5)
 		elif stats.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
-			candy_multiplier = (stats.CandyMultiplier/2)
+			candy_multiplier = ceili(stats.CandyMultiplier/2)
 			if (stats.PowerAmplifier/2) < 1:
 				amplifier = 1
 			else:
@@ -70,7 +70,10 @@ func spinforce_manager():
 		else:
 			animations.stop()
 
-func _on_damage_area_entered(body: Node2D) -> void:
+func spinner_collision(body: Node2D) -> void:
+	#print(body)
+	#print("State upon impact: ", current_state)
+	#print("THE STATES:\nPARRYING: ", STATE.PARRYING, "\nGliding: ", STATE.GLIDING, "\nDashing: ", STATE.DASHING)
 	if current_state != STATE.GLIDING:
 		if body.name != self.name and body is RigidBody2D:
 			sfx.random_hurt_sound()
@@ -99,6 +102,7 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 		#print("Opponent HP to lose: ", spinner_two_damage)
 	elif spinner_one_force < spinner_two_force:
 		print("We're not strong enough...")
+
 func Take_Damage_Interceptor(damage:int):
 	if current_state != STATE.PARRYING:
 		stats.takeDamage(damage)		

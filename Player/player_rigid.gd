@@ -34,6 +34,7 @@ func _ready() -> void:
 	print("Dash Consumption: ", stats.StaminaConsumption)
 	print("Power Amplifier: ", stats.PowerAmplifier)
 	print("Candy Multiplier: ", stats.CandyMultiplier)
+	collision_circle.body_entered.connect(spinner_collision)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

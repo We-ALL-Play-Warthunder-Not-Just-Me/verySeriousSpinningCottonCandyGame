@@ -174,4 +174,3 @@ debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
 [connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
 [connection signal="mouse_entered" from="MouseDetection" to="." method="Mouse_Entered"]
 [connection signal="mouse_exited" from="MouseDetection" to="." method="Mouse_Exited"]
-[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]

@@ -29,6 +29,7 @@ func _ready() -> void:
 	#stats.HealthDecay = health_decay_override
 	#stats.MaxHP = max_health_override
 	hold_decay = stats.HealthDecay
+	collision_circle.body_entered.connect(spinner_collision)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
