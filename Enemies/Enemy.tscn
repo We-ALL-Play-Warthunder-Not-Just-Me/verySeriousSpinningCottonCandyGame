@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_biruh"]
 [ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_n1bor"]
-[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="4_7mq4p"]
+[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/Old/HealthComponent.gd" id="4_7mq4p"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="4_n1bor"]
-[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="5_k2bks"]
-[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="6_oiydt"]
+[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/Old/decay_timer.gd" id="5_k2bks"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/Old/HealthBar.tscn" id="6_oiydt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
 friction = 0.0

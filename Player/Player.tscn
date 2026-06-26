@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://c1kjh2bp3nhq6"]
 
-[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="1_3qydi"]
+[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/Old/HealthComponent.gd" id="1_3qydi"]
 [ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_0j2ni"]
 [ext_resource type="Script" uid="uid://buuube8f227ie" path="res://Player/player_rigid.gd" id="2_8g4oa"]
-[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
-[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/Old/HealthBar.tscn" id="2_q3lat"]
+[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/Old/decay_timer.gd" id="2_tok1r"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_v0k0e"]
 [ext_resource type="Script" uid="uid://clqxigseoeluk" path="res://Player/arrow_display.gd" id="4_j23h2"]

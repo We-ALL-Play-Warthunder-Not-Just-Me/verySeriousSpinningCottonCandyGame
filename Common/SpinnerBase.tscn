@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://drlhqigpifaef"]
+
+[ext_resource type="Script" uid="uid://sh28eeiwhyd1" path="res://Common/spinner_base.gd" id="1_t2ghb"]
+[ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_u4l3o"]
+[ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_gc1cp"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/Old/HealthBar.tscn" id="4_6ooum"]
+[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/Old/HealthComponent.gd" id="5_gl8hw"]
+[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/Old/decay_timer.gd" id="6_aejhh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ooum"]
+
+[sub_resource type="Animation" id="Animation_8g4oa"]
+resource_name = "PlayerSpinHigh"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_vlldt"]
+resource_name = "PlayerSpinLow"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_s1rgi"]
+resource_name = "PlayerSpinMed"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_6ysni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aky5l"]
+_data = {
+&"PlayerSpinHigh": SubResource("Animation_8g4oa"),
+&"PlayerSpinLow": SubResource("Animation_vlldt"),
+&"PlayerSpinMed": SubResource("Animation_s1rgi"),
+&"RESET": SubResource("Animation_6ysni")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjg8a"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bd4ft"]
+radius = 15.0
+
+[node name="SpinnerBase" type="RigidBody2D" unique_id=469743594]
+physics_material_override = SubResource("PhysicsMaterial_6ooum")
+script = ExtResource("1_t2ghb")
+
+[node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=1730468658]
+visible = false
+texture = ExtResource("2_u4l3o")
+offset = Vector2(-2, 0)
+
+[node name="VerySeriousEnemy" type="Sprite2D" parent="." unique_id=1547975120]
+texture = ExtResource("3_gc1cp")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="EnemyAnimations" type="AnimationPlayer" parent="VerySeriousEnemy" unique_id=1710753718]
+libraries/ = SubResource("AnimationLibrary_aky5l")
+autoplay = &"PlayerSpinHigh"
+
+[node name="HealthBar" parent="." unique_id=103673131 instance=ExtResource("4_6ooum")]
+offset_left = -12.0
+offset_top = -21.0
+offset_right = 12.0
+offset_bottom = -16.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=403609358]
+shape = SubResource("CircleShape2D_pjg8a")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=568557086]
+script = ExtResource("5_gl8hw")
+metadata/_custom_type_script = "uid://uflgtvyrjjt"
+
+[node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1459883389 node_paths=PackedStringArray("health")]
+script = ExtResource("6_aejhh")
+health = NodePath("..")
+metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1181269055]
+collision_layer = 2
+
+[node name="PlayerHitBox" type="CollisionShape2D" parent="DamageArea" unique_id=1255677551]
+shape = SubResource("CircleShape2D_bd4ft")
+debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
