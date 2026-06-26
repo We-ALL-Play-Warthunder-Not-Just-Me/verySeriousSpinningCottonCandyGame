@@ -7,11 +7,11 @@ class_name playerUpgrades
 ## Increases max spin force (max HP) (default 75)
 @export var MaxSpinForce: int = 0
 ## Decreases the decay of your spin (health decay) (default 5.0)
-@export var ReduceSpinDecayRate: int = 0
+@export var SpinDecay: int = 0
 ## Increases your cap on how much damage you can do to enemies (default 15)
-@export var MaxSpinStealDamage: int = 0
+@export var MaxDamage: int = 0
 ## Decreases how much stamina you take from the dash meter (default 30)
-@export var ReduceStaminaConsumption: int = 0
+@export var StaminaConsumption: int = 0
 ## Increases your amplifier so you can launch even faster with each dash (default 3.0)
 @export var PowerAmplifier: int = 0
 ## Increases how much candy you can get per spin cycle. Is affected by your health (default 3)

@@ -7,7 +7,7 @@ extends ProgressBar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health.CurrenthealthChanged.connect(updateHealthBarCurrentHP)
-	health.MaxHpChanged.connect(updateMaxHealth)
+	health.MaxHPChanged.connect(updateMaxHealth)
 	health.healthDEATH.connect(onDeath)
 	timer.timeout.connect(_onTimerTimeout)
 	
@@ -19,9 +19,9 @@ func _ready() -> void:
 		damagebar.max_value = 100
 	else:
 		value = health.CurrentHP
-		max_value = health.MaxHp
+		max_value = health.MaxHP
 		damagebar.value = health.CurrentHP
-		damagebar.max_value = health.MaxHp
+		damagebar.max_value = health.MaxHP
 
 func updateHealthBarCurrentHP(newHP: int, oldHP: int) -> void:
 	# damagebar.value = oldHP

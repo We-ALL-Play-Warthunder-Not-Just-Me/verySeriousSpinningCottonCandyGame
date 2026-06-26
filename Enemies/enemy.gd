@@ -15,7 +15,7 @@ extends RigidBody2D
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 @onready var spinners = get_node("..")
 @onready var health_bar = $HealthBar
-@onready var health = $HealthComponent
+@onready var stats = $HealthComponent
 @onready var dash_graphic = $VerySeriousDash
 @onready var animations = $VerySeriousEnemy/EnemyAnimations
 @onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
@@ -23,17 +23,17 @@ var final_wait_time
 var previous_frame: Vector2
 var amplifier
 var candy_multiplier
-var dash_time = 3
-var dash_countdown
+var dash_time = 3.0
+var dash_countdown = 0.0
 var can_dash = true
 var hold_decay
 @onready var attack = load("res://steal_spin_attack.gd").new()
 
 func _ready() -> void:
 	final_wait_time = randf_range(min_wait_time, max_wait_time)
-	health.HealthDecay = health_decay_override
-	health.MaxHp = max_health_override
-	hold_decay = health.HealthDecay
+	stats.HealthDecay = health_decay_override
+	stats.MaxHP = max_health_override
+	hold_decay = stats.HealthDecay
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	self.apply_force(to_center * center_stage.gravity)
 	
 	if center_stage.round_playing == true:
-		health.HealthDecay = hold_decay
+		stats.HealthDecay = hold_decay
 		health_bar.visible = true
 		if can_dash == true:
 			final_wait_time -= delta
@@ -57,19 +57,20 @@ func _process(delta: float) -> void:
 				can_dash = true
 			elif dash_countdown < dash_time/3:
 				dash_graphic.visible = false
-		
-		if health.CurrentHP > (health.MaxHp/2):
+
+		#Handling all the effects that change based on your Speed Force, otherwise known as HP
+		if stats.CurrentHP > (stats.MaxHP/2):
 			animations.play("PlayerSpinHigh")
 			candy_multiplier = max_candy_multiplier
 			amplifier = max_amplifier
-		elif health.CurrentHP > (health.MaxHp/4):
+		elif stats.CurrentHP > (stats.MaxHP/4):
 			animations.play("PlayerSpinMed")
 			candy_multiplier = ceili(max_candy_multiplier*candy_reducer)
 			if (max_amplifier/1.5) < 1:
 				amplifier = 1
 			else:
 				amplifier = (max_amplifier/1.5)
-		elif health.CurrentHP > 0:
+		elif stats.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
 			candy_multiplier = ceili(max_candy_multiplier*(candy_reducer/2))
 			if (max_amplifier/2) < 1:
@@ -81,7 +82,7 @@ func _process(delta: float) -> void:
 		#print(self.name, " Candy Multiplier: ", candy_multiplier)
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
-		health.HealthDecay = 0
+		stats.HealthDecay = 0
 		dash_graphic.visible = false
 		health_bar.visible = false
 
