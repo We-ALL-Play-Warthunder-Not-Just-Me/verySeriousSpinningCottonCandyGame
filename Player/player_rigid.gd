@@ -81,14 +81,14 @@ func _process(delta: float) -> void:
 			amplifier = stats.PowerAmplifier
 		elif stats.CurrentHP > (stats.MaxHP/4):
 			animations.play("PlayerSpinMed")
-			candy_multiplier = (stats.CandyMultiplier/1.5)
+			candy_multiplier = ceili(stats.CandyMultiplier/1.5)
 			if (stats.PowerAmplifier/1.5) < 1:
 				amplifier = 1
 			else:
 				amplifier = (stats.PowerAmplifier/1.5)
 		elif stats.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
-			candy_multiplier = (stats.CandyMultiplier/2)
+			candy_multiplier = ceili(stats.CandyMultiplier/2)
 			if (stats.PowerAmplifier/2) < 1:
 				amplifier = 1
 			else:

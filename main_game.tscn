@@ -303,7 +303,6 @@ center_stage = NodePath("../CenterStage")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="FancyCamera" unique_id=1580899563 node_paths=PackedStringArray("center_stage", "game_time")]
 stream = ExtResource("10_an1vu")
-volume_db = -0.5
 autoplay = true
 bus = &"Music"
 script = ExtResource("11_an1vu")
