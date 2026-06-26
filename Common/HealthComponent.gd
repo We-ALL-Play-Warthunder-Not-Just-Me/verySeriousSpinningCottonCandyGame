@@ -7,6 +7,7 @@ class_name HealthComponent
 @export_range(0, 100, 1, "or_greater", "prefer_slider") var HealthDecay: int = 8
 
 #Other Stats for storing purposes
+@export_range(0, 100, 1, "or_greater", "prefer_slider") var max_power: int = 60
 @export_range(0, 100, 1, "or_greater", "prefer_slider") var MaxDamage: int = 15
 @export_range(0, 50, 1, "or_greater", "prefer_slider") var StaminaConsumption: int = 30
 @export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var PowerAmplifier: float = 3.0

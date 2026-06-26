@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 					Engine.set_time_scale(1.0)
 					draw_arrow.visible = false
 					var force = (self.position - mouse_position)
-					var lim_force = force.limit_length(max_power)
+					var lim_force = force.limit_length(stats.max_power)
 					theo_dash_time = 0
 					self.apply_force(lim_force * amplifier)
 					#print(force)

@@ -13,7 +13,7 @@ class_name BaseSpinner
 @onready var collision_circle = $DamageArea
 
 var health_bar: ProgressBar #Assigned in player and enemy subclass
-var max_power = 60
+
 var mouse_position
 var amplifier = 0.0
 var candy_multiplier
@@ -31,10 +31,13 @@ func State_Manager(delta:float):
 	theo_dash_time += delta
 	if(theo_dash_time <= stats.ParryStart+stats.ParryDuration && theo_dash_time >= stats.ParryStart):
 		current_state = STATE.PARRYING
+		self.linear_damp = 0
 	elif(theo_dash_time <= stats.DashDuration) :
 		current_state = STATE.DASHING
+		self.linear_damp = 0
 	else:
 		current_state = STATE.GLIDING
+		self.linear_damp = 0.02
 
 func _process(delta: float) -> void:
 	if center_stage.round_playing == true:

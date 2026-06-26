@@ -2,7 +2,7 @@ extends BaseSpinner
 
 @export_category("Enemy Stats")
 
-@export var max_power_meter = 50
+#@export var max_power_meter = 50
 @export var min_power_meter = 25
 #@export var max_amplifier = 4.0
 #@export var max_candy_multiplier = 5
@@ -66,8 +66,8 @@ func _process(delta: float) -> void:
 
 func launch_self(target_position: Vector2):
 	var direction_to_target = self.position.direction_to(target_position)
-	var final_power = randi_range(min_power_meter, max_power_meter)
-	var force = (direction_to_target * final_power).limit_length(max_power_meter)
+	var final_power = randi_range(min_power_meter, stats.max_power)
+	var force = (direction_to_target * final_power).limit_length(stats.max_power)
 	theo_dash_time = 0
 	self.apply_force(force * amplifier)
 
