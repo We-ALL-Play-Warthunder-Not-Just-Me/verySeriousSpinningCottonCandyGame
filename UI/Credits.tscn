@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bxfcgjjejkhal" path="res://UI/close_pop_up.gd" id="2_lqvxy"]
 [ext_resource type="Texture2D" uid="uid://wmnbji3rx07n" path="res://Assets/Images/Ver Serious Background.png" id="2_qvjrn"]
 
-[node name="Credits" type="Control" unique_id=2147448037]
+[node name="Credits" type="Control" unique_id=2147448037 node_paths=PackedStringArray("back_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_lqvxy")
 script = ExtResource("2_lqvxy")
+back_button = NodePath("TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/Button")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2118274208]
 layout_mode = 1

@@ -8,6 +8,7 @@ extends VBoxContainer
 
 @onready var settings_screen: Control = $"../../../../SettingsScreen"
 @onready var credits_screen: Control =  $"../../../../Credits"
+@onready var how_to_screen: Control =  $"../../../../HowToPlay"
 ## Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 	#pass # Replace with function body.
@@ -16,7 +17,7 @@ extends VBoxContainer
 	#pass
 
 func _on_how_to_play_pressed() -> void:
-	pass # Replace with function body.
+	how_to_screen.show()
 
 func _on_start_pressed() -> void:
 	var main_game = "res://main_game.tscn"

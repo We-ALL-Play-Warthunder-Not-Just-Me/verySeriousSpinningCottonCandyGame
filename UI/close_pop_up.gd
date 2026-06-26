@@ -1,6 +1,6 @@
 extends Control
 
-@onready var back_button: Button = $TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/Button
+@export var back_button: Button
 
 func _ready() -> void:
 	back_button.pressed.connect(close)

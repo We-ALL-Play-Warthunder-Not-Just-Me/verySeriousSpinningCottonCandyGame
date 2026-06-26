@@ -1,15 +1,135 @@
 [gd_scene format=3 uid="uid://d0w2lb2e8cn6k"]
 
 [ext_resource type="Theme" uid="uid://ctvmv7gvcgx5h" path="res://UpgradeMenuTheme.tres" id="1_t6syg"]
-[ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="1_uahxu"]
 [ext_resource type="Script" uid="uid://xmfr78v7dmnc" path="res://UI/main_menu_buttons.gd" id="2_8aown"]
+[ext_resource type="Texture2D" uid="uid://wmnbji3rx07n" path="res://Assets/Images/Ver Serious Background.png" id="2_d2d4f"]
+[ext_resource type="Texture2D" uid="uid://cjb8h7xis5yd5" path="res://Assets/Images/Very Serious Spinners Menu1.png" id="2_w5vcv"]
+[ext_resource type="Texture2D" uid="uid://cm2dbte82wr7a" path="res://Assets/Images/Very Serious Spinners Menu2.png" id="3_d2d4f"]
 [ext_resource type="PackedScene" uid="uid://bul7ckyyx4m3q" path="res://UI/SettingsScreen.tscn" id="3_t6syg"]
+[ext_resource type="Texture2D" uid="uid://cptd45dlqby6a" path="res://Assets/Images/Very Serious Spinners Menu3.png" id="4_6vw7e"]
+[ext_resource type="Texture2D" uid="uid://v0anyllnubqo" path="res://Assets/Images/Very Serious Spinners Menu4.png" id="5_qrfef"]
 [ext_resource type="PackedScene" uid="uid://dvd6rhdp064pp" path="res://UI/Credits.tscn" id="5_y6s48"]
-[ext_resource type="AudioStream" uid="uid://bo2avhvg753iw" path="res://Assets/Music/Very Serious Menu Music.wav" id="6_otjfi"]
+[ext_resource type="PackedScene" uid="uid://recqs6gseoft" path="res://UI/HowToPlay.tscn" id="10_6vw7e"]
+[ext_resource type="AudioStream" uid="uid://dhanmmo7dtb6r" path="res://Assets/Music/Very Serious Main Menu.wav" id="10_d2d4f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2d4f"]
+
+[sub_resource type="Animation" id="Animation_d2d4f"]
+resource_name = "MenuAnimation"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spinners4:offset_transform_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spinners:offset_transform_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spinners2:offset_transform_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spinners3:offset_transform_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_6vw7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spinners4:offset_transform_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spinners:offset_transform_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spinners2:offset_transform_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spinners3:offset_transform_rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qrfef"]
+_data = {
+&"MenuAnimation": SubResource("Animation_d2d4f"),
+&"RESET": SubResource("Animation_6vw7e")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2d4f"]
+bg_color = Color(0, 0.32156864, 0.5019608, 0.15686275)
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_obtq6"]
 stream_count = 1
-stream_0 = ExtResource("6_otjfi")
+stream_0 = ExtResource("10_d2d4f")
 
 [node name="MainMenu" type="Control" unique_id=1787519635]
 layout_mode = 3
@@ -27,38 +147,109 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_d2d4f")
 
 [node name="PanelContainer" type="PanelContainer" parent="NinePatchRect" unique_id=1686739098]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.28229168
+anchor_bottom = 0.2
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d2d4f")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/PanelContainer" unique_id=1800504135]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/PanelContainer" unique_id=767363553]
 layout_mode = 2
-texture = ExtResource("1_uahxu")
+theme_override_constants/separation = -72
+alignment = 1
+
+[node name="Spinners4" type="TextureRect" parent="NinePatchRect/PanelContainer/HBoxContainer" unique_id=870642350]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 200)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 140)
+texture = ExtResource("5_qrfef")
+
+[node name="Spinners" type="TextureRect" parent="NinePatchRect/PanelContainer/HBoxContainer" unique_id=1800504135]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 200)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 20)
+texture = ExtResource("2_w5vcv")
+
+[node name="Spinners2" type="TextureRect" parent="NinePatchRect/PanelContainer/HBoxContainer" unique_id=1189027095]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 200)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 20)
+texture = ExtResource("3_d2d4f")
+
+[node name="Spinners3" type="TextureRect" parent="NinePatchRect/PanelContainer/HBoxContainer" unique_id=630903342]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 200)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 140)
+texture = ExtResource("4_6vw7e")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/PanelContainer/HBoxContainer" unique_id=1794260810]
+libraries/ = SubResource("AnimationLibrary_qrfef")
+autoplay = &"MenuAnimation"
+
+[node name="GameName" type="RichTextLabel" parent="NinePatchRect" unique_id=326715479]
+custom_minimum_size = Vector2(960, 320)
+custom_maximum_size = Vector2(960, 320)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -260.0
+offset_right = 480.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/shadow_outline_size = 24
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/bold_font_size = 88
+bbcode_enabled = true
+text = "[wave amp=8.0 freq=2.0 connected=1][color=fffffff][outline_color=4f1507][b]SPINNERS
+REVOLUTION"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="NinePatchRect" unique_id=1916420434]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.21145834
-anchor_top = 0.35416666
-anchor_right = 0.7885417
-anchor_bottom = 0.84375
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 60.0
+offset_right = 200.0
+offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d2d4f")
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/PanelContainer2" unique_id=1349432551]
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_right = 50
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/PanelContainer2/MarginContainer" unique_id=349040335]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = 10
 script = ExtResource("2_8aown")
 
 [node name="HowToPlay" type="Button" parent="NinePatchRect/PanelContainer2/MarginContainer/VBoxContainer" unique_id=926419934]
@@ -86,6 +277,10 @@ visible = false
 layout_mode = 1
 
 [node name="Credits" parent="." unique_id=2023759620 instance=ExtResource("5_y6s48")]
+visible = false
+layout_mode = 1
+
+[node name="HowToPlay" parent="." unique_id=1408305080 instance=ExtResource("10_6vw7e")]
 visible = false
 layout_mode = 1
 

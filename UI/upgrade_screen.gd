@@ -30,7 +30,8 @@ extends Control
 
 @onready var cotton_candy_label: Label = $"PanelContainer/MarginContainer/VBoxContainer/Cotton Candy"
 
-@onready var continue_button: Button = $"PanelContainer/MarginContainer/MarginContainer/Continue Button"
+@onready var continue_button: Button = $"PanelContainer/MarginContainer/MarginContainer/HBoxContainer/Continue Button"
+@onready var main_menu_button: Button = $"PanelContainer/MarginContainer/MarginContainer/HBoxContainer/MainMenu Button"
 
 @export_category("Upgrade Values")
 @export_group("Max Spin Force")
@@ -68,6 +69,7 @@ func _ready() -> void:
 	buttonCandyMultiplier.pressed.connect(buyUpgrade.bind(5))
 
 	continue_button.pressed.connect(continueGame)
+	main_menu_button.pressed.connect(mainMenu)
 
 	cottonCandy.cottonCandyChanged.connect(updateCottonCandyAmount)
 	cotton_candy_label.text = "Cotton Candy : " + str(cottonCandy.cottonCandyBank)
@@ -76,6 +78,10 @@ func _ready() -> void:
 func continueGame() -> void:
 	var main_game = "res://main_game.tscn"
 	get_tree().change_scene_to_file(main_game)
+	
+func mainMenu() -> void:
+	var main_menu = "res://UI/MainMenu.tscn"
+	get_tree().change_scene_to_file(main_menu)
 
 func evilInitialize() -> void:
 	buyMaxSpinForce(true)
