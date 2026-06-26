@@ -1,21 +1,43 @@
 extends RigidBody2D
 class_name spinnerBase
 
-@export var max_amplifier: float = 3
-@export var amplifier: float = 0.0
-@export var max_power: float = 60
-@export var dash_time:float = 3
-@export var dash_damage:float = 25
-@export var max_damage: float = 15.0
+
+#The Upgradable stuff
+@export var max_damage = 15
+@export var dash_damage = 30
+@export var max_amplifier = 3.0
+@export var max_candy_multiplier = 3
+
+#Everything else
+var max_power = 60
+var mouse_position
+var amplifier = 0.0
+var dash_time = 3
 var candy_multiplier
+var mouse_on_player = false
+@onready var draw_arrow = $VerySeriousArrows3
+@onready var health = $HealthComponent
+@onready var animations = $VerySeriousPlayer/PlayerAnimations
+@onready var hit_box = $DamageArea/PlayerHitBox
+@onready var dash_graphic = $VerySeriousDash
+@onready var the_dark = get_node("/root/MainGame/TheDark")
+@onready var dash_bar = $CanvasLayer/DashBar
+@onready var health_bar = $CanvasLayer/HealthBar
+var aiming = false
+var dash_countdown
+@onready var center_stage = get_node("/root/MainGame/CenterStage")
+var previous_frame: Vector2
+@onready var spawner = get_node("/root/MainGame/Spawner")
+var hold_decay
+@onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
+
+
+
+
+
+
 var can_dash = true
 
-
-@onready var health: HealthComponent = $HealthComponent
-@onready var dash_graphic = $VerySeriousDash
-
-@onready var center_stage = get_node("/root/MainGame/CenterStage")
-@onready var spawner = get_node("/root/MainGame/Spawner")
 @onready var spinners = get_node("..")
 #the max distance you can push from 
 
@@ -41,7 +63,6 @@ var iframes: bool = false
 @export var iframe_timer_max: float = 0.5
 var current_dash_ready_time: float = dash_ready_timer_max +1
 var current_iframe_time: float = iframe_timer_max +1
-var previous_frame: Vector2
 var current_dash_time: float = dash_duration_max+1
 @export var armor: float = 1.0
 
@@ -175,7 +196,7 @@ func _ready() -> void:
 func Dash(force:Vector2) -> void:
 	if(Set_State(State.DASHING)):
 		self.set_linear_velocity(Vector2(0,0))
-		var lim_force = force.limit_length(power)
+		var lim_force = force.limit_length(max_power)
 		self.apply_force(lim_force*amplifier)
 		
 		

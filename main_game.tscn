@@ -240,10 +240,12 @@ texture = SubResource("PlaceholderTexture2D_mf81u")
 
 [node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, -128)
+continuous_cd = 2
 max_contacts_reported = 0
 
 [node name="Blue Tornado" parent="Spinners" unique_id=2016280512 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, 128)
+continuous_cd = 2
 max_contacts_reported = 0
 max_power = 80
 min_power = 60
@@ -259,8 +261,13 @@ min_wait_time = 0.5
 [node name="VerySeriousEnemy" parent="Spinners/Blue Tornado" index="1" unique_id=1977203792]
 frame = 3
 
+[node name="HealthComponent" parent="Spinners/Blue Tornado" index="4" unique_id=627178191]
+CurrentHP = 70
+HealthDecay = 2
+
 [node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
 position = Vector2(-128, -128)
+continuous_cd = 2
 max_contacts_reported = 0
 max_power = 60
 min_power = 40
@@ -276,8 +283,14 @@ min_wait_time = 0.6
 [node name="VerySeriousEnemy" parent="Spinners/Nib" index="1" unique_id=1977203792]
 frame = 2
 
+[node name="HealthComponent" parent="Spinners/Nib" index="4" unique_id=627178191]
+CurrentHP = 70
+HealthDecay = 2
+
 [node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
 position = Vector2(-128, 128)
+continuous_cd = 2
+contact_monitor = true
 
 [node name="Spawner" type="Node2D" parent="." unique_id=1170452474]
 script = ExtResource("1_l5ukw")
