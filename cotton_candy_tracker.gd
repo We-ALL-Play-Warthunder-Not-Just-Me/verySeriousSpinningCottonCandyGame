@@ -1,9 +1,6 @@
 extends Label
 
-var cotton_candy
-var candy_value = 1
-var final_candy = 0
-var candy_multiplier = 0
+@export var candy_value = 1
 var spinners_dictionary = {}
 @onready var spinners = get_node("/root/MainGame/Spinners")
 @onready var spinners_children = spinners.get_children()
@@ -12,7 +9,7 @@ func _ready() -> void:
 	for child in spinners_children:
 		spinners_dictionary.get_or_add(child.name, 0)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	spinners_children = spinners.get_children()
 
 func _on_candy_timer_timeout() -> void:

@@ -31,10 +31,6 @@ func updateStaminaBar(newStam: int, oldStam: int) -> void:
 	else:
 		damagebar.value = value
 
-func updateMaxStam(newMax: int, oldMax: int) -> void:
-	max_value = newMax
-	damagebar.max_value = newMax
-
 func _onTimerTimeout() -> void:
 	damagebar.value = value
 

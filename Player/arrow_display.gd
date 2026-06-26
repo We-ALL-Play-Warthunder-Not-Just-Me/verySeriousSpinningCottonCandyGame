@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mouse_position = get_global_mouse_position()
 	var draw_arrow_limit = player.position - mouse_position
 	self.position = draw_arrow_limit.limit_length(player.max_power)
