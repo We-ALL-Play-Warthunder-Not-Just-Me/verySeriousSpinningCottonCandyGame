@@ -8,14 +8,20 @@ class_name upgrade_manager
 
 @export_category("Stat Gained Per Level")
 # assuming each upgrade level is 50 max health each
-@export var spinAttackLvlValue : int = 1
-@export var maxHPLvlValue: int = 50
-@export var reduceSpinDecayLvlValue: int = 1
-@export var cottonCandyStealLvlValue: int = 1
+@export var maxHPLvlValue: int = 25
+@export var reduceSpinDecayLvlValue: int = 2
+@export var increaseSpinStealDamageLvlValue : int = 8
+@export var reduceStaminaConsumptionLvlValue: int = 5
+@export var increasePowerAmplifier: float = 1.5
+@export var increaseCandyMultiplierLvlValue: int = 3
 
 @export_category("Starting Stats")
-@export var startMaxHP: int = 100
-@export var startSpinDecay: int = 10
+@export var startMaxHP: int = 75
+@export var startSpinDecay: int = 8
+@export var startSpinStealDamage: int = 15
+@export var startStaminaConsumption: int = 30
+@export var startPowerAmplifier: float = 3.0
+@export var startCandyMultiplier: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -36,7 +42,7 @@ func applySpinAttackUpgrade() -> void:
 
 func applyMaxSpinPowerUpgrade() -> void:
 	var maxHPtoApply: int = 0
-	if upgrades.MaxSpinPower == 0:
+	if upgrades.MaxSpinForce == 0:
 		return
 	for i: int in upgrades.MaxSpinPower:
 		maxHPtoApply += maxHPLvlValue

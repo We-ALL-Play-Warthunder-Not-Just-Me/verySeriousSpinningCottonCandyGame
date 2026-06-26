@@ -34,6 +34,12 @@ window/stretch/aspect="expand"
 
 project/assembly_name="VerySeriousSpinning"
 
+[importer_defaults]
+
+wav={
+&"edit/loop_end": 1
+}
+
 [input]
 
 MouseLeftClick={

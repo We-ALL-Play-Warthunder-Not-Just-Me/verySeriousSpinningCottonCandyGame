@@ -5,7 +5,7 @@ var candy_value = 1
 var final_candy = 0
 var candy_multiplier = 0
 var spinners_dictionary = {}
-@onready var spinners = get_node("../Spinners")
+@onready var spinners = get_node("/root/MainGame/Spinners")
 @onready var spinners_children = spinners.get_children()
 
 func _ready() -> void:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bseswq084al3i"
+path="res://.godot/imported/Cursed (4).wav-81886e0154ba57bec2a8cb44f16dbe02.sample"
+
+[deps]
+
+source_file="res://Assets/Sound Effects/Cursed (4).wav"
+dest_files=["res://.godot/imported/Cursed (4).wav-81886e0154ba57bec2a8cb44f16dbe02.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=1
+compress/mode=2
