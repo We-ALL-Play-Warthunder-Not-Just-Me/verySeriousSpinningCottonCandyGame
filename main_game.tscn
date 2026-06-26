@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_l5ukw"]
 [ext_resource type="Texture2D" uid="uid://hkyytamvn15b" path="res://Assets/Images/Very Serious Round Bumper.png" id="3_jgkyn"]
 [ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Enemy.tscn" id="4_6bm6p"]
-[ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://TestTimer.gd" id="4_dugkq"]
+[ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://round_timer.gd" id="4_dugkq"]
 [ext_resource type="Texture2D" uid="uid://b5qmy2h6f8als" path="res://Assets/Images/Very Serious Square Bumper.png" id="4_qpaub"]
 [ext_resource type="Script" uid="uid://m6efbwsg5kqb" path="res://fancy_camera.gd" id="5_mf81u"]
 [ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
@@ -65,7 +65,7 @@ corner_detail = 1
 [node name="MainGame" type="Node" unique_id=2037128485]
 
 [node name="BackgroundColor" type="Sprite2D" parent="." unique_id=1995283256]
-modulate = Color(0.08235294, 0.08235294, 0.08235294, 1)
+modulate = Color(0.050980393, 0.1254902, 0.1882353, 1)
 z_index = -1
 position = Vector2(1.5258789e-05, -4.5474735e-13)
 scale = Vector2(2000, 2000)
@@ -245,6 +245,16 @@ max_contacts_reported = 0
 [node name="Blue Tornado" parent="Spinners" unique_id=2016280512 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, 128)
 max_contacts_reported = 0
+max_power = 80
+min_power = 60
+max_amplifier = 7.5
+max_candy_multiplier = 11
+candy_reducer = 0.4
+max_damage = 35
+max_health_override = 80
+health_decay_override = 4
+max_wait_time = 1.0
+min_wait_time = 0.5
 
 [node name="VerySeriousEnemy" parent="Spinners/Blue Tornado" index="1" unique_id=1977203792]
 frame = 3
@@ -252,6 +262,16 @@ frame = 3
 [node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
 position = Vector2(-128, -128)
 max_contacts_reported = 0
+max_power = 60
+min_power = 40
+max_amplifier = 5.5
+max_candy_multiplier = 10
+candy_reducer = 0.8
+max_damage = 55
+max_health_override = 200
+health_decay_override = 2
+max_wait_time = 1.25
+min_wait_time = 0.6
 
 [node name="VerySeriousEnemy" parent="Spinners/Nib" index="1" unique_id=1977203792]
 frame = 2
@@ -302,7 +322,7 @@ hit_noises = [ExtResource("13_vn0ol"), ExtResource("14_wt57k"), ExtResource("15_
 death_noises = [ExtResource("18_lght5"), ExtResource("19_lfj8l"), ExtResource("20_ac0cv")]
 
 [node name="SFX2" type="AudioStreamPlayer2D" parent="FancyCamera/SFX" unique_id=1896215580]
-volume_db = 10.0
+volume_db = 15.0
 bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=109230111]

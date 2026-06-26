@@ -107,8 +107,7 @@ radius = 15.0
 mass = 0.005
 physics_material_override = SubResource("PhysicsMaterial_xu11e")
 lock_rotation = true
-continuous_cd = 2
-contact_monitor = true
+continuous_cd = 1
 max_contacts_reported = 1
 script = ExtResource("2_8g4oa")
 
@@ -137,8 +136,9 @@ script = ExtResource("4_j23h2")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
-MaxHp = 50
-CurrentHP = 30
+MaxHp = 75
+CurrentHP = 75
+HealthDecay = 8
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
@@ -163,6 +163,7 @@ health = NodePath("../../HealthComponent")
 script = ExtResource("7_vlldt")
 upgrades = SubResource("Resource_j23h2")
 health = NodePath("../HealthComponent")
+increasePowerAmplifier = 1.0
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
 
 [node name="MouseDetection" type="Area2D" parent="." unique_id=1308826148]
