@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_5j6xk")
+
+cottonCandyBank = 300
+
 metadata/_custom_type_script = "uid://c6j5bg5bsgsud"

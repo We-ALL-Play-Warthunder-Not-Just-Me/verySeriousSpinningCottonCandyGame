@@ -113,7 +113,10 @@ func buyMaxSpinStealDamage(init:bool = false) -> void:
 	var cost: int = spinAttackBaseCost * (1 + upgrades.MaxSpinStealDamage)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.upgradeStat(upgrades.MaxSpinStealDamage)
+
+			upgrades.SpinAttack = upgrades.upgradeStat(upgrades.SpinAttack)
+			# print(upgrades.SpinAttack)
+
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
@@ -127,7 +130,9 @@ func buyMaxSpin(init:bool = false) -> void:
 	var cost: int = maxSpinBaseCost * (1 + upgrades.MaxSpinForce)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.upgradeStat(upgrades.MaxSpinForce)
+
+			upgrades.MaxSpinPower = upgrades.upgradeStat(upgrades.MaxSpinPower)
+
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
@@ -142,7 +147,7 @@ func buySpinDecay(init:bool = false) -> void:
 	var cost: int = spinDecayBaseCost * (1 + upgrades.ReduceSpinDecayRate)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.upgradeStat(upgrades.ReduceSpinDecayRate)
+			upgrades.ReduceSpinDecayRate = upgrades.upgradeStat(upgrades.ReduceSpinDecayRate)
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
@@ -157,7 +162,9 @@ func buyReduceStamina(init:bool = false) -> void:
 	var cost: int = cottonCandyStealBaseCost * (1 + upgrades.ReduceStaminaConsumption)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.upgradeStat(upgrades.ReduceStaminaConsumption)
+
+			upgrades.CottonCandyStealPower = upgrades.upgradeStat(upgrades.CottonCandyStealPower)
+
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
@@ -172,7 +179,9 @@ func buyPowerAmplifier(init:bool = false) -> void:
 	var cost: int = PowerAmplifierBaseCost * (1 + upgrades.PowerAmplifier)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.upgradeStat(upgrades.PowerAmplifier)
+
+			upgrades.StrongerEnemies = upgrades.upgradeStat(upgrades.StrongerEnemies)
+
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
