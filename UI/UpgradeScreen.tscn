@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://4yv500v1gvq6" path="res://Player/Upgrades.tres" id="2_0ae7b"]
 [ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="3_o0opg"]
 [ext_resource type="Texture2D" uid="uid://wmnbji3rx07n" path="res://Assets/Images/Ver Serious Background.png" id="5_0ae7b"]
+[ext_resource type="Script" uid="uid://bly76e1efhbkn" path="res://UI/secret_code_upgrade.gd" id="6_s5q16"]
 [ext_resource type="Texture2D" uid="uid://c7bmj4q3mbq2u" path="res://Assets/Images/Very Serious Cotton Candy.png" id="7_o0opg"]
 [ext_resource type="AudioStream" uid="uid://bo2avhvg753iw" path="res://Assets/Music/Very Serious Menu Music.wav" id="9_jbx8c"]
 
@@ -63,10 +64,22 @@ theme = ExtResource("1_35fed")
 script = ExtResource("1_0pfdi")
 upgrades = ExtResource("2_0ae7b")
 cottonCandy = ExtResource("3_o0opg")
+MaxSpinForceBaseCost = 275
+MaxSpinForceMaxLevel = 7
+spinDecayBaseCost = 350
+spinDecayMaxLevel = 5
+MaxDamageBaseCost = 425
+MaxDamageMaxLevel = 8
+StaminaConsumptionBaseCost = 500
+PowerAmplifierBaseCost = 650
+PowerAmplifierMaxLevel = 5
+CandyMultiplierBaseCost = 800
+CandyMultiplierMaxLevel = 4
 
 [node name="VerSeriousBackground" type="Sprite2D" parent="." unique_id=237312596]
 position = Vector2(480, 480)
 texture = ExtResource("5_0ae7b")
+script = ExtResource("6_s5q16")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VerSeriousBackground" unique_id=1339526758]
 root_node = NodePath("../..")
@@ -115,11 +128,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Max Spin Force" unique_id=300482865]
-custom_minimum_size = Vector2(400, 50)
-custom_maximum_size = Vector2(400, 50)
+custom_minimum_size = Vector2(560, 50)
+custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Max Spin Force (HP)"
+text = "Increase Max Spin Force (HP)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -150,11 +163,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Spin Decay" unique_id=677693091]
-custom_minimum_size = Vector2(400, 50)
-custom_maximum_size = Vector2(400, 50)
+custom_minimum_size = Vector2(560, 50)
+custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Spin Force Decay Rate"
+text = "Reduce Spin Force Decay Rate"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -185,11 +198,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Potential Damage" unique_id=187829180]
-custom_minimum_size = Vector2(400, 50)
-custom_maximum_size = Vector2(400, 50)
+custom_minimum_size = Vector2(560, 50)
+custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Max Potential Damage"
+text = "Increase Max Potential Damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -220,11 +233,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Stamina" unique_id=1647862426]
-custom_minimum_size = Vector2(400, 50)
-custom_maximum_size = Vector2(400, 50)
+custom_minimum_size = Vector2(560, 50)
+custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Stamina Consumption"
+text = "Reduce Stamina Consumption"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -255,11 +268,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Speed Amplifier" unique_id=238134311]
-custom_minimum_size = Vector2(400, 50)
-custom_maximum_size = Vector2(400, 50)
+custom_minimum_size = Vector2(560, 50)
+custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Dash Speed Amplifier"
+text = "Increase Dash Speed Amplifier"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -290,11 +303,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="UpgradeName" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Candy Multiplier" unique_id=744385432]
-custom_minimum_size = Vector2(400, 50)
-custom_maximum_size = Vector2(400, 50)
+custom_minimum_size = Vector2(560, 50)
+custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Cotton Candy Multiplier"
+text = "Increase Cotton Candy Multiplier"
 horizontal_alignment = 1
 vertical_alignment = 1
 

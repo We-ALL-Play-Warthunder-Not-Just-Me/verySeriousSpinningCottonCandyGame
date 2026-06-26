@@ -1,6 +1,6 @@
 extends Label
 
-@export var candy_value = 1
+@export var candy_value = 4
 var spinners_dictionary = {}
 @onready var spinners = get_node("/root/MainGame/Spinners")
 @onready var spinners_children = spinners.get_children()

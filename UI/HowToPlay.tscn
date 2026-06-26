@@ -83,9 +83,10 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_va4iu")
 theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_fwke0")
 theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_j06ch")
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_uxq3b")
-current_tab = 0
+current_tab = 2
 
 [node name="Page1" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=454058546]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
@@ -184,7 +185,6 @@ flip_h = true
 flip_v = true
 
 [node name="Page3" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=570262575]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
@@ -209,7 +209,7 @@ custom_maximum_size = Vector2(800, 400)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Now hold on though, it's not quite that simple. See, the name of the game here is speed. If you're not faster than your opponent when you make contact, it's not gonna go well for ya. Starting out, ya might not want to face your opponents head on. Your best bet will be to try and find an opening when your opponent is slowing down and strike when the moment is right! And if you manage to take their Spin Force to zero in the process, you'll get an extra boost on top of it! But, if you're dead set on head-to-head collisions, well... I hear if you time your shots just right, you can reflect all of that damage back onto your opponent and turn the tables, so keep that in mind."
+text = "Now hold on though, it's not quite that simple. See, the name of the game here is speed. If you're not faster than your opponent when you make contact, it's not gonna go well for ya. Starting out, ya might not want to face your opponents head on. Your best bet will be to try and find an opening when your opponent is slowing down and strike when the moment is right! And if you manage to take their Spin Force to zero in the process, you'll get an extra boost on top of it! But, if you're dead set on head-to-head collisions, well... I hear if you time your shots just right, you can parry all that damage coming your way to buy you a couple more seconds, so keep that in mind."
 horizontal_alignment = 1
 
 [node name="Paragraph6" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page3" unique_id=11970955]

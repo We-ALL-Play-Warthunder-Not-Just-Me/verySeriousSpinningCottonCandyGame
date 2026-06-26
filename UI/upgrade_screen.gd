@@ -54,7 +54,7 @@ extends Control
 @export var PowerAmplifierBaseCost: int = 100
 @export var PowerAmplifierMaxLevel: int = 3
 
-@export_group("Speed Amplifier")
+@export_group("Candy Multiplier")
 @export var CandyMultiplierBaseCost: int = 100
 @export var CandyMultiplierMaxLevel: int = 3
 
@@ -152,7 +152,7 @@ func buyMaxSpinForce(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = MaxDamageBaseCost * (1 + upgrades.MaxSpinForce)
+	cost = MaxSpinForceBaseCost * (1 + upgrades.MaxSpinForce)
 	MaxSpinForcecost.text = str(cost)
 	levelMaxSpinForce.text = "LVL : " +  str(upgrades.MaxSpinForce)
 	if (upgrades.MaxSpinForce >= MaxSpinForceMaxLevel):
@@ -167,7 +167,7 @@ func buySpinDecay(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = MaxDamageBaseCost * (1 + upgrades.SpinDecay)
+	cost = spinDecayBaseCost * (1 + upgrades.SpinDecay)
 	SpinDecaycost.text = str(cost)
 	levelReduceSpinDecay.text = "LVL : " + str(upgrades.SpinDecay)
 	if (upgrades.SpinDecay >= spinDecayMaxLevel):
@@ -182,7 +182,7 @@ func buyStaminaConsumption(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = MaxDamageBaseCost * (1 + upgrades.StaminaConsumption)
+	cost = StaminaConsumptionBaseCost * (1 + upgrades.StaminaConsumption)
 	StaminaConsumptioncost.text = str(cost)
 	levelStaminaConsumption.text = "LVL : " + str(upgrades.StaminaConsumption)
 	if (upgrades.StaminaConsumption >= StaminaConsumptionMaxLevel):
@@ -197,7 +197,7 @@ func buyPowerAmplifier(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = MaxDamageBaseCost * (1 + upgrades.PowerAmplifier)
+	cost = PowerAmplifierBaseCost * (1 + upgrades.PowerAmplifier)
 	PowerAmplifiercost.text = str(cost)	
 	levelPowerAmplifier.text = "LVL : " + str(upgrades.PowerAmplifier)
 	if (upgrades.PowerAmplifier >= PowerAmplifierMaxLevel):
@@ -211,7 +211,7 @@ func buyCandyMultiplier(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = MaxDamageBaseCost * (1 + upgrades.CandyMultiplier)
+	cost = CandyMultiplierBaseCost * (1 + upgrades.CandyMultiplier)
 	CandyMultipliercost.text = str(cost)	
 	levelCandyMultiplier.text = "LVL : " + str(upgrades.CandyMultiplier)
 	if (upgrades.CandyMultiplier >= CandyMultiplierMaxLevel):

@@ -145,7 +145,6 @@ metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
 anchor_top = 0.85
 anchor_right = 0.45000002
-anchor_bottom = 1.0
 offset_right = 143.99997
 offset_bottom = 48.0
 grow_vertical = 1
@@ -155,8 +154,6 @@ health = NodePath("../../HealthComponent")
 [node name="DashBar" parent="CanvasLayer" unique_id=159688414 instance=ExtResource("9_v0k0e")]
 anchor_left = 0.84800005
 anchor_top = 0.698
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = 145.91992
 offset_top = 289.91998
 scale = Vector2(0.75, 0.75)
@@ -165,6 +162,9 @@ scale = Vector2(0.75, 0.75)
 script = ExtResource("7_vlldt")
 upgrades = ExtResource("11_v0k0e")
 health = NodePath("../HealthComponent")
+MaxDamageLvlValue = 7
+PowerAmplifierLvlValue = 0.8
+startSpinDecay = 12
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
 
 [node name="MouseDetection" type="Area2D" parent="." unique_id=1308826148]
