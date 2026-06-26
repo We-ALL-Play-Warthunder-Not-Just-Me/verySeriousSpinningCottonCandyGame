@@ -48,11 +48,11 @@ func switch_camera_points(node: Node):
 	
 
 func _on_spinners_child_entered_tree(node: Node) -> void:
-	print(node)
+	#print(node)
 	if node.name == "Player" and center_stage.round_playing:
 		switch_camera_points(node)
 
 func _on_spinners_child_exiting_tree(node: Node) -> void:
-	print(node)
+	#print(node)
 	if node.name == "Player":
 		switch_camera_points(center_stage)

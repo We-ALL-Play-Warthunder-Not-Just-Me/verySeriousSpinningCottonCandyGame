@@ -13,7 +13,6 @@ extends RigidBody2D
 @export var min_wait_time = 0.75
 
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
-@onready var spawner = get_node("/root/MainGame/Spawner")
 @onready var spinners = get_node("..")
 @onready var health_bar = $HealthBar
 @onready var health = $HealthComponent
@@ -28,15 +27,12 @@ var dash_time = 3
 var dash_countdown
 var can_dash = true
 var hold_decay
+@onready var attack = load("res://steal_spin_attack.gd").new()
 
 func _ready() -> void:
 	final_wait_time = randf_range(min_wait_time, max_wait_time)
-	print(self.name, " Old Decay: ", health.HealthDecay)
 	health.HealthDecay = health_decay_override
-	print(self.name, " New Decay: ", health.HealthDecay)
-	print(self.name, " Old HP: ", health.MaxHp)
 	health.MaxHp = max_health_override
-	print(self.name, " New HP: ", health.MaxHp)
 	hold_decay = health.HealthDecay
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -82,7 +78,7 @@ func _process(delta: float) -> void:
 				amplifier = (max_amplifier/2)
 		else:
 			animations.stop()
-		print(self.name, " Candy Multiplier: ", candy_multiplier)
+		#print(self.name, " Candy Multiplier: ", candy_multiplier)
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
 		health.HealthDecay = 0
@@ -116,32 +112,11 @@ func pick_target(targets: Array):
 			#print(self.name," has chosen Target: ", chosen_target.name)
 			launch_self(chosen_target.position)
 
-func steal_spin(enemy: RigidBody2D):
-	var player_force = abs(previous_frame.length())
-	var enemy_force = abs(enemy.previous_frame.length())
-	if player_force > enemy_force:
-		print("We got 'em!")
-		var force_total = (player_force + enemy_force)
-		var force_difference =  (player_force - enemy_force)
-		var force_percent = force_difference / force_total
-		var enemy_damage = ceili(max_damage * force_percent)
-		enemy.health.takeDamage(enemy_damage)
-		self.health.heal(ceili(enemy_damage/2))
-		#print("Player Force: ", player_force)
-		#print("Enemy Force: ", enemy_force)
-		#print("Total Force: ", force_total)
-		#print("The Difference: ", force_difference)
-		#print("Force Percentage: ", force_percent)
-		#print("Enemy Current HP: ", enemy.health.CurrentHP)
-		print("Enemy HP to lose: ", enemy_damage)
-	elif player_force < enemy_force:
-		print("We're not strong enough...")
-
 func _on_damage_area_entered(body: Node2D) -> void:
 	if body.name != self.name and body is RigidBody2D:
 		sfx.random_hurt_sound()
-		steal_spin(body)
+		attack.steal_spin(self, body, max_damage)
 
 func spin_depleted():
 	sfx.random_death_sound()
-	spawner.kill_spinner(self)
+	spinners.kill_spinner(self)
