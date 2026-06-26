@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d0w2lb2e8cn6k"]
 
+[ext_resource type="Theme" uid="uid://ctvmv7gvcgx5h" path="res://UpgradeMenuTheme.tres" id="1_t6syg"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="1_uahxu"]
 [ext_resource type="Script" uid="uid://xmfr78v7dmnc" path="res://UI/main_menu_buttons.gd" id="2_8aown"]
 [ext_resource type="PackedScene" uid="uid://bul7ckyyx4m3q" path="res://UI/SettingsScreen.tscn" id="3_t6syg"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_t6syg")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1974074078]
 layout_mode = 1
@@ -36,9 +38,9 @@ texture = ExtResource("1_uahxu")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.21145834
-anchor_top = 0.38958332
+anchor_top = 0.35416666
 anchor_right = 0.7885417
-anchor_bottom = 0.61041665
+anchor_bottom = 0.84375
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
