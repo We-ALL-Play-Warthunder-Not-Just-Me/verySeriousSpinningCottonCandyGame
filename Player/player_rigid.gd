@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		health.HealthDecay = hold_decay
 		health_bar.visible = true
 		dash_bar.visible = true
-		if dash_bar.value > dash_damage:
+		if dash_bar.value > dash_depletion:
 			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == MOUSESTATE.ONPLAYER:
 				Engine.set_time_scale(0.2)
 				aiming = true
