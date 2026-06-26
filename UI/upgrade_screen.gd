@@ -10,13 +10,13 @@ extends Control
 @onready var MaxSpinStealDamagecost: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack/Cost"
 @onready var MaxSpincost: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power/Cost"
 @onready var SpinDecaycost: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay/Cost"
-@onready var CottonCandyStealcost: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal/Cost"
+@onready var ReduceStaminaConsumptioncost: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal/Cost"
 @onready var PowerAmplifiercost: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies/Cost"
 
 @onready var levelMaxSpinStealDamage: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack/Level"
 @onready var levelMaxSpinForce: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Max Spin Power/Level"
 @onready var levelReduceSpinDecay: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Reduce Spin Decay/Level"
-@onready var levelCottonCandySteal: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal/Level"
+@onready var levelReduceStaminaConsumption: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Cotton Candy Steal/Level"
 @onready var levelPowerAmplifier: Label = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Stronger Enemies/Level"
 
 @onready var buttonMaxSpinStealDamage: TextureButton = $"backgroundthing/PanelContainer/MarginContainer/VBoxContainer/Spin Attack/Button"
@@ -113,8 +113,8 @@ func buyMaxSpinStealDamage(init:bool = false) -> void:
 	var cost: int = spinAttackBaseCost * (1 + upgrades.MaxSpinStealDamage)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.SpinAttack = upgrades.upgradeStat(upgrades.SpinAttack)
-			# print(upgrades.SpinAttack)
+			upgrades.SpinAttack = upgrades.upgradeStat(upgrades.MaxSpinStealDamage)
+			# print(upgrades.upgrades.MaxSpinStealDamage)
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
@@ -128,7 +128,7 @@ func buyMaxSpin(init:bool = false) -> void:
 	var cost: int = maxSpinBaseCost * (1 + upgrades.MaxSpinForce)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.MaxSpinPower = upgrades.upgradeStat(upgrades.MaxSpinPower)
+			upgrades.MaxSpinPower = upgrades.upgradeStat(upgrades.MaxSpinForce)
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
@@ -158,13 +158,13 @@ func buyReduceStamina(init:bool = false) -> void:
 	var cost: int = cottonCandyStealBaseCost * (1 + upgrades.ReduceStaminaConsumption)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.CottonCandyStealPower = upgrades.upgradeStat(upgrades.CottonCandyStealPower)
+			upgrades.ReduceStaminaConsumption = upgrades.upgradeStat(upgrades.ReduceStaminaConsumption)
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
 	cost = spinAttackBaseCost * (1 + upgrades.ReduceStaminaConsumption)
-	CottonCandyStealcost.text = str(cost)
-	levelCottonCandySteal.text = "LVL : " + str(upgrades.ReduceStaminaConsumption)
+	ReduceStaminaConsumptioncost.text = str(cost)
+	levelReduceStaminaConsumption.text = "LVL : " + str(upgrades.ReduceStaminaConsumption)
 	if (upgrades.ReduceStaminaConsumption >= cottonCandyStealMaxLevel):
 		buttonCottonCandySteal.disabled = true
 
@@ -173,7 +173,7 @@ func buyPowerAmplifier(init:bool = false) -> void:
 	var cost: int = PowerAmplifierBaseCost * (1 + upgrades.PowerAmplifier)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.StrongerEnemies = upgrades.upgradeStat(upgrades.StrongerEnemies)
+			upgrades.PowerAmplifier = upgrades.upgradeStat(upgrades.PowerAmplifier)
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
