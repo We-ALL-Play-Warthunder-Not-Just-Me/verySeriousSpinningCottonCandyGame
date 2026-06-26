@@ -21,7 +21,8 @@ class_name playerUpgrades
 
 signal statChanged()
 
-func upgradeStat(stat: int) -> void:
+func upgradeStat(stat: int) -> int:
 	if stat < maxLVL :
 		stat += 1
 		statChanged.emit()
+	return stat

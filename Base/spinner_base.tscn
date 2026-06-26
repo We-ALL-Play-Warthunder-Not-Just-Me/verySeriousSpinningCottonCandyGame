@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://b1183ipcitdve"]
+
+[ext_resource type="Script" uid="uid://fpv8gg2psj67" path="res://Base/SpinnerBase.gd" id="1_pa5h3"]
+[ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="2_ppfmy"]
+[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_e3qi2"]
+[ext_resource type="Script" uid="uid://cqxfnn7eqdyp1" path="res://decay_timer2.gd" id="6_pa5h3"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="7_g41ga"]
+[ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="8_fy2kp"]
+[ext_resource type="Resource" uid="uid://4yv500v1gvq6" path="res://Player/Upgrades.tres" id="9_5u230"]
+
+[sub_resource type="Animation" id="Animation_8g4oa"]
+resource_name = "PlayerSpinHigh"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_vlldt"]
+resource_name = "PlayerSpinLow"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_s1rgi"]
+resource_name = "PlayerSpinMed"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_6ysni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gy4g"]
+_data = {
+&"PlayerSpinHigh": SubResource("Animation_8g4oa"),
+&"PlayerSpinLow": SubResource("Animation_vlldt"),
+&"PlayerSpinMed": SubResource("Animation_s1rgi"),
+&"RESET": SubResource("Animation_6ysni")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0o1qk"]
+radius = 9.0
+
+[node name="SpinnerBase" type="RigidBody2D" unique_id=625009121 groups=["Spinners"]]
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_pa5h3")
+metadata/_custom_type_script = "uid://fpv8gg2psj67"
+
+[node name="VerySeriousBase" type="Sprite2D" parent="." unique_id=1444086218]
+texture = ExtResource("2_ppfmy")
+
+[node name="BaseAnimations" type="AnimationPlayer" parent="VerySeriousBase" unique_id=2015750653]
+libraries/ = SubResource("AnimationLibrary_2gy4g")
+autoplay = &"PlayerSpinHigh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2145426099]
+shape = SubResource("CircleShape2D_0o1qk")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1074329277]
+script = ExtResource("5_e3qi2")
+MaxHp = 10
+CurrentHP = 10
+HealthDecay = 1
+metadata/_custom_type_script = "uid://uflgtvyrjjt"
+
+[node name="decayTimer2" type="Timer" parent="HealthComponent" unique_id=1437607028 node_paths=PackedStringArray("base")]
+script = ExtResource("6_pa5h3")
+base = NodePath("../..")
+metadata/_custom_type_script = "uid://cqxfnn7eqdyp1"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=533540074]
+
+[node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("7_g41ga")]
+anchor_left = 0.0125
+anchor_right = 0.5601562
+health = NodePath("../../HealthComponent")
+
+[node name="upgrade_manager" type="Node" parent="." unique_id=704935483 node_paths=PackedStringArray("health")]
+script = ExtResource("8_fy2kp")
+upgrades = ExtResource("9_5u230")
+health = NodePath("")
+metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
