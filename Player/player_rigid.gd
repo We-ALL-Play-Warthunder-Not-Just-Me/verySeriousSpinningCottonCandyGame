@@ -5,6 +5,8 @@ extends RigidBody2D
 @export var dash_damage = 30
 @export var max_amplifier = 3.0
 @export var max_candy_multiplier = 3
+@export var parry_duration:float = 0.5
+@export var parry_start:float = 0.3
 
 #Everything else
 var max_power = 60
@@ -12,7 +14,7 @@ var mouse_position
 var amplifier = 0.0
 var dash_time = 3
 var candy_multiplier
-var mouse_on_player = false
+
 @onready var draw_arrow = $VerySeriousArrows3
 @onready var health = $HealthComponent
 @onready var animations = $VerySeriousPlayer/PlayerAnimations
@@ -29,6 +31,20 @@ var previous_frame: Vector2
 var hold_decay
 @onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
 
+var mouse_on_player:MOUSESTATE = MOUSESTATE.OFFPLAYER
+enum MOUSESTATE{
+	ONPLAYER,
+	OFFPLAYER
+}
+
+#parry state works off the players 
+var parry_state: PARRYSTATE = PARRYSTATE.NOTPARRYING 
+var parry_time: float = 10
+enum PARRYSTATE{
+	PARRYING,
+	NOTPARRYING
+}
+
 func _ready() -> void:
 	hold_decay = health.HealthDecay
 
@@ -39,7 +55,7 @@ func _process(delta: float) -> void:
 		health_bar.visible = true
 		dash_bar.visible = true
 		if dash_bar.value > dash_damage:
-			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == true:
+			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == MOUSESTATE.ONPLAYER:
 				Engine.set_time_scale(0.2)
 				aiming = true
 				the_dark.visible = true
@@ -124,11 +140,19 @@ func steal_spin(enemy: RigidBody2D):
 	elif player_force < enemy_force:
 		print("We're not strong enough...")
 
-func switch_mouse_states():
-	if mouse_on_player == false:
-		mouse_on_player = true
-	elif mouse_on_player == true:
-		mouse_on_player = false
+func Mouse_Entered():
+	mouse_on_player = MOUSESTATE.ONPLAYER
+
+func Mouse_Exited():
+	mouse_on_player = MOUSESTATE.OFFPLAYER
+
+func Parry_Manager(delta:float):
+	parry_time += delta
+	if(parry_time <= parry_start+parry_duration && parry_time >= parry_start):
+		parry_state = PARRYSTATE.PARRYING
+	else:
+		parry_state = PARRYSTATE.NOTPARRYING
+	
 
 func _on_damage_area_entered(body: Node2D) -> void:
 	if body.name != self.name and body is RigidBody2D:
