@@ -82,9 +82,15 @@ func spinner_collision(body: Node2D) -> void:
 			sfx.random_hurt_sound()
 			steal_spin(self, body, stats.MaxDamage)
 
+func repulsion(spinner: RigidBody2D):
+	#Trying to make sure we bounce away a little bit
+	var opposite_direction = -self.position.direction_to(spinner.position)
+	self.apply_force(spinner.previous_frame * 0.3 * opposite_direction)
+
 func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int):
 	var spinner_one_force = abs(spinner_one.previous_frame.length())
 	var spinner_two_force = abs(spinner_two.previous_frame.length())
+	repulsion(spinner_two)
 	if spinner_one_force > spinner_two_force:
 		print("We got 'em!")
 		var force_total = (spinner_one_force + spinner_two_force)
