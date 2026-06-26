@@ -7,6 +7,7 @@ extends VBoxContainer
 @onready var quit: Button = $Quit
 
 @onready var settings_screen: Control = $"../../../../SettingsScreen"
+@onready var credits_screen: Control =  $"../../../../Credits"
 ## Called when the node enters the scene tree for the first time.
 #func _ready() -> void:
 	#pass # Replace with function body.
@@ -25,7 +26,7 @@ func _on_settings_pressed() -> void:
 	settings_screen.show()
 
 func _on_credits_pressed() -> void:
-	pass # Replace with function body.
+	credits_screen.show()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

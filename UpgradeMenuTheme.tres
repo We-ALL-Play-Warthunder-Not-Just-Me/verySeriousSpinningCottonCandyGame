@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3j3076k08p1r" path="res://Assets/Images/Very Serious Buttons1.png" id="2_i15g8"]
 [ext_resource type="Texture2D" uid="uid://ccks25js3tgg1" path="res://Assets/Images/Very Serious Buttons2.png" id="3_yb7kg"]
 [ext_resource type="FontFile" uid="uid://biei7ob14e0ew" path="res://Fonts/Gibberesque.ttf" id="4_ue6ve"]
+[ext_resource type="FontFile" uid="uid://cttbx20lipnhr" path="res://Fonts/IsWasted.ttf" id="5_i15g8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhf0a"]
 texture = ExtResource("1_t2w2r")
@@ -64,4 +65,13 @@ Label/constants/shadow_offset_x = 4
 Label/constants/shadow_offset_y = 4
 Label/font_sizes/font_size = 36
 Label/fonts/font = ExtResource("4_ue6ve")
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.5882353)
+RichTextLabel/constants/outline_size = 8
+RichTextLabel/constants/shadow_offset_x = 4
+RichTextLabel/constants/shadow_offset_y = 4
+RichTextLabel/constants/shadow_outline_size = 8
+RichTextLabel/font_sizes/bold_font_size = 96
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/bold_font = ExtResource("5_i15g8")
+RichTextLabel/fonts/normal_font = ExtResource("4_ue6ve")
 VBoxContainer/constants/separation = 30

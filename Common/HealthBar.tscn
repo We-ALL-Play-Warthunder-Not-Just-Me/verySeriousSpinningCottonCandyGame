@@ -27,8 +27,8 @@ corner_radius_bottom_left = 20
 
 [node name="HealthBar" type="ProgressBar" unique_id=103673131 node_paths=PackedStringArray("damagebar", "timer")]
 anchors_preset = -1
-anchor_top = 0.9236111
-anchor_right = 0.63671875
+anchor_top = 0.9
+anchor_right = 0.3
 anchor_bottom = 1.0
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxEmpty_txwkd")

@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://dvd6rhdp064pp"]
+
+[ext_resource type="Theme" uid="uid://ctvmv7gvcgx5h" path="res://UpgradeMenuTheme.tres" id="1_lqvxy"]
+[ext_resource type="Script" uid="uid://bxfcgjjejkhal" path="res://UI/close_pop_up.gd" id="2_lqvxy"]
+[ext_resource type="Texture2D" uid="uid://wmnbji3rx07n" path="res://Assets/Images/Ver Serious Background.png" id="2_qvjrn"]
+
+[node name="Credits" type="Control" unique_id=2147448037]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_lqvxy")
+script = ExtResource("2_lqvxy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2118274208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qvjrn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=550690194]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -480.0
+offset_right = 480.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=454058546]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=2047158755]
+layout_mode = 2
+alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1248113717]
+custom_minimum_size = Vector2(960, 180)
+custom_maximum_size = Vector2(960, 640)
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave amp=10.0 freq=8.0 connected=1][b]CREDITS[/b][/wave]
+|--------------------------------------------|"
+horizontal_alignment = 1
+
+[node name="Holder2" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=24629137]
+layout_mode = 2
+
+[node name="Coding" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer/Holder2" unique_id=251357582]
+custom_minimum_size = Vector2(460, 460)
+custom_maximum_size = Vector2(480, 460)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[wave amp=11.0 freq=6.0 connected=1][color=58d332][outline_color=004e00][b]Coding[/b]
+|--------------|
+
+[color=bdffca][outline_color=005280]Gadzik
+
+[color=fec9ed][outline_color=cf3c71]snowyfreezer
+
+[color=cc69e4][outline_color=00177d]ValentineCats
+
+"
+horizontal_alignment = 1
+
+[node name="Arts" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/Holder2" unique_id=1253083758]
+layout_mode = 2
+
+[node name="Art" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer/Holder2/Arts" unique_id=734652875]
+custom_minimum_size = Vector2(460, 200)
+custom_maximum_size = Vector2(460, 200)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[wave amp=8.0 freq=4.0 connected=1][color=da655e][outline_color=4f1507][b]Art[/b]
+|----------|
+[color=bdffca][outline_color=005280]Gadzik"
+horizontal_alignment = 1
+
+[node name="Music_SFX" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer/Holder2/Arts" unique_id=157263024]
+custom_minimum_size = Vector2(460, 200)
+custom_maximum_size = Vector2(460, 200)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 64
+bbcode_enabled = true
+text = "[wave amp=8.0 freq=4.0 connected=1][color=0a89ff][outline_color=211640][b]Music/SFX[/b]
+|--------------------|
+[color=bdffca][outline_color=005280]Gadzik"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer" unique_id=2137312028]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1565733482]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="FontsUsed" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1117954627]
+custom_minimum_size = Vector2(600, 120)
+custom_maximum_size = Vector2(600, 120)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 48
+bbcode_enabled = true
+text = "[wave amp=4.0 freq=2.0 connected=1][color=415d66][outline_color=151515][b]Fonts Used[/b]
+|---------------------------|"
+horizontal_alignment = 1
+
+[node name="FontsUsed2" type="RichTextLabel" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=725247055]
+custom_minimum_size = Vector2(600, 100)
+custom_maximum_size = Vector2(600, 100)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[wave amp=4.0 freq=2.0 connected=1][color=415d66][outline_color=151515]Gibbersque by Hazel Abbiati
+[b]IsWasted by Hazel Abbiati[/b]"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1917411154]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Back"
