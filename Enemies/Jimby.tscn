@@ -126,6 +126,15 @@ shape = SubResource("CircleShape2D_b8qva")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("5_tqtd1")
+MaxHP = 125
+CurrentHP = 125
+HealthDecay = 6
+MaxDamage = 22
+PowerAmplifier = 3.5
+CandyMultiplier = 4
+DashDuration = 2.5
+ParryDuration = 0.2
+ParryStart = 0.6
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]

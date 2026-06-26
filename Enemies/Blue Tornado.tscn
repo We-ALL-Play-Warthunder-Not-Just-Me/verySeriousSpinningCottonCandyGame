@@ -98,6 +98,10 @@ lock_rotation = true
 continuous_cd = 1
 max_contacts_reported = 1
 script = ExtResource("1_n8tl3")
+max_power_meter = 65
+min_power_meter = 55
+max_wait_time = 1.7
+min_wait_time = 0.8
 
 [node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=841334225]
 visible = false
@@ -128,6 +132,14 @@ shape = SubResource("CircleShape2D_b8qva")
 script = ExtResource("5_jg81o")
 MaxHP = 80
 CurrentHP = 80
+HealthDecay = 4
+MaxDamage = 32
+PowerAmplifier = 5.8
+CandyMultiplier = 9
+TakedownReward = 50
+DashDuration = 1.5
+ParryDuration = 0.6
+ParryStart = 0.4
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]

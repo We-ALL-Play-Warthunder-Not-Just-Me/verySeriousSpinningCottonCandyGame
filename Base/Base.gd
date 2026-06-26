@@ -6,6 +6,7 @@ class_name BaseSpinner
 #@onready var attack = load("res://steal_spin_attack.gd").new()
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 @onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
+@onready var candy_tracker = get_node("/root/MainGame/CanvasLayer/CottonCandyTracker")
 @onready var animations = $VerySerious/Animations
 @onready var stats:HealthComponent = $HealthComponent
 @onready var dash_graphic = $VerySeriousDash
@@ -15,7 +16,6 @@ var health_bar: ProgressBar #Assigned in player and enemy subclass
 var max_power = 60
 var mouse_position
 var amplifier = 0.0
-var dash_time = 3.0
 var candy_multiplier
 var theo_dash_time: float = 3.0
  #State machine stuff
@@ -90,7 +90,12 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 		var spinner_two_damage = ceili(damage * force_percent)
 		spinner_two.Take_Damage_Interceptor(spinner_two_damage)
 		if spinner_two.stats.CurrentHP < 0:
-			spinner_one.stats.heal(ceili(spinner_two_damage/2) + stats.TakedownReward)
+			#Spinners gains an additional health restore for a Takedown
+			spinner_one.stats.heal(ceili(spinner_two_damage/2) + ceili(spinner_two.stats.TakedownReward/2))
+			#Though, the big reward is saved for your Candy Total, which this code handles
+			for scores in candy_tracker.spinners_dictionary:
+				if scores == spinner_one.name:
+					candy_tracker.spinners_dictionary[scores] += spinner_two.stats.TakedownReward
 		else:
 			spinner_one.stats.heal(ceili(spinner_two_damage/2))
 		#print("Spinner Force: ", spinner_one_force)

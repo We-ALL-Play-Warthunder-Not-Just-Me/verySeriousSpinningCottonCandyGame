@@ -2,15 +2,16 @@ extends BaseSpinner
 
 @export_category("Enemy Stats")
 
-@export var min_power = 25
+@export var max_power_meter = 50
+@export var min_power_meter = 25
 #@export var max_amplifier = 4.0
 #@export var max_candy_multiplier = 5
 #@export var candy_reducer = 0.6
 #@export var max_damage = 13
 #@export var max_health_override = 125
 #@export var health_decay_override = 6
-@export var max_wait_time = 2.5
-@export var min_wait_time = 0.75
+@export var max_wait_time = 3.5
+@export var min_wait_time = 2.0
 
 @onready var spinners = get_node("..")
 
@@ -41,7 +42,7 @@ func _process(delta: float) -> void:
 			final_wait_time -= delta
 			if final_wait_time < 0 && current_state == STATE.GLIDING:
 				can_dash = false
-				dash_countdown = dash_time
+				dash_countdown = stats.DashDuration
 				dash_graphic.visible = true
 				pick_target(spinners.get_children())
 		else:
@@ -49,7 +50,7 @@ func _process(delta: float) -> void:
 			dash_countdown -= delta
 			if dash_countdown < 0:
 				can_dash = true
-			elif dash_countdown < dash_time/3:
+			elif dash_countdown < stats.DashDuration/3:
 				dash_graphic.visible = false
 		#spinforce_manager()
 		
@@ -65,8 +66,8 @@ func _process(delta: float) -> void:
 
 func launch_self(target_position: Vector2):
 	var direction_to_target = self.position.direction_to(target_position)
-	var final_power = randi_range(min_power, max_power)
-	var force = (direction_to_target * final_power).limit_length(max_power)
+	var final_power = randi_range(min_power_meter, max_power_meter)
+	var force = (direction_to_target * final_power).limit_length(max_power_meter)
 	theo_dash_time = 0
 	self.apply_force(force * amplifier)
 
