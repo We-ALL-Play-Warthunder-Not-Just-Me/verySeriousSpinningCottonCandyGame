@@ -112,12 +112,12 @@ visible = false
 texture = ExtResource("2_0j2ni")
 offset = Vector2(-2, 0)
 
-[node name="VerySeriousPlayer" type="Sprite2D" parent="." unique_id=1977203792]
+[node name="VerySerious" type="Sprite2D" parent="." unique_id=1977203792]
 texture = ExtResource("3_v0k0e")
 hframes = 2
 vframes = 2
 
-[node name="PlayerAnimations" type="AnimationPlayer" parent="VerySeriousPlayer" unique_id=1327218308]
+[node name="Animations" type="AnimationPlayer" parent="VerySerious" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")
 autoplay = &"PlayerSpinHigh"
 

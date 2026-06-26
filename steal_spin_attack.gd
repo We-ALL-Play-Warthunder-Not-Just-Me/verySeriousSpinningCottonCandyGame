@@ -2,6 +2,8 @@ extends Node
 
 var takedown_reward = 30
 
+
+
 func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int):
 	var spinner_one_force = abs(spinner_one.previous_frame.length())
 	var spinner_two_force = abs(spinner_two.previous_frame.length())

@@ -246,35 +246,21 @@ max_contacts_reported = 0
 [node name="Blue Tornado" parent="Spinners" unique_id=2016280512 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, 128)
 max_contacts_reported = 0
-max_power = 80
 min_power = 60
-max_amplifier = 7.5
-max_candy_multiplier = 11
-candy_reducer = 0.4
-max_damage = 28
-max_health_override = 80
-health_decay_override = 4
 max_wait_time = 1.0
 min_wait_time = 0.5
 
-[node name="VerySeriousEnemy" parent="Spinners/Blue Tornado" index="1" unique_id=1977203792]
+[node name="VerySerious" parent="Spinners/Blue Tornado" index="1" unique_id=1977203792]
 frame = 3
 
 [node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
 position = Vector2(-128, -128)
 max_contacts_reported = 0
-max_power = 70
 min_power = 60
-max_amplifier = 5.5
-max_candy_multiplier = 15
-candy_reducer = 0.8
-max_damage = 55
-max_health_override = 250
-health_decay_override = 2
 max_wait_time = 1.25
 min_wait_time = 0.6
 
-[node name="VerySeriousEnemy" parent="Spinners/Nib" index="1" unique_id=1977203792]
+[node name="VerySerious" parent="Spinners/Nib" index="1" unique_id=1977203792]
 frame = 2
 
 [node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
