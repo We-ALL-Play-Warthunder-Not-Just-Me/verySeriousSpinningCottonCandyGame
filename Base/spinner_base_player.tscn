@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bb6seixm65aku"]
 
-[ext_resource type="Script" uid="uid://buuube8f227ie" path="res://Player/player_rigid.gd" id="1_s0ll2"]
+[ext_resource type="Script" uid="uid://cqrkm3de2iwqs" path="res://Base/spinner_base_player.gd" id="1_ug6i4"]
 [ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_fl2b7"]
 [ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="3_r0y4j"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="4_ywshg"]
@@ -106,7 +106,7 @@ lock_rotation = true
 continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 1
-script = ExtResource("1_s0ll2")
+script = ExtResource("1_ug6i4")
 
 [node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=574010667]
 visible = false

@@ -1,16 +1,27 @@
 extends RigidBody2D
 class_name spinnerBase
 
+@export var max_amplifier: float = 3
+@export var amplifier: float = 0.0
+@export var max_power: float = 60
+@export var dash_time:float = 3
+@export var dash_damage:float = 25
+@export var max_damage: float = 15.0
+var candy_multiplier
+var can_dash = true
+
+
+@onready var health: HealthComponent = $HealthComponent
+@onready var dash_graphic = $VerySeriousDash
 
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
-@onready var dash_graphic = $VerySeriousDash
 @onready var spawner = get_node("/root/MainGame/Spawner")
 @onready var spinners = get_node("..")
 #the max distance you can push from 
-var power: float = 60
+
 #THE AMP, this is the number that really makes you go
-@export var amplifier: float = 0.2
-@export var max_amplifier: float = 3
+
+
 @export var damage_over_time: int = 5
 #The node which will generate gravitational pull
 @export var gravity_center: Node2D
@@ -22,7 +33,7 @@ var power: float = 60
 var push_direction: Vector2
 var dash_ready: bool = true
 var iframes: bool = false
-var candy_multiplier
+
 @export var dash_ready_timer_max: float = 2
 @export var dash_duration_max: float = 1
 @export var parry_start: float = 0.5
@@ -33,7 +44,7 @@ var current_iframe_time: float = iframe_timer_max +1
 var previous_frame: Vector2
 var current_dash_time: float = dash_duration_max+1
 @export var armor: float = 1.0
-@export var max_damage: float = 30.0
+
 enum State
 {
 	DASHING,
@@ -46,7 +57,7 @@ enum State
 var current_state: State = State.STARTING
 #@export var dash_timer: Node2D
 #get the health component of the object
-@onready var health: HealthComponent = $HealthComponent
+
 
 @onready var health_timer = $HealthComponent/decayTimer
 

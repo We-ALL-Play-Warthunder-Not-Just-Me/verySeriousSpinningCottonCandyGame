@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_0j2ni"]
 [ext_resource type="Script" uid="uid://buuube8f227ie" path="res://Player/player_rigid.gd" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
-[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
+[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer5.gd" id="2_tok1r"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_v0k0e"]
 [ext_resource type="Script" uid="uid://clqxigseoeluk" path="res://Player/arrow_display.gd" id="4_j23h2"]
@@ -141,10 +141,9 @@ MaxHp = 50
 CurrentHP = 30
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
-[node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
+[node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338]
 wait_time = 2.0
 script = ExtResource("2_tok1r")
-health = NodePath("..")
 metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
