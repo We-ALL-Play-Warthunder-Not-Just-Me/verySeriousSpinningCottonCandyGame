@@ -2,11 +2,13 @@ extends RigidBody2D
 
 #The Upgradable stuff
 @export var max_damage = 15
-@export var dash_damage = 30
+@export var dash_depletion = 30
 @export var max_amplifier = 3.0
 @export var max_candy_multiplier = 3
 @export var parry_duration:float = 0.5
 @export var parry_start:float = 0.3
+@export var takedown_reward = 30
+
 
 #Everything else
 var max_power = 60
@@ -27,9 +29,10 @@ var aiming = false
 var dash_countdown
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 var previous_frame: Vector2
-@onready var spawner = get_node("/root/MainGame/Spawner")
+@onready var spawner = get_node("/root/MainGame/Spinners")
 var hold_decay
 @onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
+@onready var attack = load("res://steal_spin_attack.gd").new()
 
 var mouse_on_player:MOUSESTATE = MOUSESTATE.OFFPLAYER
 enum MOUSESTATE{
@@ -46,7 +49,9 @@ enum PARRYSTATE{
 }
 
 func _ready() -> void:
+	#Initializing Players Stats
 	hold_decay = health.HealthDecay
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -69,7 +74,7 @@ func _process(delta: float) -> void:
 				if Input.is_action_just_released("MouseLeftClick"):
 					#print("Send!")
 					the_dark.visible = false
-					dash_bar.takeDamage(dash_damage)
+					dash_bar.takeDamage(dash_depletion)
 					aiming = false
 					dash_countdown = dash_time
 					dash_graphic.visible = true
@@ -119,26 +124,6 @@ func _process(delta: float) -> void:
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()
 
-func steal_spin(enemy: RigidBody2D):
-	var player_force = abs(previous_frame.length())
-	var enemy_force = abs(enemy.previous_frame.length())
-	if player_force > enemy_force:
-		print("We got 'em!")
-		var force_total = (player_force + enemy_force)
-		var force_difference =  (player_force - enemy_force)
-		var force_percent = force_difference / force_total
-		var enemy_damage = ceili(max_damage * force_percent)
-		enemy.health.takeDamage(enemy_damage)
-		self.health.heal(ceili(enemy_damage/2))
-		#print("Player Force: ", player_force)
-		#print("Enemy Force: ", enemy_force)
-		#print("Total Force: ", force_total)
-		#print("The Difference: ", force_difference)
-		#print("Force Percentage: ", force_percent)
-		#print("Enemy Current HP: ", enemy.health.CurrentHP)
-		#print("Enemy HP to lose: ", enemy_damage)
-	elif player_force < enemy_force:
-		print("We're not strong enough...")
 
 func Mouse_Entered():
 	mouse_on_player = MOUSESTATE.ONPLAYER
@@ -152,12 +137,11 @@ func Parry_Manager(delta:float):
 		parry_state = PARRYSTATE.PARRYING
 	else:
 		parry_state = PARRYSTATE.NOTPARRYING
-	
 
 func _on_damage_area_entered(body: Node2D) -> void:
 	if body.name != self.name and body is RigidBody2D:
 		sfx.random_hurt_sound()
-		steal_spin(body)
+		attack.steal_spin(self, body, max_damage)
 
 func spin_depleted():
 	Engine.set_time_scale(1.0)

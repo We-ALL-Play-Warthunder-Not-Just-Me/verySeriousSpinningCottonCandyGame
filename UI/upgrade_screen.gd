@@ -31,8 +31,8 @@ extends Control
 
 @export_category("Upgrade Values")
 @export_group("Spin Attack")
-@export var spinAttackBaseCost: int = 100
-@export var spinAttackMaxLevel: int = 3
+@export var MaxSpinStealDamageBaseCost: int = 100
+@export var MaxSpinStealDamageMaxLevel: int = 3
 
 @export_group("Max Spin")
 @export var maxSpinBaseCost: int = 100
@@ -110,29 +110,29 @@ func matchIndexToUpgrade(index:int) -> int:
 			return 0
 
 func buyMaxSpinStealDamage(init:bool = false) -> void:
-	var cost: int = spinAttackBaseCost * (1 + upgrades.MaxSpinStealDamage)
+	var cost: int = MaxSpinStealDamageBaseCost * (1 + upgrades.MaxSpinStealDamage)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.SpinAttack = upgrades.upgradeStat(upgrades.MaxSpinStealDamage)
+			upgrades.MaxSpinStealDamage = upgrades.upgradeStat(upgrades.MaxSpinStealDamage)
 			# print(upgrades.upgrades.MaxSpinStealDamage)
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = spinAttackBaseCost * (1 + upgrades.MaxSpinStealDamage)
+	cost = MaxSpinStealDamageBaseCost * (1 + upgrades.MaxSpinStealDamage)
 	MaxSpinStealDamagecost.text = str(cost)
 	levelMaxSpinStealDamage.text = "LVL : " + str(upgrades.MaxSpinStealDamage)
-	if (upgrades.MaxSpinStealDamage >= spinAttackMaxLevel):
+	if (upgrades.MaxSpinStealDamage >= MaxSpinStealDamageMaxLevel):
 		buttonMaxSpinStealDamage.disabled = true
 
 func buyMaxSpin(init:bool = false) -> void:
 	var cost: int = maxSpinBaseCost * (1 + upgrades.MaxSpinForce)
 	if (!init):
 		if cottonCandy.cottonCandyBank >= cost:
-			upgrades.MaxSpinPower = upgrades.upgradeStat(upgrades.MaxSpinForce)
+			upgrades.MaxSpinForce = upgrades.upgradeStat(upgrades.MaxSpinForce)
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = spinAttackBaseCost * (1 + upgrades.MaxSpinForce)
+	cost = MaxSpinStealDamageBaseCost * (1 + upgrades.MaxSpinForce)
 	MaxSpincost.text = str(cost)
 	levelMaxSpinForce.text = "LVL : " +  str(upgrades.MaxSpinForce)
 	if (upgrades.MaxSpinForce >= maxspinMaxLevel):
@@ -147,7 +147,7 @@ func buySpinDecay(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = spinAttackBaseCost * (1 + upgrades.ReduceSpinDecayRate)
+	cost = MaxSpinStealDamageBaseCost * (1 + upgrades.ReduceSpinDecayRate)
 	SpinDecaycost.text = str(cost)
 	levelReduceSpinDecay.text = "LVL : " + str(upgrades.ReduceSpinDecayRate)
 	if (upgrades.ReduceSpinDecayRate >= spinDecayMaxLevel):
@@ -162,7 +162,7 @@ func buyReduceStamina(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = spinAttackBaseCost * (1 + upgrades.ReduceStaminaConsumption)
+	cost = MaxSpinStealDamageBaseCost * (1 + upgrades.ReduceStaminaConsumption)
 	ReduceStaminaConsumptioncost.text = str(cost)
 	levelReduceStaminaConsumption.text = "LVL : " + str(upgrades.ReduceStaminaConsumption)
 	if (upgrades.ReduceStaminaConsumption >= cottonCandyStealMaxLevel):
@@ -177,7 +177,7 @@ func buyPowerAmplifier(init:bool = false) -> void:
 			cottonCandy.removeCottonCandy(cost)
 		else:
 			print("Too Expensive")
-	cost = spinAttackBaseCost * (1 + upgrades.PowerAmplifier)
+	cost = MaxSpinStealDamageBaseCost * (1 + upgrades.PowerAmplifier)
 	PowerAmplifiercost.text = str(cost)	
 	levelPowerAmplifier.text = "LVL : " + str(upgrades.PowerAmplifier)
 	if (upgrades.PowerAmplifier >= PowerAmplifierMaxLevel):

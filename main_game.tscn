@@ -237,6 +237,7 @@ scale = Vector2(2000, 2000)
 texture = SubResource("PlaceholderTexture2D_mf81u")
 
 [node name="Spinners" type="Node" parent="." unique_id=1643844216]
+script = ExtResource("1_l5ukw")
 
 [node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
 position = Vector2(128, -128)
@@ -278,9 +279,6 @@ frame = 2
 
 [node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
 position = Vector2(-128, 128)
-
-[node name="Spawner" type="Node2D" parent="." unique_id=1170452474]
-script = ExtResource("1_l5ukw")
 
 [node name="CenterStage" type="Node2D" parent="." unique_id=2022388985 node_paths=PackedStringArray("candy_timer", "candy_timer_label", "game_timer", "game_timer_label", "middle_text", "camera")]
 script = ExtResource("1_2pltu")
