@@ -129,6 +129,7 @@ script = ExtResource("5_tqtd1")
 MaxHP = 125
 CurrentHP = 125
 HealthDecay = 6
+max_power = 50
 MaxDamage = 22
 PowerAmplifier = 3.5
 CandyMultiplier = 4
