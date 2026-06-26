@@ -1,14 +1,21 @@
 extends Node
 class_name HealthComponent
 
-@export_range(0, 200, 1, "or_greater", "prefer_slider") var MaxHp: int = 100
+#Health Related Stuff
+@export_range(0, 200, 1, "or_greater", "prefer_slider") var MaxHP: int = 100
 @export_range(0, 200, 1, "or_greater", "prefer_slider") var CurrentHP: int = 100
-@export_range(0, 100, 1, "or_greater", "prefer_slider") var HealthDecay: int = 5
+@export_range(0, 100, 1, "or_greater", "prefer_slider") var HealthDecay: int = 8
+
+#Other Stats for storing purposes
+@export_range(0, 100, 1, "or_greater", "prefer_slider") var MaxDamage: int = 15
+@export_range(0, 50, 1, "or_greater", "prefer_slider") var StaminaConsumption: int = 30
+@export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var PowerAmplifier: float = 3.0
+@export_range(0, 20, 1, "or_greater", "prefer_slider") var CandyMultiplier: int = 3
+
 # We lose spin every few thingies
 
-
 signal CurrenthealthChanged(newHP: int, OldHP: int)
-signal MaxHpChanged(newMax: int, oldMax: int)
+signal MaxHPChanged(newMax: int, oldMax: int)
 signal healthDEATH()
 
 func setCurrenthp(newHP: int) -> void:
@@ -19,9 +26,9 @@ func setCurrenthp(newHP: int) -> void:
 	CurrenthealthChanged.emit(CurrentHP,old)
 
 func setMaxHP(newHP: int) -> void:
-	var old: int = MaxHp
-	MaxHp = newHP
-	MaxHpChanged.emit(MaxHp, old)
+	var old: int = MaxHP
+	MaxHP = newHP
+	MaxHPChanged.emit(MaxHP, old)
 
 func takeDamage(damage: int) -> void:
 	var old: int = CurrentHP
@@ -33,11 +40,11 @@ func takeDamage(damage: int) -> void:
 
 func heal(healAmount: int) -> void:
 	var old : int = CurrentHP
-	if (CurrentHP + healAmount < MaxHp):
+	if (CurrentHP + healAmount < MaxHP):
 		CurrentHP += healAmount
 		CurrenthealthChanged.emit(CurrentHP,old)
-	elif (CurrentHP + healAmount >= MaxHp):
-		CurrentHP = MaxHp
+	elif (CurrentHP + healAmount >= MaxHP):
+		CurrentHP = MaxHP
 		CurrenthealthChanged.emit(CurrentHP,old)
 	
 # Called when the node enters the scene tree for the first time.
