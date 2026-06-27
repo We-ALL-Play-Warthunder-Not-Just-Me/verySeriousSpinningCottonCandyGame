@@ -1,0 +1,252 @@
+[gd_scene format=3 uid="uid://recqs6gseoft"]
+
+[ext_resource type="Theme" uid="uid://ctvmv7gvcgx5h" path="res://UpgradeMenuTheme.tres" id="1_t445j"]
+[ext_resource type="Script" uid="uid://g74x2c6ebs3k" path="res://UI/how_to_play.gd" id="2_uxq3b"]
+[ext_resource type="Texture2D" uid="uid://wmnbji3rx07n" path="res://Assets/Images/Ver Serious Background.png" id="3_fwke0"]
+[ext_resource type="Texture2D" uid="uid://cjb8h7xis5yd5" path="res://Assets/Images/Very Serious Spinners Menu1.png" id="3_t445j"]
+[ext_resource type="Texture2D" uid="uid://67x6fxpwfq0s" path="res://Assets/Images/HealthBar1.png" id="4_va4iu"]
+[ext_resource type="Texture2D" uid="uid://l6lfqod6edec" path="res://Assets/Images/DashBar1.png" id="5_fwke0"]
+[ext_resource type="Texture2D" uid="uid://t6o8oss762yw" path="res://Assets/Images/Screenshot 2026-06-26 102735.png" id="6_j06ch"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j06ch"]
+bg_color = Color(0.25490198, 0.3647059, 0.4, 0.19607843)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t445j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_va4iu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fwke0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j06ch"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uxq3b"]
+
+[node name="HowToPlay" type="Control" unique_id=2147448037]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t445j")
+script = ExtResource("2_uxq3b")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2118274208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fwke0")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=550690194]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -480.0
+offset_right = 480.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="The Beast" type="VBoxContainer" parent="TextureRect/MarginContainer" unique_id=1321225380]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HowToPlay" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast" unique_id=1785935714]
+custom_minimum_size = Vector2(960, 160)
+custom_maximum_size = Vector2(960, 160)
+layout_mode = 2
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[wave amp=10.0 freq=8.0 connected=1][b]HOW TO PLAY[/b][/wave]
+|--------------------------------------------|"
+horizontal_alignment = 1
+
+[node name="Pages" type="TabContainer" parent="TextureRect/MarginContainer/The Beast" unique_id=1482485838]
+custom_minimum_size = Vector2(960, 680)
+custom_maximum_size = Vector2(960, 680)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j06ch")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_t445j")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_va4iu")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_fwke0")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_j06ch")
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_uxq3b")
+current_tab = 0
+
+[node name="Page1" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=454058546]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="Paragraph1" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page1" unique_id=1248113717]
+custom_minimum_size = Vector2(960, 96)
+custom_maximum_size = Vector2(960, 96)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "So you wanna be a part of the revolution, do ya? Well, come on over and let me give you the low-down on our operations here. In this arena, there's only one thing that really matters: [wave amp=6.0 freq=2.0 connected=1][color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color][/wave]."
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages/Page1" unique_id=1678739203]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Paragraph2" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page1/HBoxContainer" unique_id=1856639142]
+custom_minimum_size = Vector2(760, 220)
+custom_maximum_size = Vector2(760, 220)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Yep, you heard that right, [wave amp=6.0 freq=2.0 connected=1][color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color][/wave]. The most deadly, most aggressive, and down right most delicious [color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color] you'll ever get to taste. And there's only one way to get that here: The [shake rate=20.0 level=5 connected=1][color=bdffca][outline_color=00604b]C-C-S-950![/outline_color][/color][/shake] With this wonderful machine, you get to spin as much  [color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color]  as you want! ...That is, assuming you don't mind a little competition, and let me tell ya, they ain't no joke."
+horizontal_alignment = 1
+
+[node name="Spinner" type="TextureRect" parent="TextureRect/MarginContainer/The Beast/Pages/Page1/HBoxContainer" unique_id=1312832950]
+custom_minimum_size = Vector2(200, 200)
+custom_maximum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("3_t445j")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages/Page1" unique_id=742055125]
+layout_mode = 2
+theme_override_constants/separation = -280
+alignment = 1
+
+[node name="SpinForce" type="TextureRect" parent="TextureRect/MarginContainer/The Beast/Pages/Page1/HBoxContainer2" unique_id=494758756]
+custom_minimum_size = Vector2(288, 96)
+custom_maximum_size = Vector2(288, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_va4iu")
+
+[node name="Paragraph3" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page1/HBoxContainer2" unique_id=1510383761]
+custom_minimum_size = Vector2(800, 280)
+custom_maximum_size = Vector2(800, 280)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "But, let's not worry about that. Instead, let me tell you how to run this machine. The first thing you need to understand is this meter here. That's your [wave amp=4.0 freq=1.0 connected=1][color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color][/wave], [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]and it's the most important part about this machine[/outline_color][/wave]. The higher the meter, the more candy you'll be able to produce every second and the faster you'll be able to move, so you best try and keep that as high as you can."
+horizontal_alignment = 1
+
+[node name="Page2" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=1503145518]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+metadata/_tab_index = 1
+metadata/_tab_name = ""
+
+[node name="Paragraph4" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page2" unique_id=1312704630]
+custom_minimum_size = Vector2(960, 188)
+custom_maximum_size = Vector2(960, 188)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Unfortunately, friction still exists, so your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] will always be gradually going down every few seconds, but don't worry. [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]If you manage to get us some candy, we got some fixes for ya to help improve your machine.[/outline_color][/wave] Anyways, I'm getting ahead of myself, we haven't even got to the arena yet! So, your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] is always going down and we don't want that, right?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages/Page2" unique_id=1079605950]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Paragraph5" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page2/HBoxContainer" unique_id=221275769]
+custom_minimum_size = Vector2(760, 370)
+custom_maximum_size = Vector2(760, 370)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Well, that's where this next meter comes in. That's your [shake rate=35.0 level=4 connected=1][color=eeffa9][outline_color=139d08]Dash Battery[/outline_color][/color][/shake]. It shows you how much energy you have to execute a [shake rate=15.0 level=2 connected=1][color=eeffa9][outline_color=139d08]Dash[/outline_color][/color][/shake], a fast moving strike that allows you to ram into your opponents at high speeds. To perform a [color=eeffa9][outline_color=139d08]Dash[/outline_color][/color], you simply click on your machine and drag in the opposite direction of where you wanna go and watch as you zip across the map. What does any of this have to do with your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color], you might ask? Well, the [color=eeffa9][outline_color=139d08]Dash[/outline_color][/color] is what's going to allow you to [wave amp=8.0 freq=2.0 connected=1][color=eeffa9][outline_color=139d08]steal the [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] of your opponents[/outline_color][/color][/wave] by  [shake rate=35.0 level=10 connected=1][color=e03c28][outline_color=4f1507]ramming[/outline_color][/color][/shake] into them and recharging your meter to keep yourself spinning!"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/The Beast/Pages/Page2/HBoxContainer" unique_id=313231410]
+custom_minimum_size = Vector2(145.5, 289.5)
+custom_maximum_size = Vector2(145.5, 289.5)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_fwke0")
+flip_h = true
+flip_v = true
+
+[node name="Page3" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=570262575]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+metadata/_tab_index = 2
+metadata/_tab_name = ""
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages/Page3" unique_id=2108549958]
+layout_mode = 2
+theme_override_constants/separation = -260
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/The Beast/Pages/Page3/HBoxContainer" unique_id=866333182]
+custom_minimum_size = Vector2(200, 160)
+custom_maximum_size = Vector2(200, 160)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_j06ch")
+
+[node name="Paragraph5" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page3/HBoxContainer" unique_id=691573063]
+custom_minimum_size = Vector2(800, 400)
+custom_maximum_size = Vector2(800, 400)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Now hold on though, it's not quite that simple. [wave amp=10.0 freq=3.0 connected=1][outline_color=0d2030]See, the name of the game here is speed[/outline_color][/wave]. If you're not faster than your opponent when you make contact, it's not gonna go well for ya. Starting out, ya might not want to face your opponents head on. [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]Your best bet will be to try and find an opening when your opponent is slowing down and strike when the moment is right![/outline_color][/wave] And if you manage to take their [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] to zero in the process, you'll get an extra boost on top of it! But, if you're dead set on head-to-head collisions, well... [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]I hear if you time your shots just right, you can [wave amp=12.0 freq=4.0 connected=1][color=98dcff]parry[/color][/wave] all that damage coming your way to buy you a couple more seconds, so keep that in mind."
+horizontal_alignment = 1
+
+[node name="Paragraph6" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page3" unique_id=11970955]
+custom_minimum_size = Vector2(960, 250)
+custom_maximum_size = Vector2(960, 250)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Alright, that's everything you need to know! Oh, and don't worry if your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] gets depleted. [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]It's not game over, you'll be taken out of the arena to go recharge and get your bearings before getting right back into the thick of it! And every time a round is over, you can take the candy you produced over to our Upgrades Shop to trade it in for some better gear to make your time in the Arena even better![/outline_color][/wave] So what are you waiting for? Get out there and start making some  [shake rate=24.0 level=11 connected=1][color=fec9ed][outline_color=cf3c71]Cotton Candy!"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast" unique_id=1986154015]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Previous" type="Button" parent="TextureRect/MarginContainer/The Beast/Buttons" unique_id=1191288669]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+disabled = true
+text = "Previous"
+
+[node name="Menu" type="Button" parent="TextureRect/MarginContainer/The Beast/Buttons" unique_id=1830904372]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Menu"
+
+[node name="Next" type="Button" parent="TextureRect/MarginContainer/The Beast/Buttons" unique_id=914806108]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "Next"

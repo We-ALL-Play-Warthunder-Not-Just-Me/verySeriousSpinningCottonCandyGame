@@ -17,7 +17,7 @@ class_name playerUpgrades
 ## Increases how much candy you can get per spin cycle. Is affected by your health (default 3)
 @export var CandyMultiplier: int = 0
 ## Generic level cap for all the upgrades
-@export var maxLVL: int = 3
+@export var maxLVL: int = 10
 
 signal statChanged()
 

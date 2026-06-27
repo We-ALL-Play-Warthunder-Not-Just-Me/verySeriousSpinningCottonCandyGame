@@ -1,10 +1,10 @@
 extends Control
 
-@onready var masterVolSlider: HSlider = $TextureRect/MarginContainer/VBoxContainer/HBoxContainer/master
-@onready var musicVolSlider: HSlider = $TextureRect/MarginContainer/VBoxContainer/HBoxContainer2/music
-@onready var sfxVolSlider: HSlider = $TextureRect/MarginContainer/VBoxContainer/HBoxContainer3/sfx
+@onready var masterVolSlider: HSlider = $MarginContainer/VBoxContainer/HBoxContainer/master
+@onready var musicVolSlider: HSlider = $MarginContainer/VBoxContainer/HBoxContainer2/music
+@onready var sfxVolSlider: HSlider = $MarginContainer/VBoxContainer/HBoxContainer3/sfx
 
-@onready var back_button: Button = $TextureRect/MarginContainer/VBoxContainer/BackButton
+@onready var back_button: Button = $MarginContainer/VBoxContainer/BackButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

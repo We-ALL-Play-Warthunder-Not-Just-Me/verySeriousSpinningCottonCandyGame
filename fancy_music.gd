@@ -5,7 +5,8 @@ extends AudioStreamPlayer2D
 @export var stream_res: AudioStreamInteractive
 
 func _process(_delta: float) -> void:
+	print(game_time.time_left)
 	var playing_clip_name = get_stream_playback().get_current_clip_index()
-	if game_time.time_left < 44 and center_stage.round_playing:
+	if center_stage.round_playing and game_time.time_left < 5:
 		stream_res.set_clip_auto_advance_next_clip(playing_clip_name, 3)
 	
