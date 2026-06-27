@@ -106,6 +106,7 @@ func Take_Damage(damage:float):
 	
 func Steal_Speed(enemy:spinnerBase):
 	#inefficient, rework!!!!!!!
+	print("boop")
 	var player_force = abs(previouse_frame_velocity)
 	var enemy_force = abs(enemy.previouse_frame_velocity)
 	enemy.Take_Damage(max_damage * ceili((player_force- enemy_force)/(player_force+enemy_force)))
@@ -115,7 +116,7 @@ func Heal(healing:float):
 	health.heal(healing)
 	pass
 
-func _on_body_entered(body: Node) -> void:
+func spinner_collision(body: Node) -> void:
 	if body.is_in_group("Spinners"):
 		var bigbody = body as spinnerBase
 		var player_force = abs(previouse_frame_velocity)

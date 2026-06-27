@@ -21,6 +21,6 @@ func add_candy():
 	#Why is this seperate from the timer timeout? Because I don't know if that'll be permanent, so. We got add_candy just in case.
 	for child in spinners_children:
 		if spinners_dictionary.has(child.name):
-			var add_candy = candy_value * child.candy_multiplier
-			spinners_dictionary[child.name] += add_candy
+			var new_candy = candy_value * child.candy_multiplier
+			spinners_dictionary[child.name] += new_candy
 	#print(spinners_dictionary)

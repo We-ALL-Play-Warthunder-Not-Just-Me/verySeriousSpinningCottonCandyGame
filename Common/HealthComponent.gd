@@ -7,11 +7,16 @@ class_name HealthComponent
 @export_range(0, 100, 1, "or_greater", "prefer_slider") var HealthDecay: int = 8
 
 #Other Stats for storing purposes
+@export_range(0, 100, 1, "or_greater", "prefer_slider") var max_power: int = 60
 @export_range(0, 100, 1, "or_greater", "prefer_slider") var MaxDamage: int = 15
 @export_range(0, 50, 1, "or_greater", "prefer_slider") var StaminaConsumption: int = 30
 @export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var PowerAmplifier: float = 3.0
 @export_range(0, 20, 1, "or_greater", "prefer_slider") var CandyMultiplier: int = 3
-
+@export_range(0, 100, 1, "or_greater", "prefer_slider") var TakedownReward: int = 30
+@export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var DashDuration: float = 2.0
+@export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var ParryDuration: float = 0.5
+@export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var ParryStart: float = 0.5
+@export_range(0, 1.0, 0.01, "or_greater", "prefer_slider") var SpeedDamageMin: float = 0.75
 # We lose spin every few thingies
 
 signal CurrenthealthChanged(newHP: int, OldHP: int)

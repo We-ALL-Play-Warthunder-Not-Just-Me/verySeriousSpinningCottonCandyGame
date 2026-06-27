@@ -1,31 +1,31 @@
-extends RigidBody2D
+extends BaseSpinner
 
 #Everything else
-var max_power = 60
-var mouse_position
-var amplifier = 0.0
-var dash_time = 3.0
-var candy_multiplier
-var mouse_on_player = false
+
+
 @onready var draw_arrow = $VerySeriousArrows3
-@onready var stats = $HealthComponent
-@onready var animations = $VerySeriousPlayer/PlayerAnimations
 @onready var hit_box = $DamageArea/PlayerHitBox
-@onready var dash_graphic = $VerySeriousDash
 @onready var the_dark = get_node("/root/MainGame/TheDark")
 @onready var dash_bar = $CanvasLayer/DashBar
-@onready var health_bar = $CanvasLayer/HealthBar
+
 var aiming = false
 var dash_countdown = 0.0
-@onready var center_stage = get_node("/root/MainGame/CenterStage")
 var previous_frame: Vector2
 @onready var spawner = get_node("/root/MainGame/Spinners")
 var hold_decay
-@onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
-@onready var attack = load("res://steal_spin_attack.gd").new()
+
+
+var mouse_on_player:MOUSESTATE = MOUSESTATE.OFFPLAYER
+enum MOUSESTATE{
+	ONPLAYER,
+	OFFPLAYER
+}
+
+
 
 func _ready() -> void:
 	hold_decay = stats.HealthDecay
+	health_bar = $CanvasLayer/HealthBar
 	print("Player Stats!")
 	print("Max HP: ", stats.MaxHP)
 	print("Current HP: ", stats.CurrentHP)
@@ -34,16 +34,18 @@ func _ready() -> void:
 	print("Dash Consumption: ", stats.StaminaConsumption)
 	print("Power Amplifier: ", stats.PowerAmplifier)
 	print("Candy Multiplier: ", stats.CandyMultiplier)
+	collision_circle.body_entered.connect(spinner_collision)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	if center_stage.round_playing == true:
 		stats.HealthDecay = hold_decay
 		health_bar.visible = true
 		dash_bar.visible = true
-		if dash_bar.value > stats.StaminaConsumption:
-			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == true:
+		if dash_bar.value > stats.StaminaConsumption && current_state == STATE.GLIDING:
+			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == MOUSESTATE.ONPLAYER:
 				Engine.set_time_scale(0.2)
 				aiming = true
 				the_dark.visible = true
@@ -59,42 +61,23 @@ func _process(delta: float) -> void:
 					the_dark.visible = false
 					dash_bar.takeDamage(stats.StaminaConsumption)
 					aiming = false
-					dash_countdown = dash_time
-					dash_graphic.visible = true
+					dash_countdown = stats.DashDuration
+					
 					self.set_linear_velocity(Vector2(0,0))
 					Engine.set_time_scale(1.0)
 					draw_arrow.visible = false
 					var force = (self.position - mouse_position)
-					var lim_force = force.limit_length(max_power)
+					var lim_force = force.limit_length(stats.max_power)
+					theo_dash_time = 0
 					self.apply_force(lim_force * amplifier)
 					#print(force)
 					#print(lim_force)
 		else:
 			dash_countdown -= delta
-			if dash_countdown < dash_time/3:
-				dash_graphic.visible = false
+			
 
 		#Handling all the effects that change based on your Speed Force, otherwise known as HP
-		if stats.CurrentHP > (stats.MaxHP/2):
-			animations.play("PlayerSpinHigh")
-			candy_multiplier = stats.CandyMultiplier
-			amplifier = stats.PowerAmplifier
-		elif stats.CurrentHP > (stats.MaxHP/4):
-			animations.play("PlayerSpinMed")
-			candy_multiplier = ceili(stats.CandyMultiplier/1.5)
-			if (stats.PowerAmplifier/1.5) < 1:
-				amplifier = 1
-			else:
-				amplifier = (stats.PowerAmplifier/1.5)
-		elif stats.CurrentHP > 0:
-			animations.play("PlayerSpinLow")
-			candy_multiplier = ceili(stats.CandyMultiplier/2)
-			if (stats.PowerAmplifier/2) < 1:
-				amplifier = 1
-			else:
-				amplifier = (stats.PowerAmplifier/2)
-		else:
-			animations.stop()
+		#spinforce_manager()
 	else:
 		self.linear_velocity.lerp(Vector2(0,0),30)
 		stats.HealthDecay = 0
@@ -103,21 +86,16 @@ func _process(delta: float) -> void:
 		health_bar.visible = false
 		dash_bar.visible = false
 
-	var to_center = self.position.direction_to(center_stage.position)
-	self.apply_force(to_center * center_stage.gravity)
+	
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()
 
-func switch_mouse_states():
-	if mouse_on_player == false:
-		mouse_on_player = true
-	elif mouse_on_player == true:
-		mouse_on_player = false
 
-func _on_damage_area_entered(body: Node2D) -> void:
-	if body.name != self.name and body is RigidBody2D:
-		sfx.random_hurt_sound()
-		attack.steal_spin(self, body, stats.MaxDamage)
+func Mouse_Entered():
+	mouse_on_player = MOUSESTATE.ONPLAYER
+
+func Mouse_Exited():
+	mouse_on_player = MOUSESTATE.OFFPLAYER
 
 func spin_depleted():
 	Engine.set_time_scale(1.0)

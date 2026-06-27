@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://byggay1shakk"]
+
+[ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_dgenc"]
+[ext_resource type="Texture2D" uid="uid://5dbl1d6nkgd6" path="res://Assets/Images/Very Serious Dash n Parry.png" id="2_dgenc"]
+[ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_8p1q4"]
+[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="4_d6phy"]
+[ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_tqtd1"]
+[ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="6_y71xj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xu11e"]
+friction = 0.0
+bounce = 0.8
+
+[sub_resource type="Animation" id="Animation_8g4oa"]
+resource_name = "PlayerSpinHigh"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.05, 0.075, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_vlldt"]
+resource_name = "PlayerSpinLow"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_s1rgi"]
+resource_name = "PlayerSpinMed"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853982, 1.5707964, 2.3561945, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_6ysni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlldt"]
+_data = {
+&"PlayerSpinHigh": SubResource("Animation_8g4oa"),
+&"PlayerSpinLow": SubResource("Animation_vlldt"),
+&"PlayerSpinMed": SubResource("Animation_s1rgi"),
+&"RESET": SubResource("Animation_6ysni")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1bor"]
+radius = 15.0
+
+[node name="Jimby" type="RigidBody2D" unique_id=222236015]
+mass = 0.005
+physics_material_override = SubResource("PhysicsMaterial_xu11e")
+lock_rotation = true
+continuous_cd = 1
+max_contacts_reported = 1
+script = ExtResource("1_dgenc")
+
+[node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=841334225]
+visible = false
+texture = ExtResource("2_dgenc")
+offset = Vector2(-2, 0)
+hframes = 2
+
+[node name="VerySerious" type="Sprite2D" parent="." unique_id=1977203792]
+texture = ExtResource("3_8p1q4")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Animations" type="AnimationPlayer" parent="VerySerious" unique_id=1327218308]
+libraries/ = SubResource("AnimationLibrary_vlldt")
+autoplay = &"PlayerSpinHigh"
+
+[node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("4_d6phy")]
+offset_left = -12.0
+offset_top = -21.0
+offset_right = 12.0
+offset_bottom = -16.0
+health = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1578528933]
+shape = SubResource("CircleShape2D_b8qva")
+
+[node name="HealthComponent" type="Node" parent="." unique_id=627178191]
+script = ExtResource("5_tqtd1")
+MaxHP = 125
+CurrentHP = 125
+HealthDecay = 6
+max_power = 50
+MaxDamage = 22
+PowerAmplifier = 3.5
+CandyMultiplier = 4
+DashDuration = 2.5
+ParryDuration = 0.2
+ParryStart = 0.6
+SpeedDamageMin = 0.6
+metadata/_custom_type_script = "uid://uflgtvyrjjt"
+
+[node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]
+script = ExtResource("6_y71xj")
+health = NodePath("..")
+metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=85172910]
+collision_layer = 2
+
+[node name="PlayerHitBox" type="CollisionShape2D" parent="DamageArea" unique_id=748997955]
+shape = SubResource("CircleShape2D_n1bor")
+debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
+
+[connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]

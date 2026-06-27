@@ -4,14 +4,15 @@
 [ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://center_stage.gd" id="1_2pltu"]
 [ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://spinner_spawner.gd" id="1_l5ukw"]
 [ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_l5ukw"]
-[ext_resource type="Texture2D" uid="uid://hkyytamvn15b" path="res://Assets/Images/Very Serious Round Bumper.png" id="3_jgkyn"]
-[ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Enemy.tscn" id="4_6bm6p"]
+[ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Jimby.tscn" id="4_6bm6p"]
 [ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://round_timer.gd" id="4_dugkq"]
 [ext_resource type="Texture2D" uid="uid://b5qmy2h6f8als" path="res://Assets/Images/Very Serious Square Bumper.png" id="4_qpaub"]
 [ext_resource type="Script" uid="uid://m6efbwsg5kqb" path="res://fancy_camera.gd" id="5_mf81u"]
 [ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
 [ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="6_4srsv"]
+[ext_resource type="PackedScene" uid="uid://dcmglvwr0pief" path="res://Enemies/Blue Tornado.tscn" id="7_6krrg"]
 [ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="7_f52ns"]
+[ext_resource type="PackedScene" uid="uid://cxo2raq5uhod4" path="res://Enemies/Nib.tscn" id="8_8slmw"]
 [ext_resource type="FontFile" uid="uid://cttbx20lipnhr" path="res://Fonts/IsWasted.ttf" id="9_krmtw"]
 [ext_resource type="AudioStream" uid="uid://bf4u5senloteh" path="res://Assets/Music/AudioClipsforFancyMusic.tres" id="10_an1vu"]
 [ext_resource type="Script" uid="uid://dvc6eqm8pg5fv" path="res://fancy_music.gd" id="11_an1vu"]
@@ -35,9 +36,6 @@ size = Vector2(128.00002, 128)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b8qva"]
 friction = 0.0
 bounce = 1.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tsdbm"]
-radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_an1vu"]
 size = Vector2(128.00008, 16)
@@ -126,18 +124,6 @@ z_index = -1
 position = Vector2(-1.5258789e-05, 0)
 scale = Vector2(0.9999998, 1)
 texture = ExtResource("1_02kkc")
-
-[node name="BouncePad" type="StaticBody2D" parent="." unique_id=1780365885]
-position = Vector2(-1.5258789e-05, 0)
-scale = Vector2(0.9999998, 1)
-physics_material_override = SubResource("PhysicsMaterial_b8qva")
-
-[node name="Sprite2D" type="Sprite2D" parent="BouncePad" unique_id=1242025646]
-texture = ExtResource("3_jgkyn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BouncePad" unique_id=1024222228]
-shape = SubResource("CircleShape2D_tsdbm")
-debug_color = Color(4.512258e-09, 0.04645966, 0.062253393, 0.41960785)
 
 [node name="BouncePad2" type="StaticBody2D" parent="." unique_id=1489324685]
 position = Vector2(-224.00002, 0)
@@ -243,39 +229,11 @@ script = ExtResource("1_l5ukw")
 position = Vector2(128, -128)
 max_contacts_reported = 0
 
-[node name="Blue Tornado" parent="Spinners" unique_id=2016280512 instance=ExtResource("4_6bm6p")]
+[node name="Blue Tornado" parent="Spinners" unique_id=2132772684 instance=ExtResource("7_6krrg")]
 position = Vector2(128, 128)
-max_contacts_reported = 0
-max_power = 80
-min_power = 60
-max_amplifier = 7.5
-max_candy_multiplier = 11
-candy_reducer = 0.4
-max_damage = 28
-max_health_override = 80
-health_decay_override = 4
-max_wait_time = 1.0
-min_wait_time = 0.5
 
-[node name="VerySeriousEnemy" parent="Spinners/Blue Tornado" index="1" unique_id=1977203792]
-frame = 3
-
-[node name="Nib" parent="Spinners" unique_id=135273304 instance=ExtResource("4_6bm6p")]
+[node name="Nib" parent="Spinners" unique_id=1566048450 instance=ExtResource("8_8slmw")]
 position = Vector2(-128, -128)
-max_contacts_reported = 0
-max_power = 70
-min_power = 60
-max_amplifier = 5.5
-max_candy_multiplier = 15
-candy_reducer = 0.8
-max_damage = 55
-max_health_override = 250
-health_decay_override = 2
-max_wait_time = 1.25
-min_wait_time = 0.6
-
-[node name="VerySeriousEnemy" parent="Spinners/Nib" index="1" unique_id=1977203792]
-frame = 2
 
 [node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
 position = Vector2(-128, 128)
@@ -312,7 +270,7 @@ stream_res = ExtResource("10_an1vu")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="FancyCamera" unique_id=1696456215]
 stream = SubResource("AudioStreamWAV_borgi")
-volume_db = 10.0
+volume_db = 15.0
 bus = &"SFX"
 script = ExtResource("13_umrn2")
 hit_noises = [ExtResource("13_vn0ol"), ExtResource("14_wt57k"), ExtResource("15_pk5u2"), ExtResource("16_lght5"), ExtResource("17_lfj8l")]
@@ -421,6 +379,3 @@ texture = ExtResource("26_lfj8l")
 [connection signal="finished" from="FancyCamera/Music" to="FancyCamera/Music" method="_switch_songs"]
 [connection signal="timeout" from="CanvasLayer/GameTime/Timer" to="CanvasLayer/GameTime" method="round_end"]
 [connection signal="timeout" from="CanvasLayer/CottonCandyTracker/CandyTimer" to="CanvasLayer/CottonCandyTracker" method="_on_candy_timer_timeout"]
-
-[editable path="Spinners/Blue Tornado"]
-[editable path="Spinners/Nib"]
