@@ -33,10 +33,10 @@ func State_Manager(delta:float):
 	if(theo_dash_time <= stats.ParryStart+stats.ParryDuration && theo_dash_time >= stats.ParryStart):
 		current_state = STATE.PARRYING
 		self.linear_damp = 0
-		dash_graphic.modulate = Color(0.2, 0.6, 1.0, 1.0)
+		dash_graphic.frame = 1
 		dash_graphic.visible = true
 	elif(theo_dash_time <= stats.DashDuration) :
-		dash_graphic.modulate = Color(1.0, 1.0, 1.0, 1.0)
+		dash_graphic.frame = 0
 		current_state = STATE.DASHING
 		self.linear_damp = 0
 		dash_graphic.visible = true
@@ -65,17 +65,11 @@ func spinforce_manager():
 		elif stats.CurrentHP > (stats.MaxHP/4):
 			animations.play("PlayerSpinMed")
 			candy_multiplier = ceili(stats.CandyMultiplier/1.5)
-			if (stats.PowerAmplifier/1.5) < 1:
-				amplifier = 1
-			else:
-				amplifier = (stats.PowerAmplifier*(stats.SpeedDamageMin + (1 - stats.SpeedDamageMin)/2))
+			amplifier = (stats.PowerAmplifier*(stats.SpeedDamageMin + (1 - stats.SpeedDamageMin)/2))
 		elif stats.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
 			candy_multiplier = ceili(stats.CandyMultiplier/2)
-			if (stats.PowerAmplifier/2) < 1:
-				amplifier = 1
-			else:
-				amplifier = (stats.PowerAmplifier*stats.SpeedDamageMin)
+			amplifier = (stats.PowerAmplifier*stats.SpeedDamageMin)
 		else:
 			animations.stop()
 

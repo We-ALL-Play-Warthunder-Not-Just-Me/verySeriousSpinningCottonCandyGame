@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dcmglvwr0pief"]
 
 [ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_n8tl3"]
-[ext_resource type="Texture2D" uid="uid://ct5cbax4c35v" path="res://Assets/Images/Very Serious Dash.png" id="2_dlfsb"]
+[ext_resource type="Texture2D" uid="uid://5dbl1d6nkgd6" path="res://Assets/Images/Very Serious Dash n Parry.png" id="2_n8tl3"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_iu1gl"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="4_vadii"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_jg81o"]
@@ -104,8 +104,9 @@ min_wait_time = 0.8
 
 [node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=841334225]
 visible = false
-texture = ExtResource("2_dlfsb")
+texture = ExtResource("2_n8tl3")
 offset = Vector2(-2, 0)
+hframes = 2
 
 [node name="VerySerious" type="Sprite2D" parent="." unique_id=1977203792]
 texture = ExtResource("3_iu1gl")
@@ -132,7 +133,7 @@ script = ExtResource("5_jg81o")
 MaxHP = 80
 CurrentHP = 80
 HealthDecay = 4
-max_power = 80
+max_power = 72
 MaxDamage = 32
 PowerAmplifier = 5.8
 CandyMultiplier = 9
