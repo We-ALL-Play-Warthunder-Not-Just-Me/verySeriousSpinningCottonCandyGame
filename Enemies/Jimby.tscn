@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_dgenc"]
 [ext_resource type="Texture2D" uid="uid://5dbl1d6nkgd6" path="res://Assets/Images/Very Serious Dash n Parry.png" id="2_dgenc"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_8p1q4"]
-[ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="4_d6phy"]
+[ext_resource type="PackedScene" uid="uid://drey4up7ycsvv" path="res://Common/EnemyHealthBar.tscn" id="4_dgenc"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_tqtd1"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="6_y71xj"]
 
@@ -115,15 +115,16 @@ frame = 1
 libraries/ = SubResource("AnimationLibrary_vlldt")
 autoplay = &"PlayerSpinHigh"
 
-[node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("4_d6phy")]
-offset_left = -12.0
-offset_top = -21.0
-offset_right = 12.0
-offset_bottom = -16.0
-health = NodePath("../HealthComponent")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1578528933]
 shape = SubResource("CircleShape2D_b8qva")
+
+[node name="HealthBar" parent="." unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("4_dgenc")]
+custom_minimum_size = Vector2(32, 4)
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 15.0
+offset_bottom = -14.0
+health = NodePath("../HealthComponent")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("5_tqtd1")

@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://drey4up7ycsvv"]
+
+[ext_resource type="Script" uid="uid://btqh8162johtm" path="res://Common/healthbar.gd" id="2_sktbn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_txwkd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhbkj"]
+bg_color = Color(0.893543, 0.41137335, 0.6156922, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4u2s"]
+bg_color = Color(0.1294345, 0.1294345, 0.1294345, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6o2f"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="HealthBar" type="ProgressBar" unique_id=103673131 node_paths=PackedStringArray("damagebar", "timer")]
+anchors_preset = -1
+anchor_right = 0.6
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_txwkd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yhbkj")
+step = 1.0
+value = 30.0
+show_percentage = false
+script = ExtResource("2_sktbn")
+damagebar = NodePath("Damage")
+timer = NodePath("Timer")
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="ProgressBar" parent="." unique_id=296937360]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_c4u2s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b6o2f")
+step = 1.0
+value = 40.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="." unique_id=993153768]
+wait_time = 0.2

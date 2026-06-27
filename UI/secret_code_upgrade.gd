@@ -45,5 +45,5 @@ func _process(delta: float) -> void:
 			print("No freebies")
 			held_letters.clear()
 		else:
-			print("Better luck next time")
+			#print("Better luck next time")
 			held_letters.clear()

@@ -45,7 +45,7 @@ func updateHealthBarCurrentHP(newHP: int, oldHP: int) -> void:
 func onDeath() -> void:
 	queue_free()
 
-func updateMaxHealth(newMax: int, oldMax: int) -> void:
+func updateMaxHealth(newMax: int, _oldMax: int) -> void:
 	max_value = newMax
 	damagebar.max_value = newMax
 

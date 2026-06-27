@@ -94,7 +94,7 @@ _data = {
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tsdbm"]
-radius = 32.0
+radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
 radius = 15.0
@@ -133,6 +133,11 @@ script = ExtResource("4_j23h2")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
+MaxHP = 75
+CurrentHP = 75
+HealthDecay = 12
+max_power = 70
+TakedownReward = 40
 ParryStart = 0.2
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
@@ -145,13 +150,13 @@ metadata/_custom_type_script = "uid://dbd78rwuw5wsu"
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=103509141]
 
 [node name="HealthBar" parent="CanvasLayer" unique_id=103673131 node_paths=PackedStringArray("health") instance=ExtResource("2_q3lat")]
-anchor_top = 0.85
-anchor_right = 0.45000002
-anchor_bottom = 0.85
-offset_right = 143.99997
-offset_bottom = 192.0
-grow_vertical = 1
-scale = Vector2(0.75, 0.75)
+anchor_top = 0.88000005
+anchor_right = 0.36
+anchor_bottom = 1.0
+offset_top = 0.2000122
+offset_right = 230.4
+offset_bottom = 77.0
+scale = Vector2(0.6, 0.6)
 health = NodePath("../../HealthComponent")
 
 [node name="DashBar" parent="CanvasLayer" unique_id=159688414 instance=ExtResource("9_v0k0e")]
@@ -163,7 +168,7 @@ offset_left = 145.91992
 offset_top = 289.91998
 offset_right = 339.91992
 offset_bottom = 675.92
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.6, 0.6)
 
 [node name="upgrade_manager" type="Node" parent="." unique_id=609327852 node_paths=PackedStringArray("health")]
 script = ExtResource("7_vlldt")

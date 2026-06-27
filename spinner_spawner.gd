@@ -9,11 +9,11 @@ var timer_max = 5
 var spinners_dictionary = {}
 
 func _ready() -> void:
-	print(self.get_children())
-	print(spinners_dictionary)
+	#print(self.get_children())
+	#print(spinners_dictionary)
 	for child in spinners_children:
 		spinners_dictionary.get_or_add(child.name, child.global_position)
-	print(spinners_dictionary)
+	#print(spinners_dictionary)
 
 func kill_spinner(target: Node2D):
 	#Getting the name of who just died and their initial starting point before deletion

@@ -100,7 +100,7 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 			#Though, the big reward is saved for your Candy Total, which this code handles
 			for scores in candy_tracker.spinners_dictionary:
 				if scores == spinner_one.name:
-					candy_tracker.spinners_dictionary[scores] += spinner_two.stats.TakedownReward
+					candy_tracker.spinners_dictionary[scores] += (spinner_two.stats.TakedownReward * 3)
 	elif spinner_one_force > spinner_two_force:
 		print("We got 'em!")
 		var force_total = (spinner_one_force + spinner_two_force)
@@ -114,7 +114,7 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 			#Though, the big reward is saved for your Candy Total, which this code handles
 			for scores in candy_tracker.spinners_dictionary:
 				if scores == spinner_one.name:
-					candy_tracker.spinners_dictionary[scores] += spinner_two.stats.TakedownReward
+					candy_tracker.spinners_dictionary[scores] += (spinner_two.stats.TakedownReward * 3)
 		else:
 			spinner_one.stats.heal(ceili(spinner_two_damage/2))
 		#print("Spinner Force: ", spinner_one_force)

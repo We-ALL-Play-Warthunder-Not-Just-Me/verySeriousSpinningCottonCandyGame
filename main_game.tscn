@@ -253,9 +253,9 @@ wait_time = 1.5
 autostart = true
 
 [node name="FancyCamera" type="Camera2D" parent="." unique_id=1344449492 node_paths=PackedStringArray("center_stage")]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+position_smoothing_speed = 6.0
 script = ExtResource("5_mf81u")
 center_stage = NodePath("../CenterStage")
 
