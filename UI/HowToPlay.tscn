@@ -83,10 +83,9 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_va4iu")
 theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_fwke0")
 theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_j06ch")
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_uxq3b")
-current_tab = 2
+current_tab = 0
 
 [node name="Page1" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=454058546]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
@@ -99,7 +98,7 @@ custom_maximum_size = Vector2(960, 96)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "So you wanna be a part of the revolution, do ya? Well, come on over and let me give you the low-down on our operations here. In this arena, there's only one thing that really matters: Cotton Candy."
+text = "So you wanna be a part of the revolution, do ya? Well, come on over and let me give you the low-down on our operations here. In this arena, there's only one thing that really matters: [wave amp=6.0 freq=2.0 connected=1][color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color][/wave]."
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages/Page1" unique_id=1678739203]
@@ -113,7 +112,7 @@ custom_maximum_size = Vector2(760, 220)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Yep, you heard that right, Cotton Candy. The most deadly, most aggressive, and down right most delicious Cotton Candy you'll ever get to taste. And there's only one way to get that here: The C-C-S-950! With this wonderful machine, you get to spin as much Cotton Candy as you want! ...That is, assuming you don't mind a little competition, and let me tell ya, they ain't no joke."
+text = "Yep, you heard that right, [wave amp=6.0 freq=2.0 connected=1][color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color][/wave]. The most deadly, most aggressive, and down right most delicious [color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color] you'll ever get to taste. And there's only one way to get that here: The [shake rate=20.0 level=5 connected=1][color=bdffca][outline_color=00604b]C-C-S-950![/outline_color][/color][/shake] With this wonderful machine, you get to spin as much  [color=fec9ed][outline_color=cf3c71]Cotton Candy[/outline_color][/color]  as you want! ...That is, assuming you don't mind a little competition, and let me tell ya, they ain't no joke."
 horizontal_alignment = 1
 
 [node name="Spinner" type="TextureRect" parent="TextureRect/MarginContainer/The Beast/Pages/Page1/HBoxContainer" unique_id=1312832950]
@@ -136,12 +135,12 @@ size_flags_vertical = 4
 texture = ExtResource("4_va4iu")
 
 [node name="Paragraph3" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page1/HBoxContainer2" unique_id=1510383761]
-custom_minimum_size = Vector2(960, 280)
-custom_maximum_size = Vector2(960, 280)
+custom_minimum_size = Vector2(800, 280)
+custom_maximum_size = Vector2(800, 280)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "But, let's not worry about that. Instead, let me tell you how to run this machine. The first thing you need to understand is this meter here. That's your Spin Force, and it's the most important part about this machine. The higher the meter, the more candy you'll be able to produce every second and the faster you'll be able to move, so you best try and keep that as high as you can."
+text = "But, let's not worry about that. Instead, let me tell you how to run this machine. The first thing you need to understand is this meter here. That's your [wave amp=4.0 freq=1.0 connected=1][color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color][/wave], [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]and it's the most important part about this machine[/outline_color][/wave]. The higher the meter, the more candy you'll be able to produce every second and the faster you'll be able to move, so you best try and keep that as high as you can."
 horizontal_alignment = 1
 
 [node name="Page2" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=1503145518]
@@ -158,7 +157,7 @@ custom_maximum_size = Vector2(960, 188)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Unfortunately, friction still exists, so your Spin Force will always be gradually going down every few seconds, but don't worry. If you manage to get us some candy, we got some fixes for ya to help improve your machine. Anyways, I'm getting ahead of myself, we haven't even got to the arena yet! So, your Spin Force is always going down and we don't want that, right?"
+text = "Unfortunately, friction still exists, so your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] will always be gradually going down every few seconds, but don't worry. [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]If you manage to get us some candy, we got some fixes for ya to help improve your machine.[/outline_color][/wave] Anyways, I'm getting ahead of myself, we haven't even got to the arena yet! So, your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] is always going down and we don't want that, right?"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages/Page2" unique_id=1079605950]
@@ -171,7 +170,7 @@ custom_maximum_size = Vector2(760, 370)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Well, that's where this next meter comes in. That's your Dash Battery. It shows you how much energy you have to execute a Dash, a fast moving strike that allows you to ram into your opponents at high speeds. To perform a Dash, you simply click on your machine and drag in the opposite direction of where you wanna go and watch as you zip across the map. What does any of this have to do with your Spin Force, you might ask? Well, the Dash is what's going to allow you to steal the Spin Force of your opponents by ramming into them and recharging your meter to keep yourself spinning!"
+text = "Well, that's where this next meter comes in. That's your [shake rate=35.0 level=4 connected=1][color=eeffa9][outline_color=139d08]Dash Battery[/outline_color][/color][/shake]. It shows you how much energy you have to execute a [shake rate=15.0 level=2 connected=1][color=eeffa9][outline_color=139d08]Dash[/outline_color][/color][/shake], a fast moving strike that allows you to ram into your opponents at high speeds. To perform a [color=eeffa9][outline_color=139d08]Dash[/outline_color][/color], you simply click on your machine and drag in the opposite direction of where you wanna go and watch as you zip across the map. What does any of this have to do with your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color], you might ask? Well, the [color=eeffa9][outline_color=139d08]Dash[/outline_color][/color] is what's going to allow you to [wave amp=8.0 freq=2.0 connected=1][color=eeffa9][outline_color=139d08]steal the [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] of your opponents[/outline_color][/color][/wave] by  [shake rate=35.0 level=10 connected=1][color=e03c28][outline_color=4f1507]ramming[/outline_color][/color][/shake] into them and recharging your meter to keep yourself spinning!"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/MarginContainer/The Beast/Pages/Page2/HBoxContainer" unique_id=313231410]
@@ -185,6 +184,7 @@ flip_h = true
 flip_v = true
 
 [node name="Page3" type="VBoxContainer" parent="TextureRect/MarginContainer/The Beast/Pages" unique_id=570262575]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
@@ -209,7 +209,7 @@ custom_maximum_size = Vector2(800, 400)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Now hold on though, it's not quite that simple. See, the name of the game here is speed. If you're not faster than your opponent when you make contact, it's not gonna go well for ya. Starting out, ya might not want to face your opponents head on. Your best bet will be to try and find an opening when your opponent is slowing down and strike when the moment is right! And if you manage to take their Spin Force to zero in the process, you'll get an extra boost on top of it! But, if you're dead set on head-to-head collisions, well... I hear if you time your shots just right, you can parry all that damage coming your way to buy you a couple more seconds, so keep that in mind."
+text = "Now hold on though, it's not quite that simple. [wave amp=10.0 freq=3.0 connected=1][outline_color=0d2030]See, the name of the game here is speed[/outline_color][/wave]. If you're not faster than your opponent when you make contact, it's not gonna go well for ya. Starting out, ya might not want to face your opponents head on. [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]Your best bet will be to try and find an opening when your opponent is slowing down and strike when the moment is right![/outline_color][/wave] And if you manage to take their [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] to zero in the process, you'll get an extra boost on top of it! But, if you're dead set on head-to-head collisions, well... [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]I hear if you time your shots just right, you can [wave amp=12.0 freq=4.0 connected=1][color=98dcff]parry[/color][/wave] all that damage coming your way to buy you a couple more seconds, so keep that in mind."
 horizontal_alignment = 1
 
 [node name="Paragraph6" type="RichTextLabel" parent="TextureRect/MarginContainer/The Beast/Pages/Page3" unique_id=11970955]
@@ -218,7 +218,7 @@ custom_maximum_size = Vector2(960, 250)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
-text = "Alright, that's everything you need to know! Oh, and don't worry if your Spin Force gets depleted. It's not game over, you'll be taken out of the arena to go recharge and get your bearings before getting right back into the thick of it! And every time a round is over, you can take the candy you produced over to our Upgrades Shop to trade it in for some better gear to make your time in the Arena even better! So what are you waiting for? Get out there and start making some Cotton Candy!"
+text = "Alright, that's everything you need to know! Oh, and don't worry if your [color=cf3c71][outline_color=5a1991]Spin Force[/outline_color][/color] gets depleted. [wave amp=8.0 freq=2.0 connected=1][outline_color=0d2030]It's not game over, you'll be taken out of the arena to go recharge and get your bearings before getting right back into the thick of it! And every time a round is over, you can take the candy you produced over to our Upgrades Shop to trade it in for some better gear to make your time in the Arena even better![/outline_color][/wave] So what are you waiting for? Get out there and start making some  [shake rate=24.0 level=11 connected=1][color=fec9ed][outline_color=cf3c71]Cotton Candy!"
 horizontal_alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="TextureRect/MarginContainer/The Beast" unique_id=1986154015]
