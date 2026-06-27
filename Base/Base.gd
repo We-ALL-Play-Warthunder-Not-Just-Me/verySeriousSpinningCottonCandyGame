@@ -9,7 +9,7 @@ class_name BaseSpinner
 @onready var candy_tracker = get_node("/root/MainGame/CanvasLayer/CottonCandyTracker")
 @onready var animations = $VerySerious/Animations
 @onready var stats:HealthComponent = $HealthComponent
-@onready var dash_graphic = $VerySeriousDash
+@onready var dash_graphic: Sprite2D = $VerySeriousDash
 @onready var collision_circle = $DamageArea
 
 var health_bar: ProgressBar #Assigned in player and enemy subclass
@@ -17,7 +17,7 @@ var health_bar: ProgressBar #Assigned in player and enemy subclass
 var mouse_position
 var amplifier = 0.0
 var candy_multiplier
-var theo_dash_time: float = 3.0
+var theo_dash_time: float = 7.0
  #State machine stuff
 var current_state: STATE = STATE.GLIDING 
 #var parry_time: float = 10
@@ -28,16 +28,22 @@ enum STATE{
 }
 
 func State_Manager(delta:float):
+	#this is a little inneficient since we are just repeatedly assinging the variables to the same thing
 	theo_dash_time += delta
 	if(theo_dash_time <= stats.ParryStart+stats.ParryDuration && theo_dash_time >= stats.ParryStart):
 		current_state = STATE.PARRYING
 		self.linear_damp = 0
+		dash_graphic.modulate = Color(0.2, 0.6, 1.0, 1.0)
+		dash_graphic.visible = true
 	elif(theo_dash_time <= stats.DashDuration) :
+		dash_graphic.modulate = Color(1.0, 1.0, 1.0, 1.0)
 		current_state = STATE.DASHING
 		self.linear_damp = 0
+		dash_graphic.visible = true
 	else:
 		current_state = STATE.GLIDING
 		self.linear_damp = 0.02
+		dash_graphic.visible = false
 
 func _process(delta: float) -> void:
 	if center_stage.round_playing == true:
@@ -91,7 +97,17 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 	var spinner_one_force = abs(spinner_one.previous_frame.length())
 	var spinner_two_force = abs(spinner_two.previous_frame.length())
 	repulsion(spinner_two)
-	if spinner_one_force > spinner_two_force:
+	if(spinner_one.current_state == STATE.PARRYING):
+		print("We parried 'em!")
+		spinner_two.Take_Damage_Interceptor(damage)
+		if spinner_two.stats.CurrentHP < 0:
+			#Spinners gains an additional health restore for a Takedown
+			spinner_one.stats.heal(ceili(damage/2) + ceili(spinner_two.stats.TakedownReward/2))
+			#Though, the big reward is saved for your Candy Total, which this code handles
+			for scores in candy_tracker.spinners_dictionary:
+				if scores == spinner_one.name:
+					candy_tracker.spinners_dictionary[scores] += spinner_two.stats.TakedownReward
+	elif spinner_one_force > spinner_two_force:
 		print("We got 'em!")
 		var force_total = (spinner_one_force + spinner_two_force)
 		var force_difference =  (spinner_one_force - spinner_two_force)
@@ -120,4 +136,3 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 func Take_Damage_Interceptor(damage:int):
 	if current_state != STATE.PARRYING:
 		stats.takeDamage(damage)		
-	

@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 					dash_bar.takeDamage(stats.StaminaConsumption)
 					aiming = false
 					dash_countdown = stats.DashDuration
-					dash_graphic.visible = true
+					
 					self.set_linear_velocity(Vector2(0,0))
 					Engine.set_time_scale(1.0)
 					draw_arrow.visible = false
@@ -74,8 +74,7 @@ func _process(delta: float) -> void:
 					#print(lim_force)
 		else:
 			dash_countdown -= delta
-			if dash_countdown < stats.DashDuration/3:
-				dash_graphic.visible = false
+			
 
 		#Handling all the effects that change based on your Speed Force, otherwise known as HP
 		#spinforce_manager()
