@@ -5,7 +5,6 @@ const START_TIMER = 1.5
 var held_letters = []
 var timer = 0
 var secret_candy = 30000
-var candy_collected = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,12 +36,12 @@ func _process(delta: float) -> void:
 		for letter in held_letters:
 			word += letter
 		print(word)
-		if word == "CANDY" and !candy_collected:
-			candy_collected = true
+		if word == "CANDY" and !cottonCandy.secret_candy_collected:
+			cottonCandy.secret_candy_collected = true
 			print("Congrats, here's your candy")
 			cottonCandy.addCottonCandy(secret_candy)
 			held_letters.clear()
-		elif word == "CANDY" and candy_collected:
+		elif word == "CANDY" and cottonCandy.secret_candy_collected:
 			print("No freebies")
 			held_letters.clear()
 		else:

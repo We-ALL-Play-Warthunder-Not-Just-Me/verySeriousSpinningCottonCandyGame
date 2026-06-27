@@ -3,6 +3,9 @@ extends Resource
 ## This is the amount of cotton candy the player has that they can spend at the upgrades store
 class_name PlayerCottonCandyTotal
 
+#Shhhh... Super secret bool...
+var secret_candy_collected = false
+
 @export_range(0, 999, 1, "or_greater") var cottonCandyBank : int
 
 signal cottonCandyChanged(newamount:int, oldamount:int)
