@@ -16,6 +16,7 @@ class_name HealthComponent
 @export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var DashDuration: float = 2.0
 @export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var ParryDuration: float = 0.5
 @export_range(0, 10.0, 0.1, "or_greater", "prefer_slider") var ParryStart: float = 0.5
+@export_range(0, 1.0, 0.01, "or_greater", "prefer_slider") var SpeedDamageMin: float = 0.75
 # We lose spin every few thingies
 
 signal CurrenthealthChanged(newHP: int, OldHP: int)

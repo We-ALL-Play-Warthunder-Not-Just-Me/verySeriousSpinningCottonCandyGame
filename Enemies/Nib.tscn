@@ -140,6 +140,7 @@ TakedownReward = 90
 DashDuration = 1.8
 ParryDuration = 0.8
 ParryStart = 0.2
+SpeedDamageMin = 0.66
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
 
 [node name="decayTimer" type="Timer" parent="HealthComponent" unique_id=1606738338 node_paths=PackedStringArray("health")]

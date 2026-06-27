@@ -68,14 +68,14 @@ func spinforce_manager():
 			if (stats.PowerAmplifier/1.5) < 1:
 				amplifier = 1
 			else:
-				amplifier = (stats.PowerAmplifier/1.5)
+				amplifier = (stats.PowerAmplifier*(stats.SpeedDamageMin + (1 - stats.SpeedDamageMin)/2))
 		elif stats.CurrentHP > 0:
 			animations.play("PlayerSpinLow")
 			candy_multiplier = ceili(stats.CandyMultiplier/2)
 			if (stats.PowerAmplifier/2) < 1:
 				amplifier = 1
 			else:
-				amplifier = (stats.PowerAmplifier/2)
+				amplifier = (stats.PowerAmplifier*stats.SpeedDamageMin)
 		else:
 			animations.stop()
 
