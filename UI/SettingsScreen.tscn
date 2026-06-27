@@ -89,8 +89,8 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Master" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1982626722]
-custom_minimum_size = Vector2(60, 30)
-custom_maximum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(110, 30)
+custom_maximum_size = Vector2(100, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Master"
@@ -109,8 +109,8 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Music" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=369819031]
-custom_minimum_size = Vector2(60, 30)
-custom_maximum_size = Vector2(60, -1)
+custom_minimum_size = Vector2(110, 30)
+custom_maximum_size = Vector2(100, -1)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Music"
@@ -129,7 +129,7 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="SFX" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=305864269]
-custom_minimum_size = Vector2(60, 30)
+custom_minimum_size = Vector2(110, 30)
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 0
