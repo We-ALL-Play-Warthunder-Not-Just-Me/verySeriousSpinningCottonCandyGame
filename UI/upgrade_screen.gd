@@ -76,7 +76,7 @@ func _ready() -> void:
 	evilInitialize()
 
 func continueGame() -> void:
-	var main_game = "res://main_game.tscn"
+	var main_game = "res://Maps/main_game.tscn"
 	get_tree().change_scene_to_file(main_game)
 	
 func mainMenu() -> void:
@@ -143,6 +143,7 @@ func buyMaxDamage(init:bool = false) -> void:
 	levelMaxDamage.text = "LVL : " + str(upgrades.MaxDamage)
 	if (upgrades.MaxDamage >= MaxDamageMaxLevel):
 		buttonMaxDamage.disabled = true
+		buttonMaxDamage.text = "MAX"
 
 func buyMaxSpinForce(init:bool = false) -> void:
 	var cost: int = MaxSpinForceBaseCost * (1 + upgrades.MaxSpinForce)
@@ -157,6 +158,7 @@ func buyMaxSpinForce(init:bool = false) -> void:
 	levelMaxSpinForce.text = "LVL : " +  str(upgrades.MaxSpinForce)
 	if (upgrades.MaxSpinForce >= MaxSpinForceMaxLevel):
 		buttonMaxSpinForce.disabled = true
+		buttonMaxSpinForce.text = "MAX"
 
 
 func buySpinDecay(init:bool = false) -> void:
@@ -172,6 +174,7 @@ func buySpinDecay(init:bool = false) -> void:
 	levelReduceSpinDecay.text = "LVL : " + str(upgrades.SpinDecay)
 	if (upgrades.SpinDecay >= spinDecayMaxLevel):
 		buttonSpinDecay.disabled = true
+		buttonSpinDecay.text = "MAX"
 
 
 func buyStaminaConsumption(init:bool = false) -> void:
@@ -187,6 +190,7 @@ func buyStaminaConsumption(init:bool = false) -> void:
 	levelStaminaConsumption.text = "LVL : " + str(upgrades.StaminaConsumption)
 	if (upgrades.StaminaConsumption >= StaminaConsumptionMaxLevel):
 		buttonStaminaConsumption.disabled = true
+		buttonStaminaConsumption.text = "MAX"
 
 
 func buyPowerAmplifier(init:bool = false) -> void:
@@ -202,6 +206,7 @@ func buyPowerAmplifier(init:bool = false) -> void:
 	levelPowerAmplifier.text = "LVL : " + str(upgrades.PowerAmplifier)
 	if (upgrades.PowerAmplifier >= PowerAmplifierMaxLevel):
 		buttonPowerAmplifier.disabled = true
+		buttonPowerAmplifier.text = "MAX"
 
 func buyCandyMultiplier(init:bool = false) -> void:
 	var cost: int = CandyMultiplierBaseCost * (1 + upgrades.CandyMultiplier)
@@ -216,6 +221,7 @@ func buyCandyMultiplier(init:bool = false) -> void:
 	levelCandyMultiplier.text = "LVL : " + str(upgrades.CandyMultiplier)
 	if (upgrades.CandyMultiplier >= CandyMultiplierMaxLevel):
 		buttonCandyMultiplier.disabled = true
+		buttonCandyMultiplier.text = "MAX"
 
 # # Called every frame. 'delta' is the elapsed time since the previous frame.
 # func _process(delta: float) -> void:

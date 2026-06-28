@@ -2,21 +2,27 @@ extends RigidBody2D
 
 class_name BaseSpinner
 
-
-#@onready var attack = load("res://steal_spin_attack.gd").new()
 @onready var center_stage = get_node("/root/MainGame/CenterStage")
 @onready var sfx = get_node("/root/MainGame/FancyCamera/SFX")
 @onready var candy_tracker = get_node("/root/MainGame/CanvasLayer/CottonCandyTracker")
+@onready var spinner_spawner = get_node("/root/MainGame/Spinners")
 @onready var animations = $VerySerious/Animations
+@onready var visual_damage = $VerySerious/SpinnerDamaged
 @onready var stats:HealthComponent = $HealthComponent
 @onready var dash_graphic: Sprite2D = $VerySeriousDash
 @onready var collision_circle = $DamageArea
 
 var health_bar: ProgressBar #Assigned in player and enemy subclass
 
+#The various variables that just hold stuff
+var hold_decay: int
+var candy_multiplier: int
+var amplifier: float
+var previous_frame: Vector2
+var damage_time: float
+
 var mouse_position
-var amplifier = 0.0
-var candy_multiplier
+
 var theo_dash_time: float = 7.0
  #State machine stuff
 var current_state: STATE = STATE.GLIDING 
@@ -50,6 +56,7 @@ func _process(delta: float) -> void:
 		apply_gravity()
 		spinforce_manager()
 		State_Manager(delta)
+		damage_visualizer(delta)
 
 func apply_gravity():
 	if(current_state == STATE.GLIDING):
@@ -79,7 +86,6 @@ func spinner_collision(body: Node2D) -> void:
 	#print("THE STATES:\nPARRYING: ", STATE.PARRYING, "\nGliding: ", STATE.GLIDING, "\nDashing: ", STATE.DASHING)
 	if current_state != STATE.GLIDING:
 		if body.name != self.name and body is RigidBody2D:
-			sfx.random_hurt_sound()
 			steal_spin(self, body, stats.MaxDamage)
 
 func repulsion(spinner: RigidBody2D):
@@ -102,6 +108,8 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 				if scores == spinner_one.name:
 					candy_tracker.spinners_dictionary[scores] += (spinner_two.stats.TakedownReward * 3)
 	elif spinner_one_force > spinner_two_force:
+		sfx.random_hurt_sound()
+		spinner_two.damage_time = 0.5
 		print("We got 'em!")
 		var force_total = (spinner_one_force + spinner_two_force)
 		var force_difference =  (spinner_one_force - spinner_two_force)
@@ -130,3 +138,10 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 func Take_Damage_Interceptor(damage:int):
 	if current_state != STATE.PARRYING:
 		stats.takeDamage(damage)		
+
+func damage_visualizer(delta):
+	if damage_time > 0:
+		damage_time -= delta
+		visual_damage.visible = true
+	else:
+		visual_damage.visible = false

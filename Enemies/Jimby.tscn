@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://5dbl1d6nkgd6" path="res://Assets/Images/Very Serious Dash n Parry.png" id="2_dgenc"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_8p1q4"]
 [ext_resource type="PackedScene" uid="uid://drey4up7ycsvv" path="res://Common/EnemyHealthBar.tscn" id="4_dgenc"]
+[ext_resource type="Texture2D" uid="uid://dkwn8syk7tnnx" path="res://Assets/Images/Spinner Damaged.png" id="4_yfmjt"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_tqtd1"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="6_y71xj"]
 
@@ -110,6 +111,12 @@ texture = ExtResource("3_8p1q4")
 hframes = 2
 vframes = 2
 frame = 1
+
+[node name="SpinnerDamaged" type="Sprite2D" parent="VerySerious" unique_id=1482459710]
+visible = false
+z_index = 1
+texture = ExtResource("4_yfmjt")
+flip_h = true
 
 [node name="Animations" type="AnimationPlayer" parent="VerySerious" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")

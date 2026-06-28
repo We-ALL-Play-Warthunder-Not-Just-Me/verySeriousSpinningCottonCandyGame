@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://5dbl1d6nkgd6" path="res://Assets/Images/Very Serious Dash n Parry.png" id="2_v0k0e"]
 [ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_v0k0e"]
+[ext_resource type="Texture2D" uid="uid://dkwn8syk7tnnx" path="res://Assets/Images/Spinner Damaged.png" id="4_5wa8t"]
 [ext_resource type="Script" uid="uid://clqxigseoeluk" path="res://Player/arrow_display.gd" id="4_j23h2"]
 [ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="7_vlldt"]
 [ext_resource type="PackedScene" uid="uid://d3tdis6vd653i" path="res://Player/DashBar.tscn" id="9_v0k0e"]
@@ -117,6 +118,11 @@ hframes = 2
 texture = ExtResource("3_v0k0e")
 hframes = 2
 vframes = 2
+
+[node name="SpinnerDamaged" type="Sprite2D" parent="VerySerious" unique_id=571550146]
+visible = false
+z_index = 1
+texture = ExtResource("4_5wa8t")
 
 [node name="Animations" type="AnimationPlayer" parent="VerySerious" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")

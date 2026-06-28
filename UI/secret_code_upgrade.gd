@@ -28,22 +28,23 @@ func _process(delta: float) -> void:
 			print("Time Left: ", timer)
 		elif Input.is_action_just_pressed("Y"):
 			held_letters.append("Y")
-			timer = 0
-			print("THEY GOT 'EM ALL!!!!!")
+			print("THEY GOT Y!!!!!")
 			print("With this much time to spare: ", timer)
+			timer = 0
 	else:
 		var word: String
 		for letter in held_letters:
 			word += letter
-		print(word)
+			#print(word)
 		if word == "CANDY" and !cottonCandy.secret_candy_collected:
 			cottonCandy.secret_candy_collected = true
 			print("Congrats, here's your candy")
 			cottonCandy.addCottonCandy(secret_candy)
 			held_letters.clear()
+		elif word != "CANDY":
+			#print("Better luck next time")
+			held_letters.clear()
 		elif word == "CANDY" and cottonCandy.secret_candy_collected:
 			print("No freebies")
 			held_letters.clear()
-		else:
-			#print("Better luck next time")
-			held_letters.clear()
+		

@@ -237,7 +237,7 @@ custom_minimum_size = Vector2(560, 50)
 custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Reduce Stamina Consumption"
+text = "Reduce Battery Consumption (Dash)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -307,7 +307,7 @@ custom_minimum_size = Vector2(560, 50)
 custom_maximum_size = Vector2(560, 50)
 layout_mode = 2
 size_flags_horizontal = 2
-text = "Increase Cotton Candy Multiplier"
+text = "Increase Cotton Candy Generation"
 horizontal_alignment = 1
 vertical_alignment = 1
 

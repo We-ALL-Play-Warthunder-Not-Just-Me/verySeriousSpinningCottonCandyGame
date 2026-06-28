@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://fpv8gg2psj67" path="res://Base/SpinnerBase.gd" id="1_pa5h3"]
 [ext_resource type="Texture2D" uid="uid://b5vt0cqh3e4wk" path="res://Assets/Images/Very Serious Player.png" id="2_ppfmy"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_e3qi2"]
-[ext_resource type="Script" uid="uid://cqxfnn7eqdyp1" path="res://decay_timer2.gd" id="6_pa5h3"]
+[ext_resource type="Script" uid="uid://cqxfnn7eqdyp1" path="res://Common/decay_timer2.gd" id="6_pa5h3"]
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="7_g41ga"]
 [ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="8_fy2kp"]
 [ext_resource type="Resource" uid="uid://4yv500v1gvq6" path="res://Player/Upgrades.tres" id="9_5u230"]

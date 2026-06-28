@@ -1,18 +1,12 @@
 extends BaseSpinner
 
 #Everything else
-
-
 @onready var draw_arrow = $VerySeriousArrows3
 @onready var hit_box = $DamageArea/PlayerHitBox
 @onready var the_dark = get_node("/root/MainGame/TheDark")
 @onready var dash_bar = $CanvasLayer/DashBar
 
 var aiming = false
-var dash_countdown = 0.0
-var previous_frame: Vector2
-@onready var spawner = get_node("/root/MainGame/Spinners")
-var hold_decay
 
 
 var mouse_on_player:MOUSESTATE = MOUSESTATE.OFFPLAYER
@@ -20,7 +14,6 @@ enum MOUSESTATE{
 	ONPLAYER,
 	OFFPLAYER
 }
-
 
 
 func _ready() -> void:
@@ -61,8 +54,6 @@ func _process(delta: float) -> void:
 					the_dark.visible = false
 					dash_bar.takeDamage(stats.StaminaConsumption)
 					aiming = false
-					dash_countdown = stats.DashDuration
-					
 					self.set_linear_velocity(Vector2(0,0))
 					Engine.set_time_scale(1.0)
 					draw_arrow.visible = false
@@ -72,9 +63,6 @@ func _process(delta: float) -> void:
 					self.apply_force(lim_force * amplifier)
 					#print(force)
 					#print(lim_force)
-		else:
-			dash_countdown -= delta
-			
 
 		#Handling all the effects that change based on your Speed Force, otherwise known as HP
 		#spinforce_manager()
@@ -101,4 +89,4 @@ func spin_depleted():
 	Engine.set_time_scale(1.0)
 	the_dark.visible = false
 	sfx.random_death_sound()
-	spawner.kill_spinner(self)
+	spinner_spawner.kill_spinner(self)

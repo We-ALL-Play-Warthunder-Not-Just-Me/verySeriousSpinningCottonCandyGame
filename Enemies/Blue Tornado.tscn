@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bs2qaie2kse3b" path="res://Enemies/enemy.gd" id="1_n8tl3"]
 [ext_resource type="Texture2D" uid="uid://5dbl1d6nkgd6" path="res://Assets/Images/Very Serious Dash n Parry.png" id="2_n8tl3"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_iu1gl"]
+[ext_resource type="Texture2D" uid="uid://dkwn8syk7tnnx" path="res://Assets/Images/Spinner Damaged.png" id="4_dlfsb"]
 [ext_resource type="PackedScene" uid="uid://drey4up7ycsvv" path="res://Common/EnemyHealthBar.tscn" id="4_n8tl3"]
 [ext_resource type="Script" uid="uid://uflgtvyrjjt" path="res://Common/HealthComponent.gd" id="5_jg81o"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="6_ima6f"]
@@ -113,6 +114,12 @@ texture = ExtResource("3_iu1gl")
 hframes = 2
 vframes = 2
 frame = 3
+
+[node name="SpinnerDamaged" type="Sprite2D" parent="VerySerious" unique_id=490417425]
+visible = false
+z_index = 1
+texture = ExtResource("4_dlfsb")
+flip_h = true
 
 [node name="Animations" type="AnimationPlayer" parent="VerySerious" unique_id=1327218308]
 libraries/ = SubResource("AnimationLibrary_vlldt")

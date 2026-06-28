@@ -20,7 +20,7 @@ func _on_how_to_play_pressed() -> void:
 	how_to_screen.show()
 
 func _on_start_pressed() -> void:
-	var main_game = "res://main_game.tscn"
+	var main_game = "res://Maps/main_game.tscn"
 	get_tree().change_scene_to_file(main_game)
 
 func _on_settings_pressed() -> void:

@@ -1,32 +1,32 @@
 [gd_scene format=4 uid="uid://d1143h5fnthge"]
 
-[ext_resource type="Texture2D" uid="uid://cfuhvkvwid7v5" path="res://Assets/Images/Very Serious Arena.png" id="1_02kkc"]
-[ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://center_stage.gd" id="1_2pltu"]
-[ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://spinner_spawner.gd" id="1_l5ukw"]
-[ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="2_l5ukw"]
-[ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Jimby.tscn" id="4_6bm6p"]
-[ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://round_timer.gd" id="4_dugkq"]
-[ext_resource type="Texture2D" uid="uid://b5qmy2h6f8als" path="res://Assets/Images/Very Serious Square Bumper.png" id="4_qpaub"]
-[ext_resource type="Script" uid="uid://m6efbwsg5kqb" path="res://fancy_camera.gd" id="5_mf81u"]
-[ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://cotton_candy_tracker.gd" id="6_2pltu"]
-[ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="6_4srsv"]
-[ext_resource type="PackedScene" uid="uid://dcmglvwr0pief" path="res://Enemies/Blue Tornado.tscn" id="7_6krrg"]
-[ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="7_f52ns"]
-[ext_resource type="PackedScene" uid="uid://cxo2raq5uhod4" path="res://Enemies/Nib.tscn" id="8_8slmw"]
-[ext_resource type="FontFile" uid="uid://cttbx20lipnhr" path="res://Fonts/IsWasted.ttf" id="9_krmtw"]
-[ext_resource type="AudioStream" uid="uid://bf4u5senloteh" path="res://Assets/Music/AudioClipsforFancyMusic.tres" id="10_an1vu"]
-[ext_resource type="Script" uid="uid://dvc6eqm8pg5fv" path="res://fancy_music.gd" id="11_an1vu"]
-[ext_resource type="FontFile" uid="uid://biei7ob14e0ew" path="res://Fonts/Gibberesque.ttf" id="11_aomqu"]
-[ext_resource type="Script" uid="uid://blsinac5mwdtj" path="res://sfx.gd" id="13_umrn2"]
-[ext_resource type="AudioStream" uid="uid://vqr2rwkwenuf" path="res://Assets/Sound Effects/Cursed (2).wav" id="13_vn0ol"]
-[ext_resource type="AudioStream" uid="uid://lpuud5s0jsp8" path="res://Assets/Sound Effects/Cursed (3).wav" id="14_wt57k"]
-[ext_resource type="AudioStream" uid="uid://bseswq084al3i" path="res://Assets/Sound Effects/Cursed (4).wav" id="15_pk5u2"]
-[ext_resource type="AudioStream" uid="uid://dw1lmvffrx2i8" path="res://Assets/Sound Effects/Cursed (5).wav" id="16_lght5"]
-[ext_resource type="AudioStream" uid="uid://gepf406snr3x" path="res://Assets/Sound Effects/Cursed (6).wav" id="17_lfj8l"]
-[ext_resource type="AudioStream" uid="uid://d36es45sofmv5" path="res://Assets/Sound Effects/Fk U.wav" id="18_lght5"]
-[ext_resource type="AudioStream" uid="uid://cgn6qfvsymrm0" path="res://Assets/Sound Effects/Hey.wav" id="19_lfj8l"]
-[ext_resource type="AudioStream" uid="uid://da51iwttpol0n" path="res://Assets/Sound Effects/why.wav" id="20_ac0cv"]
-[ext_resource type="Texture2D" uid="uid://c7bmj4q3mbq2u" path="res://Assets/Images/Very Serious Cotton Candy.png" id="26_lfj8l"]
+[ext_resource type="Texture2D" uid="uid://d1piy38h5wsfi" path="res://Assets/Images/icon.svg" id="1_ooavi"]
+[ext_resource type="Texture2D" uid="uid://cfuhvkvwid7v5" path="res://Assets/Images/Very Serious Arena.png" id="2_srupr"]
+[ext_resource type="Texture2D" uid="uid://b5qmy2h6f8als" path="res://Assets/Images/Very Serious Square Bumper.png" id="3_x50ud"]
+[ext_resource type="Script" uid="uid://c2lkm3t8ksxn4" path="res://Maps/spinner_spawner.gd" id="4_u02vk"]
+[ext_resource type="PackedScene" uid="uid://byggay1shakk" path="res://Enemies/Jimby.tscn" id="5_r6sxf"]
+[ext_resource type="PackedScene" uid="uid://dcmglvwr0pief" path="res://Enemies/Blue Tornado.tscn" id="6_c8f8p"]
+[ext_resource type="PackedScene" uid="uid://cxo2raq5uhod4" path="res://Enemies/Nib.tscn" id="7_bucam"]
+[ext_resource type="PackedScene" uid="uid://c1kjh2bp3nhq6" path="res://Player/Player.tscn" id="8_xysi7"]
+[ext_resource type="Script" uid="uid://b3mexmqks0wdv" path="res://Maps/center_stage.gd" id="9_tnq43"]
+[ext_resource type="Script" uid="uid://m6efbwsg5kqb" path="res://Maps/fancy_camera.gd" id="10_0o0ii"]
+[ext_resource type="AudioStream" uid="uid://bf4u5senloteh" path="res://Assets/Music/AudioClipsforFancyMusic.tres" id="11_qx5f6"]
+[ext_resource type="Script" uid="uid://dvc6eqm8pg5fv" path="res://Common/fancy_music.gd" id="12_ooavi"]
+[ext_resource type="Script" uid="uid://blsinac5mwdtj" path="res://Common/sfx.gd" id="13_srupr"]
+[ext_resource type="AudioStream" uid="uid://vqr2rwkwenuf" path="res://Assets/Sound Effects/Cursed (2).wav" id="14_shrqs"]
+[ext_resource type="AudioStream" uid="uid://lpuud5s0jsp8" path="res://Assets/Sound Effects/Cursed (3).wav" id="15_127sk"]
+[ext_resource type="AudioStream" uid="uid://bseswq084al3i" path="res://Assets/Sound Effects/Cursed (4).wav" id="16_gs413"]
+[ext_resource type="AudioStream" uid="uid://dw1lmvffrx2i8" path="res://Assets/Sound Effects/Cursed (5).wav" id="17_ibqs3"]
+[ext_resource type="AudioStream" uid="uid://gepf406snr3x" path="res://Assets/Sound Effects/Cursed (6).wav" id="18_e55mf"]
+[ext_resource type="AudioStream" uid="uid://d36es45sofmv5" path="res://Assets/Sound Effects/Fk U.wav" id="19_2r5o3"]
+[ext_resource type="AudioStream" uid="uid://cgn6qfvsymrm0" path="res://Assets/Sound Effects/Hey.wav" id="20_el1cr"]
+[ext_resource type="AudioStream" uid="uid://da51iwttpol0n" path="res://Assets/Sound Effects/why.wav" id="21_a1cvy"]
+[ext_resource type="FontFile" uid="uid://cttbx20lipnhr" path="res://Fonts/IsWasted.ttf" id="22_4c3af"]
+[ext_resource type="Script" uid="uid://dvg2qi60ngnjj" path="res://Maps/round_timer.gd" id="23_k5tb7"]
+[ext_resource type="Resource" uid="uid://dfojukemdokol" path="res://Player/CottonCandyBank.tres" id="24_ve2am"]
+[ext_resource type="FontFile" uid="uid://biei7ob14e0ew" path="res://Fonts/Gibberesque.ttf" id="25_mt8gn"]
+[ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://Maps/cotton_candy_tracker.gd" id="26_12mej"]
+[ext_resource type="Texture2D" uid="uid://c7bmj4q3mbq2u" path="res://Assets/Images/Very Serious Cotton Candy.png" id="27_tvu23"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_krmtw"]
 
@@ -73,7 +73,7 @@ texture = SubResource("CanvasTexture_krmtw")
 z_index = -1
 position = Vector2(0, -240)
 scale = Vector2(3.625, 0.125)
-texture = ExtResource("7_f52ns")
+texture = ExtResource("1_ooavi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall" unique_id=1132835991]
 
@@ -86,7 +86,7 @@ shape = SubResource("RectangleShape2D_tsdbm")
 z_index = -1
 position = Vector2(-3.8146973e-06, 240)
 scale = Vector2(3.625, 0.125)
-texture = ExtResource("7_f52ns")
+texture = ExtResource("1_ooavi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall2" unique_id=1736148737]
 
@@ -99,7 +99,7 @@ shape = SubResource("RectangleShape2D_tsdbm")
 z_index = -1
 position = Vector2(240, 3.8146973e-05)
 scale = Vector2(0.1249998, 3.875)
-texture = ExtResource("7_f52ns")
+texture = ExtResource("1_ooavi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall3" unique_id=481045631]
 
@@ -111,7 +111,7 @@ shape = SubResource("RectangleShape2D_tsdbm")
 z_index = -1
 position = Vector2(-240, 1.1444092e-05)
 scale = Vector2(0.1249998, 3.875)
-texture = ExtResource("7_f52ns")
+texture = ExtResource("1_ooavi")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Wall4" unique_id=1500575370]
 
@@ -123,7 +123,7 @@ shape = SubResource("RectangleShape2D_tsdbm")
 z_index = -1
 position = Vector2(-1.5258789e-05, 0)
 scale = Vector2(0.9999998, 1)
-texture = ExtResource("1_02kkc")
+texture = ExtResource("2_srupr")
 
 [node name="BouncePad2" type="StaticBody2D" parent="." unique_id=1489324685]
 position = Vector2(-224.00002, 0)
@@ -136,7 +136,7 @@ offset_left = -63.999985
 offset_top = -8.0
 offset_right = 64.000046
 offset_bottom = 8.0
-texture = ExtResource("4_qpaub")
+texture = ExtResource("3_x50ud")
 region_rect = Rect2(0, 0, 16, 16)
 patch_margin_left = 3
 patch_margin_top = 3
@@ -159,7 +159,7 @@ offset_left = -64.000015
 offset_top = -8.0
 offset_right = 64.000015
 offset_bottom = 8.0
-texture = ExtResource("4_qpaub")
+texture = ExtResource("3_x50ud")
 region_rect = Rect2(0, 0, 16, 16)
 patch_margin_left = 3
 patch_margin_top = 3
@@ -182,7 +182,7 @@ offset_left = -64.000015
 offset_top = -8.0
 offset_right = 64.000015
 offset_bottom = 8.0
-texture = ExtResource("4_qpaub")
+texture = ExtResource("3_x50ud")
 region_rect = Rect2(0, 0, 16, 16)
 patch_margin_left = 3
 patch_margin_top = 3
@@ -203,7 +203,7 @@ offset_left = -64.000015
 offset_top = -8.0
 offset_right = 64.000015
 offset_bottom = 8.0
-texture = ExtResource("4_qpaub")
+texture = ExtResource("3_x50ud")
 region_rect = Rect2(0, 0, 16, 16)
 patch_margin_left = 3
 patch_margin_top = 3
@@ -223,23 +223,23 @@ scale = Vector2(2000, 2000)
 texture = SubResource("PlaceholderTexture2D_mf81u")
 
 [node name="Spinners" type="Node" parent="." unique_id=1643844216]
-script = ExtResource("1_l5ukw")
+script = ExtResource("4_u02vk")
 
-[node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("4_6bm6p")]
+[node name="Jimby" parent="Spinners" unique_id=222236015 instance=ExtResource("5_r6sxf")]
 position = Vector2(128, -128)
 max_contacts_reported = 0
 
-[node name="Blue Tornado" parent="Spinners" unique_id=2132772684 instance=ExtResource("7_6krrg")]
+[node name="Blue Tornado" parent="Spinners" unique_id=2132772684 instance=ExtResource("6_c8f8p")]
 position = Vector2(128, 128)
 
-[node name="Nib" parent="Spinners" unique_id=1566048450 instance=ExtResource("8_8slmw")]
+[node name="Nib" parent="Spinners" unique_id=1566048450 instance=ExtResource("7_bucam")]
 position = Vector2(-128, -128)
 
-[node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("2_l5ukw")]
+[node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("8_xysi7")]
 position = Vector2(-128, 128)
 
 [node name="CenterStage" type="Node2D" parent="." unique_id=2022388985 node_paths=PackedStringArray("candy_timer", "candy_timer_label", "game_timer", "game_timer_label", "middle_text", "camera")]
-script = ExtResource("1_2pltu")
+script = ExtResource("9_tnq43")
 gravity = 1.5
 candy_timer = NodePath("../CanvasLayer/CottonCandyTracker/CandyTimer")
 candy_timer_label = NodePath("../CanvasLayer/CottonCandyTracker")
@@ -256,25 +256,25 @@ autostart = true
 zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
-script = ExtResource("5_mf81u")
+script = ExtResource("10_0o0ii")
 center_stage = NodePath("../CenterStage")
 
 [node name="Music" type="AudioStreamPlayer2D" parent="FancyCamera" unique_id=1580899563 node_paths=PackedStringArray("center_stage", "game_time")]
-stream = ExtResource("10_an1vu")
+stream = ExtResource("11_qx5f6")
 autoplay = true
 bus = &"Music"
-script = ExtResource("11_an1vu")
+script = ExtResource("12_ooavi")
 center_stage = NodePath("../../CenterStage")
 game_time = NodePath("../../CanvasLayer/GameTime/Timer")
-stream_res = ExtResource("10_an1vu")
+stream_res = ExtResource("11_qx5f6")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="FancyCamera" unique_id=1696456215]
 stream = SubResource("AudioStreamWAV_borgi")
 volume_db = 15.0
 bus = &"SFX"
-script = ExtResource("13_umrn2")
-hit_noises = [ExtResource("13_vn0ol"), ExtResource("14_wt57k"), ExtResource("15_pk5u2"), ExtResource("16_lght5"), ExtResource("17_lfj8l")]
-death_noises = [ExtResource("18_lght5"), ExtResource("19_lfj8l"), ExtResource("20_ac0cv")]
+script = ExtResource("13_srupr")
+hit_noises = [ExtResource("14_shrqs"), ExtResource("15_127sk"), ExtResource("16_gs413"), ExtResource("17_ibqs3"), ExtResource("18_e55mf")]
+death_noises = [ExtResource("19_2r5o3"), ExtResource("20_el1cr"), ExtResource("21_a1cvy")]
 
 [node name="SFX2" type="AudioStreamPlayer2D" parent="FancyCamera/SFX" unique_id=1896215580]
 volume_db = 15.0
@@ -298,13 +298,13 @@ theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 16
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("9_krmtw")
+theme_override_fonts/font = ExtResource("22_4c3af")
 theme_override_font_sizes/font_size = 80
 text = "30"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("4_dugkq")
-candy_bank = ExtResource("6_4srsv")
+script = ExtResource("23_k5tb7")
+candy_bank = ExtResource("24_ve2am")
 
 [node name="Timer" type="Timer" parent="CanvasLayer/GameTime" unique_id=405559357]
 wait_time = 45.0
@@ -337,8 +337,8 @@ theme_override_constants/shadow_outline_size = 8
 theme_override_constants/shadow_offset_x = 4
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 8
-theme_override_fonts/normal_font = ExtResource("11_aomqu")
-theme_override_fonts/bold_font = ExtResource("9_krmtw")
+theme_override_fonts/normal_font = ExtResource("25_mt8gn")
+theme_override_fonts/bold_font = ExtResource("22_4c3af")
 theme_override_font_sizes/normal_font_size = 48
 theme_override_font_sizes/bold_font_size = 192
 tab_size = 8
@@ -358,10 +358,10 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("11_aomqu")
+theme_override_fonts/font = ExtResource("25_mt8gn")
 theme_override_font_sizes/font_size = 44
 text = "Cotton Candy: 000"
-script = ExtResource("6_2pltu")
+script = ExtResource("26_12mej")
 
 [node name="CandyTimer" type="Timer" parent="CanvasLayer/CottonCandyTracker" unique_id=1219899050]
 
@@ -371,7 +371,7 @@ offset_left = -50.0
 offset_top = -14.0
 offset_right = -4.0
 offset_bottom = 42.0
-texture = ExtResource("26_lfj8l")
+texture = ExtResource("27_tvu23")
 
 [connection signal="child_entered_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_exiting_tree"]
