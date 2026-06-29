@@ -1,7 +1,7 @@
 extends BaseSpinner
 
 #Everything else
-@onready var draw_arrow = $VerySeriousArrows3
+@onready var draw_arrow = $VerySeriousArrow
 @onready var hit_box = $DamageArea/PlayerHitBox
 @onready var the_dark = get_node("/root/MainGame/TheDark")
 @onready var dash_bar = $CanvasLayer/DashBar

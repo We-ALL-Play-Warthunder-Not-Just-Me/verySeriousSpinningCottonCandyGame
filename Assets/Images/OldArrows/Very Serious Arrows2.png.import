@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvyww7i6lj64y"
-path="res://.godot/imported/Very Serious Arrows3.png-1e9e62ffecd054facdeb9b2f4271e787.ctex"
+uid="uid://7k6fbj52h483"
+path="res://.godot/imported/Very Serious Arrows2.png-0b46892e3f39116909f0bee650bb3286.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Very Serious Arrows3.png"
-dest_files=["res://.godot/imported/Very Serious Arrows3.png-1e9e62ffecd054facdeb9b2f4271e787.ctex"]
+source_file="res://Assets/Images/OldArrows/Very Serious Arrows2.png"
+dest_files=["res://.godot/imported/Very Serious Arrows2.png-0b46892e3f39116909f0bee650bb3286.ctex"]
 
 [params]
 
