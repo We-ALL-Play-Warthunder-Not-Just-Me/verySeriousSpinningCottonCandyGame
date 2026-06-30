@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cfwloid87si0h"]
+
+[ext_resource type="Theme" uid="uid://ctvmv7gvcgx5h" path="res://UpgradeMenuTheme.tres" id="1_8uh7m"]
+[ext_resource type="Script" uid="uid://bkgu5ii6ntrn8" path="res://test_dictionary_functions.gd" id="2_6uqi0"]
+
+[node name="Test" type="Control" unique_id=845292568]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8uh7m")
+script = ExtResource("2_6uqi0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1156381549]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.326
+anchor_top = 0.35900003
+anchor_right = 0.674
+anchor_bottom = 0.64100003
+offset_left = -0.45999146
+offset_top = 0.35998535
+offset_right = 0.45996094
+offset_bottom = -0.3600464
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=382700230]
+layout_mode = 2
+alignment = 2
+
+[node name="Item" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1106646444]
+layout_mode = 2
+text = "Apples -"
+
+[node name="Quantity" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=680457825]
+layout_mode = 2
+text = "Quantity: 0"
+
+[node name="Cost" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=762882692]
+layout_mode = 2
+text = "Cost: 30"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1172086956]
+layout_mode = 2
+text = "Buy"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=377886620]
+layout_mode = 2
+alignment = 2
+
+[node name="Item" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=602500715]
+layout_mode = 2
+text = "Lemons -"
+
+[node name="Quantity" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=709299879]
+layout_mode = 2
+text = "Quantity: 0"
+
+[node name="Cost" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1039509944]
+layout_mode = 2
+text = "Cost: 20"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2" unique_id=171403258]
+layout_mode = 2
+text = "Buy"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1120551865]
+layout_mode = 2
+alignment = 2
+
+[node name="Item" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=33271073]
+layout_mode = 2
+text = "Pears -"
+
+[node name="Quantity" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1179875698]
+layout_mode = 2
+text = "Quantity: 0"
+
+[node name="Cost" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1237148568]
+layout_mode = 2
+text = "Cost: 15"
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer3" unique_id=1519570102]
+layout_mode = 2
+text = "Buy"
+
+[node name="Label" type="Label" parent="." unique_id=2057316043]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 34.0
+text = "Money: 1000"
