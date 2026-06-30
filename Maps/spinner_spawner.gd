@@ -35,6 +35,10 @@ func spawn_spinner(spinner_name: String, start_position: Vector2):
 	self.add_child.call_deferred(spinner)
 	spinner.global_position = start_position
 	
+	for i in spinner.get_children():
+		if i.is_class("HealthComponent"):
+			i.takeDamage(0)
+	
 func _process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_R):
 		get_tree().reload_current_scene()
