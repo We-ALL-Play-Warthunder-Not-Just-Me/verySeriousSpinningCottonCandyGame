@@ -35,7 +35,7 @@ func spawn_spinner(spinner_name: String, start_position: Vector2):
 	self.add_child.call_deferred(spinner)
 	spinner.global_position = start_position
 	
-	for i in spinner.get_children():
+	for i: Node in spinner.get_children():
 		if i.is_class("HealthComponent"):
 			i.takeDamage(0)
 	
