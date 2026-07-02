@@ -30,6 +30,10 @@ func _ready() -> void:
 	collision_circle.body_entered.connect(spinner_collision)
 	
 
+
+	
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)

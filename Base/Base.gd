@@ -63,6 +63,15 @@ func apply_gravity():
 		var to_center = self.position.direction_to(center_stage.position)
 		self.apply_force(to_center * center_stage.gravity)
 
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if(current_state != STATE.GLIDING):
+		#print("Speed: " + str(state.linear_velocity.length()))
+		if(state.linear_velocity.length() <= stats.MinSpeed):
+			state.linear_velocity = state.linear_velocity.normalized() *stats.MinSpeed
+			#print("speed?!?!?!?!")
+			
+
 func spinforce_manager():
 	#Handling all the effects that change based on your Speed Force, otherwise known as HP
 		if stats.CurrentHP > (stats.MaxHP/2):
