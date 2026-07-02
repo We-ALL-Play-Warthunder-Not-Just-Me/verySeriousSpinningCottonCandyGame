@@ -37,11 +37,13 @@ func State_Manager(delta:float):
 	#this is a little inneficient since we are just repeatedly assinging the variables to the same thing
 	theo_dash_time += delta
 	if(theo_dash_time <= stats.ParryStart+stats.ParryDuration && theo_dash_time >= stats.ParryStart):
-		current_state = STATE.PARRYING
-		self.linear_damp = 0
-		dash_graphic.frame = 1
-		dash_graphic.visible = true
+		if(current_state != STATE.PARRYING):
+			current_state = STATE.PARRYING
+			self.linear_damp = 0
+			dash_graphic.frame = 1
+			dash_graphic.visible = true
 	elif(theo_dash_time <= stats.DashDuration) :
+		
 		dash_graphic.frame = 0
 		current_state = STATE.DASHING
 		self.linear_damp = 0

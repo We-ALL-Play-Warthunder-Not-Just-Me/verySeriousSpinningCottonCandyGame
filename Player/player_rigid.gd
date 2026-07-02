@@ -31,9 +31,6 @@ func _ready() -> void:
 	
 
 
-	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	super(delta)
@@ -41,7 +38,7 @@ func _process(delta: float) -> void:
 		stats.HealthDecay = hold_decay
 		health_bar.visible = true
 		dash_bar.visible = true
-		if dash_bar.value > stats.StaminaConsumption && current_state == STATE.GLIDING:
+		if dash_bar.value > stats.StaminaConsumption:
 			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == MOUSESTATE.ONPLAYER:
 				Engine.set_time_scale(0.2)
 				aiming = true
