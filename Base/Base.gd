@@ -34,7 +34,6 @@ enum STATE{
 }
 
 func State_Manager(delta:float):
-	#this is a little inneficient since we are just repeatedly assinging the variables to the same thing
 	theo_dash_time += delta
 	if(theo_dash_time <= stats.ParryStart+stats.ParryDuration && theo_dash_time >= stats.ParryStart):
 		if(current_state != STATE.PARRYING):
@@ -43,15 +42,16 @@ func State_Manager(delta:float):
 			dash_graphic.frame = 1
 			dash_graphic.visible = true
 	elif(theo_dash_time <= stats.DashDuration) :
-		
-		dash_graphic.frame = 0
-		current_state = STATE.DASHING
-		self.linear_damp = 0
-		dash_graphic.visible = true
+		if(current_state != STATE.DASHING):
+			dash_graphic.frame = 0
+			current_state = STATE.DASHING
+			self.linear_damp = 0
+			dash_graphic.visible = true
 	else:
-		current_state = STATE.GLIDING
-		self.linear_damp = 0.02
-		dash_graphic.visible = false
+		if(current_state != STATE.GLIDING):
+			current_state = STATE.GLIDING
+			self.linear_damp = 0.02
+			dash_graphic.visible = false
 
 func _process(delta: float) -> void:
 	if center_stage.round_playing == true:
@@ -59,6 +59,11 @@ func _process(delta: float) -> void:
 		spinforce_manager()
 		State_Manager(delta)
 		damage_visualizer(delta)
+
+func dash_self(force:Vector2):
+	var lim_force = force.limit_length(stats.max_power)
+	theo_dash_time = 0
+	self.apply_force(lim_force * amplifier)
 
 func apply_gravity():
 	if(current_state == STATE.GLIDING):
