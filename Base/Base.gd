@@ -60,10 +60,18 @@ func _process(delta: float) -> void:
 		State_Manager(delta)
 		damage_visualizer(delta)
 
+
+
 func dash_self(force:Vector2):
 	var lim_force = force.limit_length(stats.max_power)
 	theo_dash_time = 0
 	self.apply_force(lim_force * amplifier)
+
+func construct_dash_self(direction:Vector2, power:float):
+	var force = direction * power
+	dash_self(force)
+	
+
 
 func apply_gravity():
 	if(current_state == STATE.GLIDING):

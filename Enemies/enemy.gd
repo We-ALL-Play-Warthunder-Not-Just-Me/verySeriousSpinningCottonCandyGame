@@ -48,19 +48,22 @@ func _process(delta: float) -> void:
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()
 
-func launch_self(target_position: Vector2):
-	var direction_to_target = self.position.direction_to(target_position)
-	var final_power = randi_range(min_power_meter, stats.max_power)
-	var force = (direction_to_target * final_power).limit_length(stats.max_power)
-	theo_dash_time = 0
-	self.apply_force(force * amplifier)
+#func launch_self(target_position: Vector2):
+	#var direction_to_target = self.position.direction_to(target_position)
+	#var final_power = randi_range(min_power_meter, stats.max_power)
+	#var force = (direction_to_target * final_power).limit_length(stats.max_power)
+	#theo_dash_time = 0
+	#self.apply_force(force * amplifier)
+
+func get_power_range():
+	return randi_range(min_power_meter, stats.max_power)
 
 func pick_target(targets: Array):
 	var active_spinners = targets.size()
 	if active_spinners == 0:
 		#If no one else is around, go in a random direction
 		var random_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)) + self.position
-		launch_self(random_direction)
+		construct_dash_self(random_direction, get_power_range())
 	else:
 		#Picking randomly who to go for in the array of options
 		var random_target = randi_range(0, active_spinners-1)
@@ -71,7 +74,7 @@ func pick_target(targets: Array):
 			pick_target(targets)
 		else:
 			#print(self.name," has chosen Target: ", chosen_target.name)
-			launch_self(chosen_target.position)
+			construct_dash_self(chosen_target.position, get_power_range())
 
 
 func spin_depleted():
