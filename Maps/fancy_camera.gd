@@ -10,8 +10,6 @@ const PLAYER_ZOOM = 2.4
 const CENTER_ZOOM = 1.6
 const ZOOM_SPEED = 1.5
 
-
-
 func start_camera():
 	var player = spinners.get_child(3)
 	follow_this = player

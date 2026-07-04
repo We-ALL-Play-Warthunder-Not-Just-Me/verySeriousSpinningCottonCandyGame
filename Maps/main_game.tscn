@@ -27,6 +27,9 @@
 [ext_resource type="FontFile" uid="uid://biei7ob14e0ew" path="res://Fonts/Gibberesque.ttf" id="25_mt8gn"]
 [ext_resource type="Script" uid="uid://bbvr8adcc6mf7" path="res://Maps/cotton_candy_tracker.gd" id="26_12mej"]
 [ext_resource type="Texture2D" uid="uid://c7bmj4q3mbq2u" path="res://Assets/Images/Very Serious Cotton Candy.png" id="27_tvu23"]
+[ext_resource type="Script" uid="uid://04klv4n1sf23" path="res://Maps/trackers.gd" id="28_u02vk"]
+[ext_resource type="Texture2D" uid="uid://dn701jcwrla4j" path="res://Assets/Images/Markers.png" id="29_r6sxf"]
+[ext_resource type="Texture2D" uid="uid://cxb7sjix8rnhc" path="res://Assets/Images/Very Serious Spinners Small.png" id="30_c8f8p"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_krmtw"]
 
@@ -372,6 +375,55 @@ offset_top = -14.0
 offset_right = -4.0
 offset_bottom = 42.0
 texture = ExtResource("27_tvu23")
+
+[node name="Trackers" type="Node2D" parent="." unique_id=1887302870 node_paths=PackedStringArray("opponent_one", "opponent_two", "opponent_three", "player", "center_stage")]
+script = ExtResource("28_u02vk")
+opponent_one = NodePath("../Spinners/Jimby")
+opponent_two = NodePath("../Spinners/Blue Tornado")
+opponent_three = NodePath("../Spinners/Nib")
+player = NodePath("../Spinners/Player")
+center_stage = NodePath("../CenterStage")
+
+[node name="JimbyTracker" type="Sprite2D" parent="Trackers" unique_id=781161090]
+position = Vector2(80, 0)
+texture = ExtResource("29_r6sxf")
+hframes = 3
+frame = 2
+
+[node name="JimbyIcon" type="Sprite2D" parent="Trackers/JimbyTracker" unique_id=276153113]
+position = Vector2(-14, 0)
+texture = ExtResource("30_c8f8p")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="BlueTornadoTracker" type="Sprite2D" parent="Trackers" unique_id=777134681]
+position = Vector2(-80, 0)
+rotation = -3.1415925
+texture = ExtResource("29_r6sxf")
+hframes = 3
+frame = 2
+
+[node name="BlueTornadoIcon" type="Sprite2D" parent="Trackers/BlueTornadoTracker" unique_id=302474713]
+position = Vector2(-14, 0)
+texture = ExtResource("30_c8f8p")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="NibTracker" type="Sprite2D" parent="Trackers" unique_id=2147001965]
+position = Vector2(0, -80)
+rotation = -1.5707964
+texture = ExtResource("29_r6sxf")
+hframes = 3
+frame = 2
+
+[node name="NibIcon" type="Sprite2D" parent="Trackers/NibTracker" unique_id=987825350]
+position = Vector2(-14, 0)
+texture = ExtResource("30_c8f8p")
+hframes = 2
+vframes = 2
+frame = 2
 
 [connection signal="child_entered_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Spinners" to="FancyCamera" method="_on_spinners_child_exiting_tree"]

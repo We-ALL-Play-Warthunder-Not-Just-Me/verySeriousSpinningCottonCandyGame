@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	body.scale.x = butt.position.distance_to(head.position)/2
 	body.position = (butt.position + (head.position/2))
 	
-	#You'd think you could jsut rotate the node they're on and not have to do this.
+	#You'd think you could just rotate the node they're on and not have to do this.
 	#You'd think that and be wrong. Gotta rotate each one individually.
 	head.rotation = head.position.angle()
 	body.rotation = head.position.angle()
