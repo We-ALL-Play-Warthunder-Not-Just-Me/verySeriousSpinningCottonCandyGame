@@ -10,7 +10,7 @@ extends Node2D
 @onready var follow_one = opponent_one
 @onready var follow_two = opponent_two
 @onready var follow_three = opponent_three
-const LIMIT_DISTANCE = 120
+const LIMIT_DISTANCE = 110
 
 @onready var spinners: Node = get_node("/root/MainGame/Spinners")
 @onready var marker_one = $JimbyTracker
