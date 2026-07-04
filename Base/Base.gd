@@ -21,8 +21,6 @@ var amplifier: float
 var previous_frame: Vector2
 var damage_time: float
 
-var mouse_position
-
 var theo_dash_time: float = 7.0
  #State machine stuff
 var current_state: STATE = STATE.GLIDING 

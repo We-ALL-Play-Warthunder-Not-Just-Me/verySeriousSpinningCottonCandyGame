@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 		
 		#print(self.name, " Candy Multiplier: ", candy_multiplier)
 	else:
+		self.current_state = STATE.GLIDING
 		self.linear_velocity.lerp(Vector2(0,0),30)
 		stats.HealthDecay = 0
 		dash_graphic.visible = false
