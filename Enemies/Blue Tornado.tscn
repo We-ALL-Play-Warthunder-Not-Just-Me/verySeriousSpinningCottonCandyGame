@@ -164,5 +164,7 @@ collision_layer = 2
 shape = SubResource("CircleShape2D_n1bor")
 debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
 
+[node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="." unique_id=126044637]
+
 [connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_entered"]

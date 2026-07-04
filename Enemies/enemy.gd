@@ -5,6 +5,8 @@ extends BaseSpinner
 @export var max_wait_time = 3.5
 @export var min_wait_time = 2.0
 
+@onready var screen_checker: VisibleOnScreenNotifier2D = $OnScreen
+
 var dash_countdown
 var final_wait_time
 var can_dash = true

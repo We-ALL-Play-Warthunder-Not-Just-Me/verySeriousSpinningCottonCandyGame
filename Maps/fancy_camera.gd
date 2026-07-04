@@ -6,11 +6,9 @@ extends Camera2D
 @onready var smooth_zoom = self.get_zoom().x
 @onready var target_zoom = CENTER_ZOOM
 var follow_player = false
-const PLAYER_ZOOM = 2.4
+const PLAYER_ZOOM = 2.6
 const CENTER_ZOOM = 1.6
-const ZOOM_SPEED = 1.5
-
-
+const ZOOM_SPEED = 2.5
 
 func start_camera():
 	var player = spinners.get_child(3)

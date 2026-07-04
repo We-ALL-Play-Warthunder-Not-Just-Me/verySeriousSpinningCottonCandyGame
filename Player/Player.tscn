@@ -5,11 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://civ3c53lbsq3g" path="res://Common/HealthBar.tscn" id="2_q3lat"]
 [ext_resource type="Script" uid="uid://dbd78rwuw5wsu" path="res://Common/decay_timer.gd" id="2_tok1r"]
 [ext_resource type="Texture2D" uid="uid://5dbl1d6nkgd6" path="res://Assets/Images/Very Serious Dash n Parry.png" id="2_v0k0e"]
-[ext_resource type="Texture2D" uid="uid://dvyww7i6lj64y" path="res://Assets/Images/Very Serious Arrows3.png" id="3_6ysni"]
 [ext_resource type="Texture2D" uid="uid://dvhkkgwf2bp3" path="res://Assets/Images/Very Serious Spinners.png" id="3_v0k0e"]
 [ext_resource type="Texture2D" uid="uid://dkwn8syk7tnnx" path="res://Assets/Images/Spinner Damaged.png" id="4_5wa8t"]
 [ext_resource type="Script" uid="uid://clqxigseoeluk" path="res://Player/arrow_display.gd" id="4_j23h2"]
+[ext_resource type="Texture2D" uid="uid://c064mvrs3aei4" path="res://Assets/Images/Very Serious Arrow Head.png" id="5_dm7nj"]
+[ext_resource type="Texture2D" uid="uid://dvo6ko27qodyt" path="res://Assets/Images/Very Serious Arrow Body.png" id="7_3mea3"]
 [ext_resource type="Script" uid="uid://b4re2wm2gcrj4" path="res://Player/UpgradeManager.gd" id="7_vlldt"]
+[ext_resource type="Texture2D" uid="uid://kgb6qejug66r" path="res://Assets/Images/Very Serious Arrow Butt.png" id="8_7v5gs"]
 [ext_resource type="PackedScene" uid="uid://d3tdis6vd653i" path="res://Player/DashBar.tscn" id="9_v0k0e"]
 [ext_resource type="Resource" uid="uid://4yv500v1gvq6" path="res://Player/Upgrades.tres" id="11_v0k0e"]
 
@@ -131,11 +133,24 @@ autoplay = &"PlayerSpinHigh"
 [node name="BaseCollisionBox" type="CollisionShape2D" parent="." unique_id=1578528933]
 shape = SubResource("CircleShape2D_b8qva")
 
-[node name="VerySeriousArrows3" type="Sprite2D" parent="." unique_id=1467626387]
+[node name="VerySeriousArrow" type="Node2D" parent="." unique_id=446807363]
 visible = false
 z_index = 3
-texture = ExtResource("3_6ysni")
 script = ExtResource("4_j23h2")
+
+[node name="Head" type="Sprite2D" parent="VerySeriousArrow" unique_id=1467626387]
+texture = ExtResource("5_dm7nj")
+offset = Vector2(6, 0)
+hframes = 4
+
+[node name="Body" type="Sprite2D" parent="VerySeriousArrow" unique_id=564137293]
+texture_repeat = 2
+texture = ExtResource("7_3mea3")
+hframes = 4
+
+[node name="Butt" type="Sprite2D" parent="VerySeriousArrow" unique_id=1275817916]
+texture = ExtResource("8_7v5gs")
+hframes = 4
 
 [node name="HealthComponent" type="Node" parent="." unique_id=627178191]
 script = ExtResource("1_3qydi")
