@@ -13,7 +13,7 @@ extends Node2D
 func _process(_delta: float) -> void:
 	if player.aiming:
 		visible = true
-		var draw_arrow_limit = player.position - player.aimer_position
+		var draw_arrow_limit = player.arrow_direction
 		
 		#Drawing the Arrow head and extending the Body for as long as it needs to be.
 		head.position = draw_arrow_limit.limit_length(player.stats.max_power)
@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 		butt.rotation = head.position.angle()
 		
 		#Changing all the colors according to length
-		if draw_arrow_limit.length() > (player.stats.max_power):
+		if draw_arrow_limit.length() >= (player.stats.max_power):
 			head.frame = pink_arrow
 			body.frame = pink_arrow
 			butt.frame = pink_arrow
@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 			head.frame = yellow_arrow
 			body.frame = yellow_arrow
 			butt.frame = yellow_arrow
-		elif draw_arrow_limit.length() > 0:
+		elif draw_arrow_limit.length() >= 0:
 			head.frame = red_arrow
 			body.frame = red_arrow
 			butt.frame = red_arrow

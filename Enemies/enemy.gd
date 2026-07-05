@@ -22,8 +22,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 	if center_stage.round_playing == true:
-		stats.HealthDecay = hold_decay
-		health_bar.visible = true
 		if can_dash == true:
 			final_wait_time -= delta
 			if final_wait_time < 0 && current_state == STATE.GLIDING:
@@ -38,25 +36,10 @@ func _process(delta: float) -> void:
 				can_dash = true
 			elif dash_countdown < stats.DashDuration/3:
 				dash_graphic.visible = false
-		#spinforce_manager()
 		
 		#print(self.name, " Candy Multiplier: ", candy_multiplier)
-	else:
-		self.current_state = STATE.GLIDING
-		self.linear_velocity.lerp(Vector2(0,0),30)
-		stats.HealthDecay = 0
-		dash_graphic.visible = false
-		health_bar.visible = false
-
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()
-
-#func launch_self(target_position: Vector2):
-	#var direction_to_target = self.position.direction_to(target_position)
-	#var final_power = randi_range(min_power_meter, stats.max_power)
-	#var force = (direction_to_target * final_power).limit_length(stats.max_power)
-	#theo_dash_time = 0
-	#self.apply_force(force * amplifier)
 
 func get_power_range():
 	return randi_range(min_power_meter, stats.max_power)

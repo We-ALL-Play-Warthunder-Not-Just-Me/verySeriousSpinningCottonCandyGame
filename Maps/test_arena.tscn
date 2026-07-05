@@ -662,9 +662,12 @@ script = ExtResource("5_lyawu")
 
 [node name="Player" parent="Spinners" unique_id=1548754327 instance=ExtResource("9_3wmq8")]
 position = Vector2(-180, 180)
+using_controller = true
+using_keyboard = true
 
 [node name="HealthComponent" parent="Spinners/Player" index="4" unique_id=627178191]
 HealthDecay = 0
+StaminaConsumption = 1
 
 [node name="CenterStage" type="Node2D" parent="." unique_id=2022388985]
 script = ExtResource("7_ke2dd")

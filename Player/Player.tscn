@@ -109,6 +109,7 @@ lock_rotation = true
 continuous_cd = 1
 max_contacts_reported = 1
 script = ExtResource("2_8g4oa")
+using_mouse = true
 
 [node name="VerySeriousDash" type="Sprite2D" parent="." unique_id=574010667]
 visible = false

@@ -57,8 +57,18 @@ func _process(delta: float) -> void:
 		spinforce_manager()
 		State_Manager(delta)
 		damage_visualizer(delta)
+	turn_on_off_spinner(center_stage.round_playing)
 
-
+func turn_on_off_spinner(is_on: bool):
+	if is_on:
+		stats.HealthDecay = hold_decay
+		health_bar.visible = true
+	else:
+		self.current_state = STATE.GLIDING
+		self.linear_velocity.lerp(Vector2(0,0),0.5)
+		stats.HealthDecay = 0
+		dash_graphic.visible = false
+		health_bar.visible = false
 
 func dash_self(force:Vector2):
 	var lim_force = force.limit_length(stats.max_power)
