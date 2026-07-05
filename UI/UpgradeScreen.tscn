@@ -64,16 +64,16 @@ theme = ExtResource("1_35fed")
 script = ExtResource("1_0pfdi")
 upgrades = ExtResource("2_0ae7b")
 cottonCandy = ExtResource("3_o0opg")
-MaxSpinForceBaseCost = 275
+MaxSpinForceBaseCost = 175
 MaxSpinForceMaxLevel = 7
-spinDecayBaseCost = 350
-spinDecayMaxLevel = 5
-MaxDamageBaseCost = 425
+spinDecayBaseCost = 265
+spinDecayMaxLevel = 4
+MaxDamageBaseCost = 325
 MaxDamageMaxLevel = 8
-StaminaConsumptionBaseCost = 500
-PowerAmplifierBaseCost = 650
+StaminaConsumptionBaseCost = 475
+PowerAmplifierBaseCost = 510
 PowerAmplifierMaxLevel = 5
-CandyMultiplierBaseCost = 800
+CandyMultiplierBaseCost = 565
 CandyMultiplierMaxLevel = 4
 
 [node name="VerSeriousBackground" type="Sprite2D" parent="." unique_id=237312596]

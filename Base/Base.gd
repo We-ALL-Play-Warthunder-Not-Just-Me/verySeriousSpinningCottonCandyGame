@@ -124,13 +124,13 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 	if(spinner_one.current_state == STATE.PARRYING):
 		print("We parried 'em!")
 		spinner_two.Take_Damage_Interceptor(damage)
-		if spinner_two.stats.CurrentHP < 0:
+		if spinner_two.stats.CurrentHP <= 0:
 			#Spinners gains an additional health restore for a Takedown
 			spinner_one.stats.heal(ceili(damage/2) + ceili(spinner_two.stats.TakedownReward/2))
 			#Though, the big reward is saved for your Candy Total, which this code handles
 			for scores in candy_tracker.spinners_dictionary:
 				if scores == spinner_one.name:
-					candy_tracker.spinners_dictionary[scores] += (spinner_two.stats.TakedownReward * 3)
+					candy_tracker.spinners_dictionary[scores] += (spinner_two.stats.TakedownReward * 5)
 	elif spinner_one_force > spinner_two_force:
 		sfx.random_hurt_sound()
 		spinner_two.damage_time = 0.5
@@ -140,13 +140,17 @@ func steal_spin(spinner_one: RigidBody2D, spinner_two: RigidBody2D, damage: int)
 		var force_percent = force_difference / force_total
 		var spinner_two_damage = ceili(damage * force_percent)
 		spinner_two.Take_Damage_Interceptor(spinner_two_damage)
-		if spinner_two.stats.CurrentHP < 0:
+		if spinner_two.stats.CurrentHP <= 0:
 			#Spinners gains an additional health restore for a Takedown
 			spinner_one.stats.heal(ceili(spinner_two_damage/2) + ceili(spinner_two.stats.TakedownReward/2))
 			#Though, the big reward is saved for your Candy Total, which this code handles
 			for scores in candy_tracker.spinners_dictionary:
 				if scores == spinner_one.name:
-					candy_tracker.spinners_dictionary[scores] += (spinner_two.stats.TakedownReward * 3)
+					print("More candy...")
+					print(candy_tracker.spinners_dictionary[scores])
+					print(spinner_two.stats.TakedownReward * 5)
+					candy_tracker.spinners_dictionary[scores] += (spinner_two.stats.TakedownReward * 5)
+					print(candy_tracker.spinners_dictionary[scores])
 		else:
 			spinner_one.stats.heal(ceili(spinner_two_damage/2))
 		#print("Spinner Force: ", spinner_one_force)

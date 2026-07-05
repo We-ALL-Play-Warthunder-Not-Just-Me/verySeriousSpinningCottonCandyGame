@@ -9,13 +9,6 @@ extends BaseSpinner
 var aiming = false
 
 
-var mouse_on_player:MOUSESTATE = MOUSESTATE.OFFPLAYER
-enum MOUSESTATE{
-	ONPLAYER,
-	OFFPLAYER
-}
-
-
 func _ready() -> void:
 	hold_decay = stats.HealthDecay
 	health_bar = $CanvasLayer/HealthBar
@@ -39,7 +32,7 @@ func _process(delta: float) -> void:
 		health_bar.visible = true
 		dash_bar.visible = true
 		if dash_bar.value > stats.StaminaConsumption:
-			if Input.is_action_just_pressed("MouseLeftClick") and mouse_on_player == MOUSESTATE.ONPLAYER:
+			if Input.is_action_just_pressed("MouseLeftClick"):
 				Engine.set_time_scale(0.2)
 				aiming = true
 				the_dark.visible = true
@@ -73,16 +66,9 @@ func _process(delta: float) -> void:
 		health_bar.visible = false
 		dash_bar.visible = false
 
-	
 	previous_frame = self.linear_velocity
 	dash_graphic.rotation = previous_frame.angle()
 
-
-func Mouse_Entered():
-	mouse_on_player = MOUSESTATE.ONPLAYER
-
-func Mouse_Exited():
-	mouse_on_player = MOUSESTATE.OFFPLAYER
 
 func spin_depleted():
 	Engine.set_time_scale(1.0)
