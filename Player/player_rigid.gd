@@ -13,6 +13,9 @@ var arrow_direction: Vector2
 var aimer_position: Vector2
 var aiming: bool = false
 
+var base_x: float
+var base_y: float
+
 func _ready() -> void:
 	hold_decay = stats.HealthDecay
 	health_bar = $CanvasLayer/HealthBar
@@ -67,17 +70,26 @@ func controller_controls(using: bool):
 		#Dash Controller Inputs
 		if dash_bar.value > stats.StaminaConsumption:
 			if Input.is_action_just_pressed("Dash (Controller)"):
+				base_x = 0.1
 				start_dash()
+			
+			if Input.is_action_just_released("Dash (Controller)") and aiming:
+				base_x = 0.0
+				base_y = 0.0
+				end_dash(aimer_position)
+			
+			if Input.is_action_just_pressed("Up (Controller)"): base_y = -0.1
+			if Input.is_action_just_pressed("Down (Controller)"): base_y = 0.1
+			if Input.is_action_just_pressed("Left (Controller)"): base_x = -0.1
+			if Input.is_action_just_pressed("Right (Controller)"): base_x = 0.1
 			
 			if Input.is_action_pressed("Dash (Controller)") and aiming:
 				var x_axis = Input.get_axis("Left (Controller)", "Right (Controller)")*stats.max_power
 				var y_axis = Input.get_axis("Up (Controller)", "Down (Controller)")*stats.max_power
 				aimer_position = Vector2(x_axis, y_axis)
+				if aimer_position == Vector2(0, 0):
+					aimer_position = Vector2(base_x, base_y)
 				arrow_direction = aimer_position
-			
-			if Input.is_action_just_released("Dash (Controller)") and aiming:
-				#print("Send!")
-				end_dash(aimer_position)
 
 
 func keyboard_controls(using: bool):
@@ -86,16 +98,28 @@ func keyboard_controls(using: bool):
 		#Dash Keyboard Inputs
 		if dash_bar.value > stats.StaminaConsumption:
 			if Input.is_action_just_pressed("Dash (Keyboard)"):
+				base_x = 0.1
 				start_dash()
+			
+			if Input.is_action_just_released("Dash (Keyboard)") and aiming:
+				base_x = 0.0
+				base_y = 0.0
+				print(aimer_position)
+				end_dash(aimer_position)
+			
+			if Input.is_action_just_pressed("Up (Keyboard)"): base_y = -0.1
+			if Input.is_action_just_pressed("Down (Keyboard)"): base_y = 0.1
+			if Input.is_action_just_pressed("Left (Keyboard)"): base_x = -0.1
+			if Input.is_action_just_pressed("Right (Keyboard)"): base_x = 0.1
 			
 			if Input.is_action_pressed("Dash (Keyboard)") and aiming:
 				var x_axis = Input.get_axis("Left (Keyboard)", "Right (Keyboard)")*stats.max_power
 				var y_axis = Input.get_axis("Up (Keyboard)", "Down (Keyboard)")*stats.max_power
 				aimer_position = Vector2(x_axis, y_axis)
+				if aimer_position == Vector2(0, 0):
+					aimer_position = Vector2(base_x, base_y)
 				arrow_direction = aimer_position
-			
-			if Input.is_action_just_released("Dash (Keyboard)") and aiming:
-				end_dash(aimer_position)
+
 
 #The Dash Functions
 func  start_dash():
