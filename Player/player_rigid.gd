@@ -13,14 +13,6 @@ var arrow_direction: Vector2
 var aimer_position: Vector2
 var aiming: bool = false
 
-
-var mouse_on_player:MOUSESTATE = MOUSESTATE.OFFPLAYER
-enum MOUSESTATE{
-	ONPLAYER,
-	OFFPLAYER
-}
-
-
 func _ready() -> void:
 	hold_decay = stats.HealthDecay
 	health_bar = $CanvasLayer/HealthBar
@@ -39,7 +31,6 @@ func _process(delta: float) -> void:
 	super(delta)
 	#Seting up the assets to start the round
 	if center_stage.round_playing == true:
-		print(name,"'s Health Decay ",stats.HealthDecay)
 		#Temp Stop
 		if Input.is_action_just_pressed("TempDebug"): self.linear_velocity = Vector2(0, 0)
 		
@@ -52,12 +43,13 @@ func _process(delta: float) -> void:
 	dash_graphic.rotation = previous_frame.angle()
 	dash_bar.visible = health_bar.visible
 
+
 func mouse_controls(using: bool):
 	if using:
-		print("Mouse Player")
+		#print("Mouse Player")
 		#Dash Mouse Inputs
 		if dash_bar.value > stats.StaminaConsumption:
-			if Input.is_action_just_pressed("Dash (Mouse)") and mouse_on_player == MOUSESTATE.ONPLAYER:
+			if Input.is_action_just_pressed("Dash (Mouse)"):
 				start_dash()
 			
 			if Input.is_action_pressed("Dash (Mouse)") and aiming:
@@ -68,9 +60,10 @@ func mouse_controls(using: bool):
 			if Input.is_action_just_released("Dash (Mouse)") and aiming:
 				end_dash(-aimer_position)
 
+
 func controller_controls(using: bool):
 	if using:
-		print("Controller Player")
+		#print("Controller Player")
 		#Dash Controller Inputs
 		if dash_bar.value > stats.StaminaConsumption:
 			if Input.is_action_just_pressed("Dash (Controller)"):
@@ -89,7 +82,7 @@ func controller_controls(using: bool):
 
 func keyboard_controls(using: bool):
 	if using:
-		print("Keyboard Player")
+		#print("Keyboard Player")
 		#Dash Keyboard Inputs
 		if dash_bar.value > stats.StaminaConsumption:
 			if Input.is_action_just_pressed("Dash (Keyboard)"):
@@ -120,12 +113,6 @@ func end_dash(force: Vector2):
 	self.set_linear_velocity(Vector2(0,0))
 	Engine.set_time_scale(1.0)
 	dash_self(force)
-
-func Mouse_Entered():
-	mouse_on_player = MOUSESTATE.ONPLAYER
-
-func Mouse_Exited():
-	mouse_on_player = MOUSESTATE.OFFPLAYER
 
 func spin_depleted():
 	Engine.set_time_scale(1.0)

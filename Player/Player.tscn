@@ -96,9 +96,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8qva"]
 radius = 12.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tsdbm"]
-radius = 40.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_j23h2"]
 radius = 15.0
 
@@ -201,12 +198,6 @@ PowerAmplifierLvlValue = 0.8
 startSpinDecay = 12
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
 
-[node name="MouseDetection" type="Area2D" parent="." unique_id=1308826148]
-
-[node name="MouseZone" type="CollisionShape2D" parent="MouseDetection" unique_id=2089231502]
-shape = SubResource("CircleShape2D_tsdbm")
-debug_color = Color(0.6327057, 0.92551637, 0.9999998, 0.41960785)
-
 [node name="DamageArea" type="Area2D" parent="." unique_id=1289753861]
 collision_layer = 2
 
@@ -215,5 +206,3 @@ shape = SubResource("CircleShape2D_j23h2")
 debug_color = Color(0.9757263, 0, 0.42078322, 0.41960785)
 
 [connection signal="healthDEATH" from="HealthComponent" to="." method="spin_depleted"]
-[connection signal="mouse_entered" from="MouseDetection" to="." method="Mouse_Entered"]
-[connection signal="mouse_exited" from="MouseDetection" to="." method="Mouse_Exited"]
