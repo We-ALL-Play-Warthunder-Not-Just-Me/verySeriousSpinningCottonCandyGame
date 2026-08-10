@@ -103,7 +103,6 @@ shape = SubResource("CircleShape2D_0o1qk")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1074329277]
 script = ExtResource("5_e3qi2")
-MaxHp = 10
 CurrentHP = 10
 HealthDecay = 1
 metadata/_custom_type_script = "uid://uflgtvyrjjt"
@@ -120,10 +119,9 @@ anchor_left = 0.0125
 anchor_right = 0.5601562
 health = NodePath("../../HealthComponent")
 
-[node name="upgrade_manager" type="Node" parent="." unique_id=704935483 node_paths=PackedStringArray("health")]
+[node name="upgrade_manager" type="Node" parent="." unique_id=704935483]
 script = ExtResource("8_fy2kp")
 upgrades = ExtResource("9_5u230")
-health = NodePath("")
 metadata/_custom_type_script = "uid://b4re2wm2gcrj4"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

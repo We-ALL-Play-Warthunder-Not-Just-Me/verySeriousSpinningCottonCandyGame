@@ -17,6 +17,7 @@ dest_files=["res://.godot/imported/Very Serious Enemy.png-8fb80d29ab90d78134b7d7
 
 compress/mode=0
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
