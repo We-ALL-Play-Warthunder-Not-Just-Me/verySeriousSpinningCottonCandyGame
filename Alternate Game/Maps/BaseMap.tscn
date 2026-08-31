@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://qnxh6dq6xgeo"]
 
 [ext_resource type="Script" uid="uid://c1akc5skyt8il" path="res://Alternate Game/Scripts/GameManager.gd" id="1_6cwwt"]
+[ext_resource type="Script" uid="uid://bb8q5qhthba6u" path="res://Alternate Game/Scripts/PhysicsManager.gd" id="2_pnmn5"]
 
 [node name="GameManager" type="Node2D" unique_id=1446401468]
 script = ExtResource("1_6cwwt")
+
+[node name="PhysicsManager" type="Node2D" parent="." unique_id=129274993]
+script = ExtResource("2_pnmn5")
+
+[node name="StaticObjects" type="Node2D" parent="PhysicsManager" unique_id=731555667]
+
+[node name="MovingObjects" type="Node2D" parent="PhysicsManager" unique_id=1281800306]
