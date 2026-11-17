@@ -7,6 +7,9 @@ extends Node
 @export var health: int
 @export var power: int
 
+var direction: Vector2 = Vector2.ZERO
+var speed: int = 0
+
 var current_state: STATE = STATE.GLIDING 
 #var parry_time: float = 10
 enum STATE{
